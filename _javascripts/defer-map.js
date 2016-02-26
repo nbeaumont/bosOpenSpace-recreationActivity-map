@@ -6,7 +6,7 @@
     // function to reorder layers when an overlay is selected through the control panel layer
     function onOverlayAdd(e){if(map.hasLayer(myOpenSpaceLayer)){myOpenSpaceLayer.bringToBack()}else{}if(map.hasLayer(myNbhdLayer)){myNbhdLayer.bringToBack()}else{}if(map.hasLayer(myBos_openSpace)){myBos_openSpace.bringToBack()}else{}if(map.hasLayer(myBos_nbhd)){myBos_nbhd.bringToBack()}else{}if(map.hasLayer(bikeTrails)){bikeTrails.bringToFront()}else{}};
     // initialize the map
-    var map=L.map("map").setView([42.31250108313083,-71.05701449023424],12);
+    var map=L.map("map",{zoomControl:false}).setView([42.31250108313083,-71.05701449023424],12);
     /*!
     *   Tile Layers
     *   ===========
@@ -122,11 +122,19 @@
     // add layer
     var farmersMarketsUrl="http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/farmersMarkets.geojson";var farmersMarkets=new L.GeoJSON.AJAX(farmersMarketsUrl,{onEachFeature:$farmersMarketsOnEachFeature,pointToLayer:$farmersMarketsPointToLayer});
     /*!
-    *		Control Layer
-    *		=============
-    *		=============
+    *		Control
+    *		=======
+    *		=======
+    //
+    *   |   Layer
+    *   |   =====
     */
     var myNbhdLayer=L.geoJson().addTo(map);var myOpenSpaceLayer=L.geoJson().addTo(map);var myIndivOpenSpaceLayer=L.geoJson().addTo(map);var myOverlayLayersGroup=L.layerGroup([myBos_nbhd,myBos_openSpace,myNbhdLayer,myOpenSpaceLayer,myIndivOpenSpaceLayer]).addTo(map);var myActivitiesMarkerClusterGroup=L.markerClusterGroup.layerSupport();myActivitiesMarkerClusterGroup.checkIn(farmersMarkets);myActivitiesMarkerClusterGroup.addTo(map);var recreationalActivitiesUrl="http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson";var recreationalActivities=L.geoJson.ajax(recreationalActivitiesUrl,{onEachFeature:$activitiesOnEachFeature,pointToLayer:$activitiesPointToLayer});recreationalActivities.on("data:loaded",function(){myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);map.addLayer(myActivitiesMarkerClusterGroup)});var baseMaps={"Mass GIS":mapc,"Open Street Map":OpenStreetMap_Mapnik,"Open Street Map (Black and White)":OpenStreetMap_BlackAndWhite,"ESRI Street":Esri_WorldStreetMap,"ESRI Topography":Esri_WorldTopoMap,"ESRI National Geographic":Esri_NatGeoWorldMap,"Bing Road":bingLayerRoad,"Bing Aerial":bingLayerAerial,"Bing Aerial with Labels":bingLayerAerialWithLabels};var overlays={"Neighborhoods and Open Spaces":myOverlayLayersGroup,"Bike Trails":bikeTrails,"Farmers Markets":farmersMarkets};ctrl=L.control.layers(baseMaps,overlays).addTo(map);
+    /*!
+    *   |   Zoom
+    *   |   ====
+    */
+    L.control.zoom({position:'topright'}).addTo(map);
     /*!
     *   Selectors
     *   =========
