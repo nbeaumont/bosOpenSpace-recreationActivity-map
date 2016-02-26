@@ -6,7 +6,7 @@
     // function to reorder layers when an overlay is selected through the control panel layer
     function onOverlayAdd(e){if(map.hasLayer(myOpenSpaceLayer)){myOpenSpaceLayer.bringToBack()}else{}if(map.hasLayer(myNbhdLayer)){myNbhdLayer.bringToBack()}else{}if(map.hasLayer(myBos_openSpace)){myBos_openSpace.bringToBack()}else{}if(map.hasLayer(myBos_nbhd)){myBos_nbhd.bringToBack()}else{}if(map.hasLayer(bikeTrails)){bikeTrails.bringToFront()}else{}};
     // initialize the map
-    var map=L.map("#map").setView([42.31250108313083,-71.05701449023424],12);
+    var map=L.map("map").setView([42.31250108313083,-71.05701449023424],12);
     /*!
     *   Tile Layers
     *   ===========
