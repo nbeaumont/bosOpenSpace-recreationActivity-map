@@ -63,7 +63,7 @@ img, object, embed, video {
 }
 /*    My styles 
  *    --------- */
-.leaflet-popup-content a{text-}
+.leaflet-popup-content a{text-decoration:none}
 h2.mapTitle,.openSpacePopupTitle,.openSpacePopupSubTitle,.nbhdTitle,.bikeTrailsPopupTitle,.farmersMarketsPopupTitle,.farmersMarketsPopupSubTitle{font-family:'Open Sans Condensed',Arial Narrow,Sans-Serif;font-style:normal;font-weight:700}
 h2.mapTitle{font-size:32px;line-height:44px;margin-top:0;margin-right:0; margin-bottom:16px; margin-left:0}
 .chosen-container{font-family:'Open Sans',Sans-Serif;font-style:normal;font-weight:400;font-size:13px;line-height:24px}
