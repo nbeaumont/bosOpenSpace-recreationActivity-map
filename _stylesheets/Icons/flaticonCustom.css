@@ -1,0 +1,11 @@
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after { 
+        font-size:20px;
+margin-left:0;
+}
+.extra-marker i {
+  line-height:20px;
+  margin-top:8px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto;
+}
