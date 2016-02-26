@@ -112,7 +112,7 @@
         if(feature.properties.Icon==="Park"){return L.marker(latlng,{icon:parkIcon})}else{if(feature.properties.Icon==="Cafe"){return L.marker(latlng,{icon:cafeIcon})}else{if(feature.properties.Icon==="Sailing"){return L.marker(latlng,{icon:sailingIcon})}else{if(feature.properties.Icon==="Concert"){return L.marker(latlng,{icon:concertIcon})}else{if(feature.properties.Icon==="Playground"){return L.marker(latlng,{icon:playgroundIcon})}else{if(feature.properties.Icon==="Tour"){return L.marker(latlng,{icon:tourIcon})}else{if(feature.properties.Icon==="Baseball"){return L.marker(latlng,{icon:baseballIcon})}else{if(feature.properties.Icon==="Tennis"){return L.marker(latlng,{icon:tennisIcon})}else{if(feature.properties.Icon==="Pond"){return L.marker(latlng,{icon:pondIcon})}else{if(feature.properties.Icon==="Gov Building"){return L.marker(latlng,{icon:govBuildingIcon})}else{if(feature.properties.Icon==="Info"){return L.marker(latlng,{icon:infoIcon})}else{if(feature.properties.Icon==="Cemetery"){return L.marker(latlng,{icon:cemeteryIcon})}else{if(feature.properties.Icon==="Park Description"){return L.marker(latlng,{icon:parkDescriptionIcon})}else{if(feature.properties.Icon==="Bicycle Parked"){return L.marker(latlng,{icon:bicycleParkedIcon})}else{if(feature.properties.Icon==="Skating"){return L.marker(latlng,{icon:skatingIcon})}else{if(feature.properties.Icon==="Swimming"){return L.marker(latlng,{icon:swimmingIcon})}else{if(feature.properties.Icon==="Athletic Field"){return L.marker(latlng,{icon:athleticFieldIcon})}else{if(feature.properties.Icon==="Bocce"){return L.marker(latlng,{icon:bocceIcon})}else{if(feature.properties.Icon==="Church"){return L.marker(latlng,{icon:churchIcon})}else{if(feature.properties.Icon==="Museum"){return L.marker(latlng,{icon:museumIcon})}else{if(feature.properties.Icon==="Memorial"){return L.marker(latlng,{icon:memorialIcon})}else{if(feature.properties.Icon==="Carousel"){return L.marker(latlng,{icon:carouselIcon})}else{if(feature.properties.Icon==="Bench"){return L.marker(latlng,{icon:benchIcon})}else{if(feature.properties.Icon==="Fountain"){return L.marker(latlng,{icon:fountainIcon})}else{if(feature.properties.Icon==="Historical Landmark"){return L.marker(latlng,{icon:historicalLandmarkIcon})}else{if(feature.properties.Icon==="Group"){return L.marker(latlng,{icon:groupIcon})}else{if(feature.properties.Icon==="Dam"){return L.marker(latlng,{icon:damIcon})}else{if(feature.properties.Icon==="Walking"){return L.marker(latlng,{icon:walkingIcon})}else{if(feature.properties.Icon==="Bridge"){return L.marker(latlng,{icon:bridgeIcon})}else{if(feature.properties.Icon==="Library"){return L.marker(latlng,{icon:libraryIcon})}else{if(feature.properties.Icon==="Canoe Kayak"){return L.marker(latlng,{icon:canoeKayakIcon})}else{if(feature.properties.Icon==="Theater"){return L.marker(latlng,{icon:theaterIcon})}else{if(feature.properties.Icon==="Gardening"){return L.marker(latlng,{icon:gardeningIcon})}else{if(feature.properties.Icon==="Basketball"){return L.marker(latlng,{icon:basketballIcon})}else{if(feature.properties.Icon==="Rowing"){return L.marker(latlng,{icon:rowingIcon})}else{if(feature.properties.Icon==="Dog Park"){return L.marker(latlng,{icon:dogParkIcon})}else{if(feature.properties.Icon==="Golf"){return L.marker(latlng,{icon:golfIcon})}else{if(feature.properties.Icon==="Yacht"){return L.marker(latlng,{icon:yachtIcon})}else{if(feature.properties.Icon==="Exercising"){return L.marker(latlng,{icon:exercisingIcon})}else{return L.marker(latlng)}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}if(feature.properties.Icon==="Walking"){return L.marker(latlng,{icon:walkingIcon})}else{if(feature.properties.Icon==="Bridge"){return L.marker(latlng,{icon:bridgeIcon})}}
     };
     /*!
-    *		|		Farmers Markets
+    *		|   Farmers Markets
     *		|		===============
     */
     // on each feature
@@ -122,19 +122,19 @@
     // add layer
     var farmersMarketsUrl="http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/farmersMarkets.geojson";var farmersMarkets=new L.GeoJSON.AJAX(farmersMarketsUrl,{onEachFeature:$farmersMarketsOnEachFeature,pointToLayer:$farmersMarketsPointToLayer});
     /*!
-    *		Control
-    *		=======
-    *		=======
-    //
-    *   |   Layer
-    *   |   =====
-    */
-    var myNbhdLayer=L.geoJson().addTo(map);var myOpenSpaceLayer=L.geoJson().addTo(map);var myIndivOpenSpaceLayer=L.geoJson().addTo(map);var myOverlayLayersGroup=L.layerGroup([myBos_nbhd,myBos_openSpace,myNbhdLayer,myOpenSpaceLayer,myIndivOpenSpaceLayer]).addTo(map);var myActivitiesMarkerClusterGroup=L.markerClusterGroup.layerSupport();myActivitiesMarkerClusterGroup.checkIn(farmersMarkets);myActivitiesMarkerClusterGroup.addTo(map);var recreationalActivitiesUrl="http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson";var recreationalActivities=L.geoJson.ajax(recreationalActivitiesUrl,{onEachFeature:$activitiesOnEachFeature,pointToLayer:$activitiesPointToLayer});recreationalActivities.on("data:loaded",function(){myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);map.addLayer(myActivitiesMarkerClusterGroup)});var baseMaps={"Mass GIS":mapc,"Open Street Map":OpenStreetMap_Mapnik,"Open Street Map (Black and White)":OpenStreetMap_BlackAndWhite,"ESRI Street":Esri_WorldStreetMap,"ESRI Topography":Esri_WorldTopoMap,"ESRI National Geographic":Esri_NatGeoWorldMap,"Bing Road":bingLayerRoad,"Bing Aerial":bingLayerAerial,"Bing Aerial with Labels":bingLayerAerialWithLabels};var overlays={"Neighborhoods and Open Spaces":myOverlayLayersGroup,"Bike Trails":bikeTrails,"Farmers Markets":farmersMarkets};ctrl=L.control.layers(baseMaps,overlays).addTo(map);
-    /*!
+    *   Control
+    *   =======
+    *   =======
+    *
     *   |   Zoom
     *   |   ====
     */
     L.control.zoom({position:'topright'}).addTo(map);
+    /*!
+    *   |   Layer
+    *   |   =====
+    */
+    var myNbhdLayer=L.geoJson().addTo(map);var myOpenSpaceLayer=L.geoJson().addTo(map);var myIndivOpenSpaceLayer=L.geoJson().addTo(map);var myOverlayLayersGroup=L.layerGroup([myBos_nbhd,myBos_openSpace,myNbhdLayer,myOpenSpaceLayer,myIndivOpenSpaceLayer]).addTo(map);var myActivitiesMarkerClusterGroup=L.markerClusterGroup.layerSupport();myActivitiesMarkerClusterGroup.checkIn(farmersMarkets);myActivitiesMarkerClusterGroup.addTo(map);var recreationalActivitiesUrl="http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson";var recreationalActivities=L.geoJson.ajax(recreationalActivitiesUrl,{onEachFeature:$activitiesOnEachFeature,pointToLayer:$activitiesPointToLayer});recreationalActivities.on("data:loaded",function(){myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);map.addLayer(myActivitiesMarkerClusterGroup)});var baseMaps={"Mass GIS":mapc,"Open Street Map":OpenStreetMap_Mapnik,"Open Street Map (Black and White)":OpenStreetMap_BlackAndWhite,"ESRI Street":Esri_WorldStreetMap,"ESRI Topography":Esri_WorldTopoMap,"ESRI National Geographic":Esri_NatGeoWorldMap,"Bing Road":bingLayerRoad,"Bing Aerial":bingLayerAerial,"Bing Aerial with Labels":bingLayerAerialWithLabels};var overlays={"Neighborhoods and Open Spaces":myOverlayLayersGroup,"Bike Trails":bikeTrails,"Farmers Markets":farmersMarkets};ctrl=L.control.layers(baseMaps,overlays).addTo(map);
     /*!
     *   Selectors
     *   =========
