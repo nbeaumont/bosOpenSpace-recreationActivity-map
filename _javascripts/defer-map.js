@@ -1021,7 +1021,3 @@
     }
 })
 (jQuery);
-
-jQuery(document).ready(function(a) {
-    a.backstretch("http://nicolasbeaumont.com/engraving/transparent-2x2.png")
-});
