@@ -63,6 +63,7 @@ img, object, embed, video {
 }
 /*    My styles 
  *    --------- */
+.leaflet-popup-content a{text-}
 h2.mapTitle,.openSpacePopupTitle,.openSpacePopupSubTitle,.nbhdTitle,.bikeTrailsPopupTitle,.farmersMarketsPopupTitle,.farmersMarketsPopupSubTitle{font-family:'Open Sans Condensed',Arial Narrow,Sans-Serif;font-style:normal;font-weight:700}
 h2.mapTitle{font-size:32px;line-height:44px;margin-top:0;margin-right:0; margin-bottom:16px; margin-left:0}
 .chosen-container{font-family:'Open Sans',Sans-Serif;font-style:normal;font-weight:400;font-size:13px;line-height:24px}
@@ -71,16 +72,16 @@ h2.mapTitle{font-size:32px;line-height:44px;margin-top:0;margin-right:0; margin-
 .nbhdTitle{color:red}
 .bikeTrailsPopupTitle{color:Chocolate}
 .openSpacePopupSubTitle,.farmersMarketsPopupSubTitle{font-size:13px}
-#div1{position:relative}
 .selectorsWrapper{display:block;float:left;clear:both;width:100%;height:56px;margin:0;padding:0}
 .nbhdFormWrapper,.openSpaceFormWrapper,.activitiesFormWrapper{display:block;float:left;margin:0;padding:0}
 .nbhdFormWrapper{clear:both;width:50%}
 .openSpaceFormWrapper{clear:none;width:30%}
 .activitiesFormWrapper{clear:none;width:20%}
 #Bos_nbhdForm .chosen-container,#Bos_openSpaceForm .chosen-container,#activitiesForm .chosen-container{width:98%!important}
-#Bos_nbhdForm .chosen-container{max-height:56px}
-.mainContentWrapper{display:block;float:left;clear:both;width:100%;height:600px;height:100vh;margin:0}
-#map{display:block;width:100%;height: calc(100% - 116px)}
+#Bos_nbhdForm .chosen-container{z-index:99}
+
+.mainContentWrapper{display:block;float:left;clear:both;width:100%;height:600px;height:100vh;margin:0;position:relative}
+#map{display:block;width:100%;height:calc(100% - 116px);z-index:9}
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
