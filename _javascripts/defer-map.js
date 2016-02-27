@@ -97,7 +97,17 @@
     // on each feature
     function $bikeTrailsOnEachFeature(feature,layer){if(feature.properties){var popupText="";if(feature.properties.TRAILNAME){popupText+='<strong class="bikeTrailsPopupTitle">'+feature.properties.TRAILNAME+"</strong><br>"}else{}if(feature.properties.TRAIL_STAT){if(feature.properties.TRAIL_STAT==="I"){popupText+="<strong>Trail Status:</strong> Existing<br>"}else{if(feature.properties.TRAIL_STAT==="E"){popupText+="<strong>Trail Status:</strong> Existing Unimproved<br>"}else{if(feature.properties.TRAIL_STAT==="R"){popupText+="<strong>Trail Status:</strong> On-Road Connection<br>"}else{if(feature.properties.TRAIL_STAT==="U"){popupText+="<strong>Trail Status:</strong> Underway<br>"}else{if(feature.properties.TRAIL_STAT==="C"){popupText+="<strong>Trail Status:</strong> Considered<br>"}else{if(feature.properties.TRAIL_STAT==="A"){popupText+="<strong>Trail Status:</strong> Potential<br>"}else{}}}}}}}else{}if(feature.properties.OWNER){var ownerName="<strong>Owner:</strong> "+feature.properties.OWNER;if(feature.properties.STATUS_OWN==="S"){popupText+=ownerName+" (State)<br>"}else{if(feature.properties.STATUS_OWN==="M"){popupText+=ownerName+" (Municipal)<br>"}else{if(feature.properties.STATUS_OWN==="F"){popupText+=ownerName+" (Federal)<br>"}else{if(feature.properties.STATUS_OWN==="P"){popupText+=ownerName+" (Private)<br>"}else{if(feature.properties.STATUS_OWN==="O"){popupText+=ownerName+" (Out-of-state)<br>"}else{popupText+=ownerName+"<br>"}}}}}}else{}if(feature.properties.MANAGER){var managerName="<strong>Manager:</strong> "+feature.properties.MANAGER;if(feature.properties.STATUS_MAN==="S"){popupText+=managerName+" (State)<br>"}else{if(feature.properties.STATUS_MAN==="M"){popupText+=managerName+" (Municipal)<br>"}else{if(feature.properties.STATUS_MAN==="F"){popupText+=managerName+" (Federal)<br>"}else{if(feature.properties.STATUS_MAN==="P"){popupText+=managerName+" (Private)<br>"}else{if(feature.properties.STATUS_MAN==="V"){popupText+=managerName+" (Volunteer/Non-Profit)<br>"}else{if(feature.properties.STATUS_MAN==="O"){popupText+=managerName+" (Out-of-state)<br>"}else{popupText+=managerName+"<br>"}}}}}}}else{}}else{}layer.bindPopup(popupText)};
     // style
-    function $bikeTrailsStyle(feature){if(feature.properties&&feature.properties.TRAILNAME){return{color:"DarkBlue",weight:4,dashArray:"4, 4",lineCap:"butt",lineJoin:"round"}}else{}};
+    function $bikeTrailsStyle(feature) {
+        if (feature.properties && feature.properties.TRAILNAME) {
+            return {
+                color: "DarkBlue",
+                weight: 8,
+                dashArray: "4, 4",
+                lineCap: "butt",
+                lineJoin: "round"
+            }
+        } else {}
+    };
     // add layer
     var bikeTrailsUrl="http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/bikeTrails.geojson";var bikeTrails=new L.GeoJSON.AJAX(bikeTrailsUrl,{onEachFeature:$bikeTrailsOnEachFeature,style:$bikeTrailsStyle});
     /*!
@@ -118,7 +128,20 @@
     // on each feature
     function $farmersMarketsOnEachFeature(feature,layer){if(feature.properties){var popupText="";if(feature.properties.NAME){popupText+="<strong class='farmersMarketsPopupTitle'>"+feature.properties.NAME+"</strong><br>"}else{}if(feature.properties.TYPE){popupText+="<strong>Type:</strong> "+feature.properties.TYPE+"</strong><br>"}else{}if(feature.properties.ADDR_1){popupText+="<strong>Address:</strong> "+feature.properties.ADDR_1+"<br>"}else{}if(feature.properties.ADDR_2){popupText+=feature.properties.ADDR_2+"<br>"}else{}if(feature.properties.TOWN){popupText+="<strong>Town:</strong> "+feature.properties.TOWN+"<br>"}else{}if(feature.properties.ZIP_CODE){popupText+="<strong>Zip Code:</strong> "+feature.properties.ZIP_CODE+"<br>"}else{}if(feature.properties.DAY_TIME){popupText+="<strong>Days and hours of operation:</strong> "+feature.properties.DAY_TIME+"<br>"}else{}if(feature.properties.DATES){popupText+="<strong>Date range(s) within which the market expects to be open:</strong> "+feature.properties.DATES+"<br>"}else{}if(feature.properties.WEBSITE){popupText+='<i class="fa fa-globe"></i> <a href='+feature.properties.WEBSITE+" target='_blank'>Website</a><br>"}else{}layer.bindPopup(popupText)}else{}};
     // point to layer
-    function $farmersMarketsPointToLayer(feature,latlng){var farmersMarketsIcon=L.ExtraMarkers.icon({icon:"flaticon-food-1",markerColor:"green",iconColor:"white",shape:"circle",prefix:"flaticon"});if(feature.properties){return L.marker(latlng,{icon:farmersMarketsIcon})}};
+    function $farmersMarketsPointToLayer(feature, latlng) {
+        var farmersMarketsIcon = L.ExtraMarkers.icon({
+            icon: "fa-shopping-basket",
+            markerColor: "green",
+            iconColor: "white",
+            shape: "circle",
+            prefix: "fa"
+        });
+        if (feature.properties) {
+            return L.marker(latlng, {
+                icon: farmersMarketsIcon
+            })
+        }
+    };
     // add layer
     var farmersMarketsUrl="http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/farmersMarkets.geojson";var farmersMarkets=new L.GeoJSON.AJAX(farmersMarketsUrl,{onEachFeature:$farmersMarketsOnEachFeature,pointToLayer:$farmersMarketsPointToLayer});
     /*!
@@ -198,9 +221,6 @@
         onEachFeature: $publicArtOnEachFeature,
         pointToLayer: $publicArtPointToLayer
     });
-    
-    
-    
     /*!
     *   Control
     *   =======
