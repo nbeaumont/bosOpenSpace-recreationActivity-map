@@ -172,7 +172,7 @@
                 popupText += "<strong>Description:</strong> " + feature.properties.DESC + "<br>"
             } else {}
             if (feature.properties.AUDIO_DESC) {
-                popupText += '<i class="fa-file-audio-o"></i> <a href=' + feature.properties.AUDIO_DESC + " target='_blank'>Audio Description</a><br>"
+                popupText += '<i class="fa fa-file-audio-o"></i> <a href=' + feature.properties.AUDIO_DESC + " target='_blank'>Audio Description</a><br>"
             } else {}
             layer.bindPopup(popupText)
         } else {}
