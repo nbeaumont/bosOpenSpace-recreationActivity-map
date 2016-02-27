@@ -122,6 +122,86 @@
     // add layer
     var farmersMarketsUrl="http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/farmersMarkets.geojson";var farmersMarkets=new L.GeoJSON.AJAX(farmersMarketsUrl,{onEachFeature:$farmersMarketsOnEachFeature,pointToLayer:$farmersMarketsPointToLayer});
     /*!
+    *		|   Public Art
+    *		|		===========
+    */
+    // on each feature
+    function $publicArtOnEachFeature(feature, layer) {
+        if (feature.properties) {
+            var popupText = "";
+            if (feature.properties.NAME) {
+                popupText += "<strong class='publicArtPopupTitle'>" + feature.properties.NAME + "</strong><br>"
+            } else {}
+            if (feature.properties.WEBSITE) {
+                popupText += '<i class="fa fa-globe"></i> <a href=' + feature.properties.WEBSITE + " target='_blank'>Website</a><br>"
+            } else {}
+            if (feature.properties.LINK1) {
+                popupText += '<i class="fa fa-wikipedia-w"></i> <a href=' + feature.properties.LINK1 + " target='_blank'>View on Wikipedia</a><br>"
+            } else {}
+            if (feature.properties.LINK2) {
+                popupText += '<i class="fa fa-wikipedia-w"></i> <a href=' + feature.properties.LINK2 + " target='_blank'>Search Wikimedia Commons</a><br>"
+            } else {}
+            if (feature.properties.LINK3) {
+                popupText += '<i class="fa fa-google"></i> <a href=' + feature.properties.LINK3 + " target='_blank'>View in Google Street View</a><br>"
+            } else {}
+            if (feature.properties.LINK4) {
+                popupText += '<i class="fa fa-flickr"></i> <a href=' + feature.properties.LINK4 + " target='_blank'>Search Flickr</a><br>"
+            } else {}
+            if (feature.properties.ARTIST) {
+                popupText += "<strong>Artist:</strong> " + feature.properties.ARTIST + "<br>"
+            } else {}
+            if (feature.properties.LOCATION) {
+                popupText += "<strong>Location:</strong> " + feature.properties.LOCATION + "<br>"
+            } else {}
+            if (feature.properties.TYPE) {
+                popupText += "<strong>Type:</strong> " + feature.properties.TYPE + "<br>"
+            } else {}
+            if (feature.properties.YEAR) {
+                popupText += "<strong>Year:</strong> " + feature.properties.YEAR + "<br>"
+            } else {}
+            if (feature.properties.MEDIUM) {
+                popupText += "<strong>Medium:</strong> " + feature.properties.MEDIUM + "<br>"
+            } else {}
+            if (feature.properties.COLLECTION) {
+                popupText += "<strong>Collection:</strong> " + feature.properties.COLLECTION + "<br>"
+            } else {}
+            if (feature.properties.FUNDERS) {
+                popupText += "<strong>Funders:</strong> " + feature.properties.FUNDERS + "<br>"
+            } else {}
+            if (feature.properties.DESC) {
+                popupText += "<strong>Description:</strong> " + feature.properties.DESC + "<br>"
+            } else {}
+            if (feature.properties.AUDIO_DESC) {
+                popupText += '<i class="fa-file-audio-o"></i> <a href=' + feature.properties.AUDIO_DESC + " target='_blank'>Audio Description</a><br>"
+            } else {}
+            layer.bindPopup(popupText)
+        } else {}
+    };
+    // point to layer
+    function $publicArtPointToLayer(feature, latlng) {
+        var publicArtIcon = L.ExtraMarkers.icon({
+            icon: "fa fa-camera",
+            markerColor: "violet",
+            iconColor: "white",
+            shape: "penta",
+            prefix: "fa"
+        });
+        if (feature.properties) {
+            return L.marker(latlng, {
+                icon: publicArtIcon
+            })
+        }
+    };
+    // add layer
+    var publicArtUrl = "http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/publicArt.geojson";
+    var publicArt = new L.GeoJSON.AJAX(publicArtUrl, {
+        onEachFeature: $publicArtOnEachFeature,
+        pointToLayer: $publicArtPointToLayer
+    });
+    
+    
+    
+    /*!
     *   Control
     *   =======
     *   =======
@@ -134,7 +214,41 @@
     *   |   Layer
     *   |   =====
     */
-    var myNbhdLayer=L.geoJson().addTo(map);var myOpenSpaceLayer=L.geoJson().addTo(map);var myIndivOpenSpaceLayer=L.geoJson().addTo(map);var myOverlayLayersGroup=L.layerGroup([myBos_nbhd,myBos_openSpace,myNbhdLayer,myOpenSpaceLayer,myIndivOpenSpaceLayer]).addTo(map);var myActivitiesMarkerClusterGroup=L.markerClusterGroup.layerSupport();myActivitiesMarkerClusterGroup.checkIn(farmersMarkets);myActivitiesMarkerClusterGroup.addTo(map);var recreationalActivitiesUrl="http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson";var recreationalActivities=L.geoJson.ajax(recreationalActivitiesUrl,{onEachFeature:$activitiesOnEachFeature,pointToLayer:$activitiesPointToLayer});recreationalActivities.on("data:loaded",function(){myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);map.addLayer(myActivitiesMarkerClusterGroup)});var baseMaps={"Mass GIS":mapc,"Open Street Map":OpenStreetMap_Mapnik,"Open Street Map (Black and White)":OpenStreetMap_BlackAndWhite,"ESRI Street":Esri_WorldStreetMap,"ESRI Topography":Esri_WorldTopoMap,"ESRI National Geographic":Esri_NatGeoWorldMap,"Bing Road":bingLayerRoad,"Bing Aerial":bingLayerAerial,"Bing Aerial with Labels":bingLayerAerialWithLabels};var overlays={"Neighborhoods and Open Spaces":myOverlayLayersGroup,"Bike Trails":bikeTrails,"Farmers Markets":farmersMarkets};ctrl=L.control.layers(baseMaps,overlays).addTo(map);
+    var myNbhdLayer = L.geoJson().addTo(map);
+    var myOpenSpaceLayer = L.geoJson().addTo(map);
+    var myIndivOpenSpaceLayer = L.geoJson().addTo(map);
+    var myOverlayLayersGroup = L.layerGroup([myBos_nbhd, myBos_openSpace, myNbhdLayer, myOpenSpaceLayer, myIndivOpenSpaceLayer]).addTo(map);
+    var myActivitiesMarkerClusterGroup = L.markerClusterGroup.layerSupport();
+    myActivitiesMarkerClusterGroup.checkIn(farmersMarkets);
+    myActivitiesMarkerClusterGroup.checkIn(publicArt);
+    myActivitiesMarkerClusterGroup.addTo(map);
+    var recreationalActivitiesUrl = "http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson";
+    var recreationalActivities = L.geoJson.ajax(recreationalActivitiesUrl, {
+        onEachFeature: $activitiesOnEachFeature,
+        pointToLayer: $activitiesPointToLayer
+    });
+    recreationalActivities.on("data:loaded", function() {
+        myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+        map.addLayer(myActivitiesMarkerClusterGroup)
+    });
+    var baseMaps = {
+        "Mass GIS": mapc,
+        "Open Street Map": OpenStreetMap_Mapnik,
+        "Open Street Map (Black and White)": OpenStreetMap_BlackAndWhite,
+        "ESRI Street": Esri_WorldStreetMap,
+        "ESRI Topography": Esri_WorldTopoMap,
+        "ESRI National Geographic": Esri_NatGeoWorldMap,
+        "Bing Road": bingLayerRoad,
+        "Bing Aerial": bingLayerAerial,
+        "Bing Aerial with Labels": bingLayerAerialWithLabels
+    };
+    var overlays = {
+        "Neighborhoods and Open Spaces": myOverlayLayersGroup,
+        "Bike Trails": bikeTrails,
+        "Farmers Markets": farmersMarkets,
+        "Public Art": publicArt
+    };
+    ctrl = L.control.layers(baseMaps, overlays).addTo(map);
     /*!
     *   Selectors
     *   =========
