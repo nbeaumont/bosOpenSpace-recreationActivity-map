@@ -101,8 +101,8 @@
         if (feature.properties && feature.properties.TRAILNAME) {
             return {
                 color: "DarkBlue",
-                weight: 8,
-                dashArray: "4, 4",
+                weight: 5,
+                dashArray: "5, 5",
                 lineCap: "butt",
                 lineJoin: "round"
             }
@@ -131,7 +131,7 @@
     function $farmersMarketsPointToLayer(feature, latlng) {
         var farmersMarketsIcon = L.ExtraMarkers.icon({
             icon: "fa-shopping-basket",
-            markerColor: "green",
+            markerColor: "violet",
             iconColor: "white",
             shape: "circle",
             prefix: "fa"
@@ -143,7 +143,11 @@
         }
     };
     // add layer
-    var farmersMarketsUrl="http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/farmersMarkets.geojson";var farmersMarkets=new L.GeoJSON.AJAX(farmersMarketsUrl,{onEachFeature:$farmersMarketsOnEachFeature,pointToLayer:$farmersMarketsPointToLayer});
+    var farmersMarketsUrl = "http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/farmersMarkets.geojson";
+    var farmersMarkets = new L.GeoJSON.AJAX(farmersMarketsUrl, {
+        onEachFeature: $farmersMarketsOnEachFeature,
+        pointToLayer: $farmersMarketsPointToLayer
+    });
     /*!
     *		|   Public Art
     *		|		===========
@@ -203,8 +207,8 @@
     // point to layer
     function $publicArtPointToLayer(feature, latlng) {
         var publicArtIcon = L.ExtraMarkers.icon({
-            icon: "fa fa-camera",
-            markerColor: "violet",
+            icon: "fa-camera",
+            markerColor: "orange",
             iconColor: "white",
             shape: "penta",
             prefix: "fa"
@@ -339,6 +343,8 @@
                 });
                 //
             });
+            // add overlay layers if their checkbox is checked
+            if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}else{}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}else{};
             // reorder layers
             if (map.hasLayer(bikeTrails)) {
                 bikeTrails.bringToFront();
@@ -399,6 +405,8 @@
                 });
                 //
             });
+            // add overlay layers if their checkbox is checked
+            if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}else{}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}else{};
             // reorder layers
             if (map.hasLayer(bikeTrails)) {
                 bikeTrails.bringToFront();
@@ -457,8 +465,11 @@
                             myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
                             map.addLayer(myActivitiesMarkerClusterGroup);
                     });
+                    //
                 } else {};
             });
+            // add overlay layers if their checkbox is checked
+            if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}else{}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}else{};
             // reorder layers
             if (map.hasLayer(bikeTrails)) {
                 bikeTrails.bringToFront();
@@ -480,6 +491,7 @@
                 });
                 map.setView([42.312501083130833, -71.057014490234238], 12);
             };
+            //
         }
         // if a neighborhood is being deselected and an open space is selected
         else if ((params.deselected) && (selectedOpenSpaceName != openSpaceDataPlaceholder)) {
@@ -519,6 +531,7 @@
             if (map.hasLayer(bikeTrails)) {
                 bikeTrails.bringToFront();
             } else {};
+            //
         } else {};
         //
     });
@@ -599,6 +612,8 @@
                 });
                 //
             });
+            // add overlay layers if their checkbox is checked
+            if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}else{}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}else{};
             // reorder layers
             if (map.hasLayer(bikeTrails)) {
                 bikeTrails.bringToFront();
@@ -655,6 +670,8 @@
                 });
                 //
             });
+            // add overlay layers if their checkbox is checked
+            if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}else{}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}else{};
             // reorder layers
             if (map.hasLayer(bikeTrails)) {
                 bikeTrails.bringToFront();
@@ -688,6 +705,8 @@
         // clear layers
         myIndivOpenSpaceLayer.clearLayers();
         myActivitiesMarkerClusterGroup.clearLayers();
+        // add overlay layers if their checkbox is checked
+        if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}else{}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}else{};
         // reset activities menu
         $('#activitiesSelect option').slice(1).remove();
         $('#activitiesSelect').trigger('chosen:updated');
@@ -838,6 +857,8 @@
         // clear layers
         myIndivOpenSpaceLayer.clearLayers();
         myActivitiesMarkerClusterGroup.clearLayers();
+        // add overlay layers if their checkbox is checked
+        if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}else{}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}else{};
         // reset activities menu
         $('#activitiesSelect option').slice(1).remove();
         $('#activitiesSelect').trigger('chosen:updated');
@@ -921,6 +942,8 @@
         // clear layers
         myIndivOpenSpaceLayer.clearLayers();
         myActivitiesMarkerClusterGroup.clearLayers();
+        // add overlay layers if their checkbox is checked
+        if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}else{}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}else{};
         // reset activities menu
         $('#activitiesSelect option').slice(1).remove();
         $('#activitiesSelect').trigger('chosen:updated');
@@ -1005,6 +1028,8 @@
      $('#activitiesSelect').on('change', function(evt, params) {
         // clear layers
         myActivitiesMarkerClusterGroup.clearLayers();
+        // add overlay layers if their checkbox is checked
+        if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}else{}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}else{};
         //
         var activitiesDataPlaceholder = $('#activitiesSelect').attr('data-placeholder');
         var selectedActivityText = $('#activitiesForm').find('.chosen-single').children('span').text();
@@ -1137,11 +1162,8 @@
             };
         } else {};
      });
-     
     // reoder layers
     map.on('overlayadd', onOverlayAdd);
-
-                
     // dropdown menu options
     var config = {
         '.chosen-select': {},

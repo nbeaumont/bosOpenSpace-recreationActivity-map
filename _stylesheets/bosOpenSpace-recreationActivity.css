@@ -68,10 +68,11 @@ h2.mapTitle,.openSpacePopupTitle,.openSpacePopupSubTitle,.nbhdTitle,.bikeTrailsP
 h2.mapTitle{font-size:32px;line-height:44px;margin-top:0;margin-right:0; margin-bottom:16px; margin-left:0}
 .chosen-container{font-family:'Open Sans',Sans-Serif;font-style:normal;font-weight:400;font-size:13px;line-height:24px}
 .openSpacePopupTitle,.nbhdTitle,.bikeTrailsPopupTitle,.farmersMarketsPopupTitle,.publicArtPopupTitle{font-size:14px}
-.openSpacePopupTitle,.farmersMarketsPopupTitle{color:green}
 .nbhdTitle{color:red}
-.bikeTrailsPopupTitle{color:Chocolate}
-.publicArtPopupTitle{color:Purple}
+.openSpacePopupTitle{color:green}
+.bikeTrailsPopupTitle{color:DarkBlue}
+.farmersMarketsPopupTitle{color:Purple}
+.publicArtPopupTitle{color:Chocolate}
 .openSpacePopupSubTitle,.farmersMarketsPopupSubTitle{font-size:13px}
 .selectorsWrapper{display:block;float:left;clear:both;width:100%;height:56px;margin:0;padding:0}
 .nbhdFormWrapper,.openSpaceFormWrapper,.activitiesFormWrapper{display:block;float:left;margin:0;padding:0}
