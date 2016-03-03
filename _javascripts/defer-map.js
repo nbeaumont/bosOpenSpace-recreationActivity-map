@@ -1182,6 +1182,8 @@
     }
     for (var selector in config) {
         $(selector).chosen(config[selector]);
-    }
+    };
+    // disable alerts
+    window.alert = function() {};
 })
 (jQuery);
