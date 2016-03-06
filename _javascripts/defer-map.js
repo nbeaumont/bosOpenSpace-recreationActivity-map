@@ -269,6 +269,8 @@
     };
     ctrl = L.control.layers(baseMaps, overlays).addTo(map);
     
+    L.control.zoom({position:'topleft'}).addTo(map);
+    
     /*!
     *   Make mobile Ready
     *   =================
@@ -281,11 +283,10 @@
     alert(beforeContent);
     if (beforeContent === ('yes')) {
       alert('this is a mobile device');
-      L.control.zoom({position:'topleft'}).addTo(map);
+      
     }
     else {
       alert('this is not a mobile device');
-      L.control.zoom({position:'topright'}).addTo(map);
 
     };
     
@@ -295,7 +296,7 @@
     *   =========
     *
     *   |   Neighborhoods Select Menu
-    *   |   ========================
+    *   |   =========================
     */
     $('#Bos_nbhdSelect').on('change', function(evt, params) {    
     var nbhdEach = $('#Bos_nbhdForm').find('.search-choice').children('span');
