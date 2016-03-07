@@ -1185,15 +1185,15 @@
     // reoder layers
     map.on('overlayadd', onOverlayAdd);
     
-    var container = document.getElementsByClassName("leaflet-control-layers-base")[0];
-if (!L.Browser.touch) {
-  L.DomEvent
-    .disableClickPropagation(container)
-    .disableScrollPropagation(container);
-} else {
-  L.DomEvent.disableClickPropagation(container);
-}
-    
+/*    var container = document.getElementsByClassName("leaflet-control-layers-base")[0];
+    if (!L.Browser.touch) {
+        L.DomEvent
+        .disableClickPropagation(container)
+        .disableScrollPropagation(container);
+    } else {
+        L.DomEvent.disableClickPropagation(container);
+    }
+*/    
     // dropdown menu options
     var config = {
         '.chosen-select': {},
