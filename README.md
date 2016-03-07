@@ -1,6 +1,6 @@
 # bosOpenSpace-recreationActivity-map
 
-## [Demo](http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/index.html)
+## [Demo](http://www.nicolasbeaumont.com/bosOpenSpace/)
 
 
 
