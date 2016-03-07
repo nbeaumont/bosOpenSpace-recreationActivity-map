@@ -61,42 +61,41 @@ img, object, embed, video {
 .hide_mobile {
     display: none;
 }
-/*    My styles 
- *    --------- */
+
+/* My styles 
+ * =========
+ */
+ 
+#isMobileDevice{position:absolute;top:-999em;left:-999em}
 .leaflet-popup-content a{text-decoration:none}
 h2.mapTitle,.openSpacePopupTitle,.openSpacePopupSubTitle,.nbhdTitle,.bikeTrailsPopupTitle,.farmersMarketsPopupTitle,.farmersMarketsPopupSubTitle,.publicArtPopupTitle{font-family:'Open Sans Condensed',Arial Narrow,Sans-Serif;font-style:normal;font-weight:700}
-h2.mapTitle{font-size:32px;line-height:44px;margin-top:0;margin-right:0; margin-bottom:16px; margin-left:0}
+h2.mapTitle{font-size:32px;line-height:44px;margin:0 0 16px}
 .chosen-container,.iconsCredits{font-family:'Open Sans',Sans-Serif;font-style:normal;font-weight:400}
 .chosen-container{font-size:13px;line-height:24px}
-.iconsCredits{font-size:12px}
+.iconsCredits{font-size:12px;line-height:18px}
 .openSpacePopupTitle,.nbhdTitle,.bikeTrailsPopupTitle,.farmersMarketsPopupTitle,.publicArtPopupTitle{font-size:14px}
+.openSpacePopupSubTitle,.farmersMarketsPopupSubTitle{font-size:13px}
 .nbhdTitle{color:red}
 .openSpacePopupTitle{color:green}
-.bikeTrailsPopupTitle{color:DarkBlue}
+.bikeTrailsPopupTitle{color:#00008b}
 .farmersMarketsPopupTitle{color:Purple}
-.publicArtPopupTitle{color:Chocolate}
-.openSpacePopupSubTitle,.farmersMarketsPopupSubTitle{font-size:13px}
-.selectorsWrapper{display:block;float:left;clear:both;width:100%;height:56px;margin:0;padding:0}
-.nbhdFormWrapper,.openSpaceFormWrapper,.activitiesFormWrapper{display:block;float:left;margin:0;padding:0}
-.nbhdFormWrapper{clear:both;width:50%}
-.openSpaceFormWrapper{clear:none;width:30%}
-.activitiesFormWrapper{clear:none;width:20%}
+.publicArtPopupTitle{color:#d2691e}
+
+.mainContentWrapper,.selectorsWrapper,.nbhdFormWrapper,.openSpaceFormWrapper,.activitiesFormWrapper,.iconsCredits{display:block;float:left;margin:0;padding:0}
+.mainContentWrapper,.selectorsWrapper{clear:both;width:100%}
+.mainContentWrapper{height:600px;height:100vh;position:relative}
+.selectorsWrapper{height:56px}
+.nbhdFormWrapper{clear:both;width:50%}.openSpaceFormWrapper{clear:none;width:30%}.activitiesFormWrapper{clear:none;width:20%}
 #Bos_nbhdForm .chosen-container,#Bos_openSpaceForm .chosen-container,#activitiesForm .chosen-container{width:98%!important}
 #Bos_nbhdForm .chosen-container{z-index:99}
-
-.mainContentWrapper{display:block;float:left;clear:both;width:100%;height:600px;height:100vh;margin:0;position:relative}
-.iconsCredits{display:block;float:left;clear:both;width:100%;margin:0;padding:0}
-#map{display:block;clear:both;width:100%;height:calc(100% - 116px);z-index:9}
-.fluidColumn { float: right; width: 100%; margin-left: -46px }
-.fluidColumnContent { margin-left: 46px }
-.fixedWidthColumn { float: right; width: 46px }
-.leaflet-top.leaflet-right { z-index:1010 }
-.leaflet-control-layers-base{max-height:72px;overflow:auto}
+#Bos_nbhdForm .chosen-choices{max-height:56px;overflow:auto}
+#map{clear:both;width:100%;height:calc(100% - 116px);z-index:9}
+.iconsCredits{clear:both;width:100%}
+.leaflet-top.leaflet-right{z-index:1010}
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
 @media only screen and (min-width: 481px) {
-
 .gridContainer {
 	width: 90.675%;
 	padding-left: 1.1625%;
@@ -115,10 +114,9 @@ h2.mapTitle{font-size:32px;line-height:44px;margin-top:0;margin-right:0; margin-
 }
 }
 
-/* Desktop Layout: 769px to a max of 1232px.  Inherits styles from: Mobile Layout and Tablet Layout. */
+/* Desktop Layout: 769px to a max of 1600px.  Inherits styles from: Mobile Layout and Tablet Layout. */
 
 @media only screen and (min-width: 769px) {
-
 .gridContainer {
 	width: 88.5%;
 	max-width: 1600px;
@@ -138,12 +136,6 @@ h2.mapTitle{font-size:32px;line-height:44px;margin-top:0;margin-right:0; margin-
     display: none;
 }
 }
-
-#isMobileDevice {
-	position: absolute;
-	top: -999em;
-	left: -999em
-}
   
 /* = MEDIA QUERIES =
  * =================
@@ -159,19 +151,21 @@ h2.mapTitle{font-size:32px;line-height:44px;margin-top:0;margin-right:0; margin-
 @media 
 only screen and (max-width:320px) and (orientation:portrait), 
 only screen and (max-width:480px) and (orientation:landscape) {
-#isMobileDevice:before { content: "yes" }
-.selectorsWrapper { display: none }
-.mainContentWrapper{ height: 100% }
+#isMobileDevice:before{content:"yes"}
+.mainContentWrapper{height:auto}
+h2.mapTitle{font-size:24px;line-height:33px}
+.selectorsWrapper{display:none}
+.leaflet-control-layers-base{max-height:72px;overflow:auto}
 }
 
 @media 
 only screen and (max-width:320px) and (orientation:portrait) {
-#map{ height: 400px; height: 100vh }
+#map{height:400px;height:100vh}
 }
 
 @media 
 only screen and (max-width:480px) and (orientation:landscape) {
-#map{ height: 300px; height: 100vh }
+#map{height:300px;height:100vh}
 }
 
 /*!
@@ -207,9 +201,11 @@ only screen and (min-device-width:320px) and (max-device-width:568px) and (devic
 only screen and (device-width:320px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio:1.4) and (-webkit-max-device-pixel-ratio:1.9), 
 only screen and (device-width:320px) and (orientation:portrait) and (min-resolution:144dpi) and (max-resolution:191dpi), 
 only screen and (device-width:320px) and (orientation:portrait) and (min-resolution:1.4dppx) and (max-resolution:1.9dppx) {
-#isMobileDevice:before { content: "yes" }
-.selectorsWrapper { display: none }
-.mainContentWrapper{ height: 100% }
+#isMobileDevice:before{content:"yes"}
+.mainContentWrapper{height:auto}
+h2.mapTitle{font-size:24px;line-height:33px}
+.selectorsWrapper{display:none}
+.leaflet-control-layers-base{max-height:72px;overflow:auto}
 }
 
 @media 
@@ -218,11 +214,11 @@ only screen and (min-device-width:320px) and (max-device-width:568px) and (devic
 only screen and (device-width:320px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio:1.4) and (-webkit-max-device-pixel-ratio:1.9), 
 only screen and (device-width:320px) and (orientation:portrait) and (min-resolution:144dpi) and (max-resolution:191dpi), 
 only screen and (device-width:320px) and (orientation:portrait) and (min-resolution:1.4dppx) and (max-resolution:1.9dppx) {
-#map{ height: 400px; height: 100vh }
+#map{height:400px;height:100vh}
 }
 
 @media only screen and (min-width:481px) and (max-width:640px) and (orientation:landscape) {
-#map{ height: 300px; height: 100vh }
+#map{height:300px;height:100vh}
 }
 
 /*! 
@@ -257,20 +253,22 @@ only screen and (min-device-width:320px) and (max-device-width:568px) and (devic
 only screen and (min-width:401px) and (max-width:480px) and (orientation:portrait), 
 only screen and (min-width:641px) and (max-width:800px) and (orientation:landscape), 
 only screen and (min-device-width:375px) and (max-device-width:667px) and (orientation:portrait) and (device-aspect-ratio:375/667) {
-#isMobileDevice:before { content: "yes" }
-.selectorsWrapper { display: none }
-.mainContentWrapper{ height: 100% }
+#isMobileDevice:before{content:"yes"}
+.mainContentWrapper{height:auto}
+h2.mapTitle{font-size:24px;line-height:33px}
+.selectorsWrapper{display:none}
+.leaflet-control-layers-base{max-height:auto;overflow:auto}
 }
 
 @media 
 only screen and (min-width:401px) and (max-width:480px) and (orientation:portrait), 
 only screen and (min-device-width:375px) and (max-device-width:667px) and (orientation:portrait) and (device-aspect-ratio:375/667) {
-#map{ height: 500px; height: 100vh }
+#map{height:500px;height:100vh}
 }
 
 @media 
 only screen and (min-width:641px) and (max-width:800px) and (orientation:landscape) {
-#map{ height: 300px; height: 100vh }
+#map{height:300px;height:100vh}
 }
 
 /*! 
@@ -307,20 +305,22 @@ only screen and (min-device-width:375px) and (max-device-width:667px) and (orien
 only screen and (min-width:481px) and (max-width:768px) and (orientation:portrait), 
 only screen and (min-width:801px) and (max-width:1024px) and (orientation:landscape), 
 only screen and (device-width:480px) and (device-height:854px) {
-#isMobileDevice:before { content: "yes" }
-.selectorsWrapper { display: none }
-.mainContentWrapper{ height: 100% }
+#isMobileDevice:before{content:"yes"}
+.mainContentWrapper{height:auto}
+h2.mapTitle{font-size:28px;line-height:39px}
+.selectorsWrapper{display:none}
+.leaflet-control-layers-base{max-height:auto;overflow:auto}
 }
 
 @media 
 only screen and (min-width:481px) and (max-width:768px) and (orientation:portrait), 
 only screen and (device-width:480px) and (device-height:854px) and (orientation:portrait) {
-#map{ height: 720px; height: 100vh }
+#map{height:700px;height:100vh}
 }
 
 @media 
 only screen and (min-width:801px) and (max-width:1024px) and (orientation:landscape) {
-#map{ height: 400px; height: 100vh }
+#map{height:400px;height:100vh}
 }
 
 /*! 
@@ -352,20 +352,22 @@ only screen and (min-width:801px) and (max-width:1024px) and (orientation:landsc
 only screen and (min-width:769px) and (max-width:1024px) and (orientation:portrait), 
 only screen and (min-width:1025px) and (max-width:1280px) and (orientation:landscape), 
 only screen and (min-device-width:720px) and (device-aspect-ratio:9/16) and (orientation:portrait){
-#isMobileDevice:before { content: "yes" }
-.selectorsWrapper { display: none }
-.mainContentWrapper{ height: 100% }
+#isMobileDevice:before{content:"yes"}
+.mainContentWrapper{height:auto}
+h2.mapTitle{font-size:32px;line-height:44px}
+.selectorsWrapper{display:none}
+.leaflet-control-layers-base{max-height:auto;overflow:auto}
 }
 
 @media 
 only screen and (min-width:769px) and (max-width:1024px) and (orientation:portrait),
 only screen and (min-device-width:720px) and (device-aspect-ratio:9/16) and (orientation:portrait){
-#map{ height: 960px; height: 100vh }
+#map{height:960px;/*height:100vh*/}
 }
 
 @media
 only screen and (min-width:1025px) and (max-width:1280px) and (orientation:landscape) {
-#map{ height: 700px; height: 100vh }
+#map{height:600px;/*height:100vh*/}
 }
 
 /*! 
@@ -386,19 +388,17 @@ only screen and (min-device-width:720px) and (orientation:portrait) and (device-
 only screen and (min-device-width:720px) and (orientation:portrait) and (device-aspect-ratio:9/16) and (min-resolution:2dppx) {
 }
 
-/*! * min viewport 1025 portrait
- *  ============================
+/*! * min viewport 1025 portrait, 1281 landscape
+ *  ============================================
  *  |		* devicePixelRatio < 2 
  *  |		| --------------------
  */
  
 @media 
-only screen and (min-width:1025px) and (orientation:portrait) {
-#isMobileDevice:before { content: "no" }
-.selectorsWrapper { display: Block }
-.mainContentWrapper { height: 960px; /*height: 100vh*/ }
-.iconsCredits { display: block; float: left; clear: both; width: 100%; margin: 0; padding: 0 }
-#map { height: calc(100% - 116px) }
+only screen and (min-width:1025px) and (orientation:portrait),
+only screen and (min-width:1281px) and (orientation:landscape) {
+#isMobileDevice:before{content:"no"}
+.selectorsWrapper{display:Block}
 }
 
 /*! 
@@ -409,5 +409,8 @@ only screen and (min-width:1025px) and (orientation:portrait) {
 @media 
 only screen and (min-width:1025px)  and (orientation:portrait) and (-webkit-min-device-pixel-ratio:2), 
 only screen and (min-width:1025px)  and (orientation:portrait) and (min-resolution:192dpi), 
-only screen and (min-width:1025px)  and (orientation:portrait) and (min-resolution:2dppx) {
+only screen and (min-width:1025px)  and (orientation:portrait) and (min-resolution:2dppx),
+only screen and (min-width:1281px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio:2),
+only screen and (min-width:1281px) and (orientation:landscape) and (min-resolution:192dpi), 
+only screen and (min-width:1281px) and (orientation:landscape) and  (min-resolution:2dppx) {
 }

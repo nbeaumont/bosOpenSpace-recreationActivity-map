@@ -1,7 +1,4 @@
 (function($) {
-  
-    
-    
     // function to remove duplicate
     $.fn.removeDuplicate=function(){var seen={};this.each(function(){var txt=$(this).text();if(seen[txt]){$(this).remove()}else{seen[txt]=true}})};
     // function to sort elements alphabetically
@@ -271,27 +268,7 @@
         "Public Art": publicArt
     };
     ctrl = L.control.layers(baseMaps, overlays).addTo(map);
-    
     L.control.zoom({position:'topleft'}).addTo(map);
-    
-    /*!
-    *   Make mobile Ready
-    *   =================
-    *   =================
-    */
-    
-    var elem = document.getElementById("isMobileDevice");
-    var myString = window.getComputedStyle(elem, ':before').content;
-    var beforeContent = myString.replace(/["']/g, '');
-    alert(beforeContent);
-    if (beforeContent === ('yes')) {
-      alert('this is a mobile device');
-      
-    }
-    else {
-      alert('this is not a mobile device');
-
-    };
     
     /*!
     *   Selectors
