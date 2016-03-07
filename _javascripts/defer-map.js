@@ -1184,8 +1184,8 @@
      });
     // reoder layers
     map.on('overlayadd', onOverlayAdd);
-    
-/*    var container = document.getElementsByClassName("leaflet-control-layers-base")[0];
+    // patch to enable scrolling the control layers base element on touch devices
+    var container = document.getElementsByClassName("leaflet-control-layers-base")[0];
     if (!L.Browser.touch) {
         L.DomEvent
         .disableClickPropagation(container)
@@ -1193,7 +1193,6 @@
     } else {
         L.DomEvent.disableClickPropagation(container);
     }
-*/    
     // dropdown menu options
     var config = {
         '.chosen-select': {},
