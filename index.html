@@ -43,52 +43,49 @@ Do the following if you're using your customized build of modernizr (http://www.
 <script type="text/javascript" src="_javascripts/leaflet.markercluster-src.js"></script>
 <script type="text/javascript" src="_javascripts/Leaflet.MarkerCluster.LayerSupport-master/leaflet.markercluster.layersupport-src.js"></script>
 <script type="text/javascript" src="_javascripts/Bing.js"></script>
-
 </head>
-
 <script type="text/javascript" src="_javascripts/Bos_neighborhoods_new.js"></script>
 <script type="text/javascript" src="_javascripts/Bos_openSpace.js"></script>
 <body>
 <div id="isMobileDevice"></div>
 <div class="gridContainer clearfix">
     <div id="div1" class="fluid">
-        
         <div class="mainContentWrapper">
-        <h2 class="mapTitle">Boston Open Space, Recreational Activities, and Public Art</strong></h2>
-        <div class="selectorsWrapper">
-        <div class="nbhdFormWrapper">
-        
-        <div class="fluidColumn">
-  <div class="fluidColumnContent">
-  <form id="Bos_nbhdForm">
-            <select name="Bos_nbhd" data-placeholder="Select one or more neighborhoods..." id="Bos_nbhdSelect" class="chosen-select" multiple style="width:350px" tabindex="5">
-            <option value="deselected"></option>
-          </select>
-        </form>
-  </div>
-</div>
-<div class="fixedWidthColumn">&nbsp;
-</div>
-
-        
-        
+            <h2 class="mapTitle">Boston Open Space, Recreational Activities, and Public Art</strong></h2>
+            <div class="selectorsWrapper">
+                <div class="nbhdFormWrapper">
+                    <div class="fluidColumn">
+                        <div class="fluidColumnContent">
+                            <form id="Bos_nbhdForm">
+                                <select name="Bos_nbhd" data-placeholder="Select one or more neighborhoods..." id="Bos_nbhdSelect" class="chosen-select" multiple style="width:350px" tabindex="5">
+                                    <option value="deselected"></option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="fixedWidthColumn">&nbsp; </div>
+                </div>
+                <div class="openSpaceFormWrapper">
+                    <form id="Bos_openSpaceForm">
+                        <select name="Bos_openSpace" data-placeholder="Select an open space..." id="Bos_openSpaceSelect" class="chosen-select-deselect" style="width:350px" tabindex="10">
+                            <option value="deselected"></option>
+                        </select>
+                    </form>
+                </div>
+                <div class="activitiesFormWrapper">
+                    <form id="activitiesForm">
+                        <select name="activities" data-placeholder="Filter activities by name..." id="activitiesSelect" class="chosen-select-deselect" style="width:350px" tabindex="15">
+                            <option value="deselected"></option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <div id="map"></div>
         </div>
-        <div class="openSpaceFormWrapper"><form id="Bos_openSpaceForm">
-            <select name="Bos_openSpace" data-placeholder="Select an open space..." id="Bos_openSpaceSelect" class="chosen-select-deselect" style="width:350px" tabindex="10">
-        <option value="deselected"></option>
-    </select>
-        </form></div>
-        <div class="activitiesFormWrapper"><form id="activitiesForm">
-            <select name="activities" data-placeholder="Filter activities by name..." id="activitiesSelect" class="chosen-select-deselect" style="width:350px" tabindex="15">
-            <option value="deselected"></option>
-          </select>
-        </form></div></div>
-        <div id="map"></div></div>
         <br>
         <div class="iconsCredits">Icons made by <a href="http://www.flaticon.com/authors/daniel-bruce" title="Daniel Bruce">Daniel Bruce</a>, <a href="http://www.freepik.com" title="Freepik">Freepik</a>, <a href="http://www.flaticon.com/authors/scott-de-jonge" title="Scott de Jonge">Scott de Jonge</a>, <a href="http://www.flaticon.com/authors/google" title="Google">Google</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
     </div>
 </div>
-
 <script type="text/javascript">
 function downloadJSAtOnload() {
     var element = document.createElement("script");

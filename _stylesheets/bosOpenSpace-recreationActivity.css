@@ -90,6 +90,8 @@ h2.mapTitle{font-size:32px;line-height:44px;margin-top:0;margin-right:0; margin-
 .fixedWidthColumn { float: right; width: 46px }
 /*.leaflet-control-layers-expanded { max-height: 200px; overflow: auto }*/
 .leaflet-top.leaflet-right { z-index:1010 }
+.leaflet-control-layers-base{height:72px;overflow:auto}
+.iconsCredits{text-size:12px}
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 

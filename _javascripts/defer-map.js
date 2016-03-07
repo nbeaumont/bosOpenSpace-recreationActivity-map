@@ -1,4 +1,7 @@
 (function($) {
+  
+    
+    
     // function to remove duplicate
     $.fn.removeDuplicate=function(){var seen={};this.each(function(){var txt=$(this).text();if(seen[txt]){$(this).remove()}else{seen[txt]=true}})};
     // function to sort elements alphabetically
@@ -1181,6 +1184,16 @@
      });
     // reoder layers
     map.on('overlayadd', onOverlayAdd);
+    
+    var container = document.getElementsByClassName("leaflet-control-layers-base")[0];
+if (!L.Browser.touch) {
+  L.DomEvent
+    .disableClickPropagation(container)
+    .disableScrollPropagation(container);
+} else {
+  L.DomEvent.disableClickPropagation(container);
+}
+    
     // dropdown menu options
     var config = {
         '.chosen-select': {},
@@ -1201,6 +1214,6 @@
         $(selector).chosen(config[selector]);
     };
     // disable alerts
-    /*window.alert = function() {};*/
+    window.alert = function() {};
 })
 (jQuery);
