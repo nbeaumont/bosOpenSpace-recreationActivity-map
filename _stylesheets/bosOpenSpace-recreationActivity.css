@@ -257,7 +257,7 @@ only screen and (min-device-width:375px) and (max-device-width:667px) and (orien
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:24px;line-height:33px}
 .selectorsWrapper{display:none}
-.leaflet-control-layers-base{max-height:auto;overflow:auto}
+.leaflet-control-layers-base{max-height:none;overflow:auto}
 }
 
 @media 
@@ -309,7 +309,7 @@ only screen and (device-width:480px) and (device-height:854px) {
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:28px;line-height:39px}
 .selectorsWrapper{display:none}
-.leaflet-control-layers-base{max-height:auto;overflow:auto}
+.leaflet-control-layers-base{max-height:none;overflow:auto}
 }
 
 @media 
@@ -356,7 +356,7 @@ only screen and (min-device-width:720px) and (device-aspect-ratio:9/16) and (ori
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:32px;line-height:44px}
 .selectorsWrapper{display:none}
-.leaflet-control-layers-base{max-height:auto;overflow:auto}
+.leaflet-control-layers-base{max-height:none;overflow:auto}
 }
 
 @media 

@@ -1167,8 +1167,10 @@
         L.DomEvent
         .disableClickPropagation(container)
         .disableScrollPropagation(container);
+        container.setAttribute("style", "max-height: none;");
     } else {
         L.DomEvent.disableClickPropagation(container);
+        
     }
     // dropdown menu options
     var config = {
