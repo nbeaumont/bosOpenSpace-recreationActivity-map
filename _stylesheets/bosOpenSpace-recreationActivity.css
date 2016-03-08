@@ -84,15 +84,14 @@ h2.mapTitle{font-size:32px;line-height:44px;margin:0 0 16px}
 .mainContentWrapper,.selectorsWrapper,.nbhdFormWrapper,.openSpaceFormWrapper,.activitiesFormWrapper,.iconsCredits{display:block;float:left;margin:0;padding:0}
 .mainContentWrapper,.selectorsWrapper{clear:both;width:100%}
 .mainContentWrapper{height:600px;height:100vh;position:relative}
-.selectorsWrapper{height:56px}
+.selectorsWrapper{height:28px}
 .nbhdFormWrapper{clear:both;width:50%}.openSpaceFormWrapper{clear:none;width:30%}.activitiesFormWrapper{clear:none;width:20%}
 #Bos_nbhdForm .chosen-container,#Bos_openSpaceForm .chosen-container,#activitiesForm .chosen-container{width:98%!important}
 #Bos_nbhdForm .chosen-container{z-index:99}
-#Bos_nbhdForm .chosen-choices{max-height:56px;overflow:auto}
+#Bos_nbhdForm{margin-left:46px}
 #map{clear:both;width:100%;height:calc(100% - 116px);z-index:9}
 .iconsCredits{clear:both;width:100%}
 .leaflet-top.leaflet-right{z-index:1010}
-.leaflet-control-layers{max-height:207px;overflow-y:scroll}
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
@@ -166,6 +165,7 @@ only screen and (max-width:320px) and (orientation:portrait) {
 @media 
 only screen and (max-width:480px) and (orientation:landscape) {
 #map{height:300px;height:100vh}
+.leaflet-control-layers{max-height:207px;overflow-y:scroll}
 }
 
 /*!
@@ -218,6 +218,7 @@ only screen and (device-width:320px) and (orientation:portrait) and (min-resolut
 
 @media only screen and (min-width:481px) and (max-width:640px) and (orientation:landscape) {
 #map{height:300px;height:100vh}
+.leaflet-control-layers{max-height:207px;overflow-y:scroll}
 }
 
 /*! 
@@ -267,6 +268,7 @@ only screen and (min-device-width:375px) and (max-device-width:667px) and (orien
 @media 
 only screen and (min-width:641px) and (max-width:800px) and (orientation:landscape) {
 #map{height:300px;height:100vh}
+.leaflet-control-layers{max-height:207px;overflow-y:scroll}
 }
 
 /*! 
@@ -318,6 +320,7 @@ only screen and (device-width:480px) and (device-height:854px) and (orientation:
 @media 
 only screen and (min-width:801px) and (max-width:1024px) and (orientation:landscape) {
 #map{height:400px;height:100vh}
+.leaflet-control-layers{max-height:297px;overflow-y:scroll}
 }
 
 /*! 
