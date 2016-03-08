@@ -85,9 +85,9 @@
     //
     var intersectResults = [];
     // on each feature
-    function $indivOpenSpaceOnEachFeature(feature,layer){var nbhdArray=[];var polygon=[];var markersArray=[];var recreationalActivitiesUrl="http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson";if(feature.properties){var popupText="";if(feature.properties.SITE_NAME){popupText+="<strong class='openSpacePopupTitle'>"+feature.properties.SITE_NAME+"</strong><br>"}else{}if(feature.properties.FEE_OWNER){popupText+="<strong>Owner:</strong> "+feature.properties.FEE_OWNER+"<br>"}else{}if(feature.properties.OWNER_TYPE){if(feature.properties.OWNER_TYPE==="F"){var ownerTypeText="Federal"}else{if(feature.properties.OWNER_TYPE==="S"){var ownerTypeText="State"}else{if(feature.properties.OWNER_TYPE==="C"){var ownerTypeText="County"}else{if(feature.properties.OWNER_TYPE==="M"){var ownerTypeText="Municipal"}else{if(feature.properties.OWNER_TYPE==="N"){var ownerTypeText="Private Nonprofit"}else{if(feature.properties.OWNER_TYPE==="P"){var ownerTypeText="Private for profit"}else{if(feature.properties.OWNER_TYPE==="B"){var ownerTypeText="Public Nonprofit"}else{if(feature.properties.OWNER_TYPE==="L"){var ownerTypeText="Land Trust"}else{if(feature.properties.OWNER_TYPE==="G"){var ownerTypeText="Conservation Organization"}else{if(feature.properties.OWNER_TYPE==="O"){var ownerTypeText="Undefined (e.g.joint ownership)"}else{if(feature.properties.OWNER_TYPE==="X"){var ownerTypeText="Unknown"}else{if(feature.properties.OWNER_TYPE==="I"){var ownerTypeText="Inholding (a piece of unprotected property surrounded on all sides by a protected property or a recreational facility)"}else{}}}}}}}}}}}}popupText+="<strong>Owner Type:</strong> "+ownerTypeText+"<br>"}else{}if(feature.properties.MANAGER){popupText+="<strong>Manager:</strong> "+feature.properties.MANAGER+"<br>"}else{}if(feature.properties.PUB_ACCESS){if(feature.properties.PUB_ACCESS==="Y"){var pubAccessText="Yes (open to public)"}else{if(feature.properties.PUB_ACCESS==="N"){var pubAccessText="No (not open to public)"}else{if(feature.properties.PUB_ACCESS==="L"){var pubAccessText="Limited (membership only)"}else{if(feature.properties.PUB_ACCESS==="X"){var pubAccessText="Unknown"}else{}}}}popupText+="<strong>Public Access:</strong> "+pubAccessText+"<br>"}else{}if(feature.properties.PRIM_PURP){if(feature.properties.PRIM_PURP==="R"){var pubAccessText="Recreation (activities are facility based)"}else{if(feature.properties.PRIM_PURP==="C"){var pubAccessText="Conservation (activities are non-facility based)"}else{if(feature.properties.PRIM_PURP==="B"){var pubAccessText="Recreation and Conservation"}else{if(feature.properties.PRIM_PURP==="H"){var pubAccessText="Historical/Cultural"}else{if(feature.properties.PRIM_PURP==="A"){var pubAccessText="Agriculture"}else{if(feature.properties.PRIM_PURP==="W"){var pubAccessText="Water Supply Protection"}else{if(feature.properties.PRIM_PURP==="S"){var pubAccessText="Scenic (official designation only)"}else{if(feature.properties.PRIM_PURP==="F"){var pubAccessText="Flood Control"}else{if(feature.properties.PRIM_PURP==="Q"){var pubAccessText="Habitat protection"}else{if(feature.properties.PRIM_PURP==="U"){var pubAccessText="Site is underwater"}else{if(feature.properties.PRIM_PURP==="O"){var pubAccessText="Undefined"}else{if(feature.properties.PRIM_PURP==="X"){var pubAccessText="Unknown"}else{}}}}}}}}}}}}popupText+="<strong>Primary Purpose:</strong> "+pubAccessText+"<br>"}else{}popupText+="<a class='deselectOpenSpaceLink' href='#'>Deselect</a>";layer.bindPopup(popupText)}else{}if(feature.properties&&feature.properties.SITE_NAME){if((feature.geometry.type==="MultiPolygon")||(feature.geometry.type==="Polygon")){for(var i=0;i<feature.geometry.coordinates.length;i++){var polygonStringArray=feature.geometry.coordinates[i][0];polygon.push(polygonStringArray);console.log(JSON.stringify(polygon[0]))}}else{}if(feature.properties.NBHD){nbhdString=feature.properties.NBHD.replace(/\s+/g,"");nbhdArray.push(nbhdString);console.log(nbhdArray);var recreationalActivities=L.geoJson.ajax(recreationalActivitiesUrl,{onEachFeature:function(feature,layer){if(feature.geometry.type==="Point"){markersArray.push(feature.geometry.coordinates);console.log([inside(feature.geometry.coordinates,polygon[0])]);if(inside(feature.geometry.coordinates,polygon[0])){intersectResults.push(feature);console.log(JSON.stringify(intersectResults));L.geoJson(feature,{pointToLayer:$activitiesPointToLayer,onEachFeature:$activitiesOnEachFeature}).addTo(myActivitiesMarkerClusterGroup)}else{}}else{}}});recreationalActivities.on("data:loaded",function(){map.addLayer(myActivitiesMarkerClusterGroup);myActivitiesMarkerClusterGroup.refreshClusters(recreationalActivities)})}else{}}else{}};
+    function $indivOpenSpaceOnEachFeature(feature,layer){var nbhdArray=[];var polygon=[];var markersArray=[];var recreationalActivitiesUrl="http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson";if(feature.properties){var popupText="";if(feature.properties.SITE_NAME){popupText+="<strong class='openSpacePopupTitle'>"+feature.properties.SITE_NAME+"</strong><br>"}else{}if(feature.properties.FEE_OWNER){popupText+="<strong>Owner:</strong> "+feature.properties.FEE_OWNER+"<br>"}else{}if(feature.properties.OWNER_TYPE){if(feature.properties.OWNER_TYPE==="F"){var ownerTypeText="Federal"}else{if(feature.properties.OWNER_TYPE==="S"){var ownerTypeText="State"}else{if(feature.properties.OWNER_TYPE==="C"){var ownerTypeText="County"}else{if(feature.properties.OWNER_TYPE==="M"){var ownerTypeText="Municipal"}else{if(feature.properties.OWNER_TYPE==="N"){var ownerTypeText="Private Nonprofit"}else{if(feature.properties.OWNER_TYPE==="P"){var ownerTypeText="Private for profit"}else{if(feature.properties.OWNER_TYPE==="B"){var ownerTypeText="Public Nonprofit"}else{if(feature.properties.OWNER_TYPE==="L"){var ownerTypeText="Land Trust"}else{if(feature.properties.OWNER_TYPE==="G"){var ownerTypeText="Conservation Organization"}else{if(feature.properties.OWNER_TYPE==="O"){var ownerTypeText="Undefined (e.g.joint ownership)"}else{if(feature.properties.OWNER_TYPE==="X"){var ownerTypeText="Unknown"}else{if(feature.properties.OWNER_TYPE==="I"){var ownerTypeText="Inholding (a piece of unprotected property surrounded on all sides by a protected property or a recreational facility)"}else{}}}}}}}}}}}}popupText+="<strong>Owner Type:</strong> "+ownerTypeText+"<br>"}else{}if(feature.properties.MANAGER){popupText+="<strong>Manager:</strong> "+feature.properties.MANAGER+"<br>"}else{}if(feature.properties.PUB_ACCESS){if(feature.properties.PUB_ACCESS==="Y"){var pubAccessText="Yes (open to public)"}else{if(feature.properties.PUB_ACCESS==="N"){var pubAccessText="No (not open to public)"}else{if(feature.properties.PUB_ACCESS==="L"){var pubAccessText="Limited (membership only)"}else{if(feature.properties.PUB_ACCESS==="X"){var pubAccessText="Unknown"}else{}}}}popupText+="<strong>Public Access:</strong> "+pubAccessText+"<br>"}else{}if(feature.properties.PRIM_PURP){if(feature.properties.PRIM_PURP==="R"){var pubAccessText="Recreation (activities are facility based)"}else{if(feature.properties.PRIM_PURP==="C"){var pubAccessText="Conservation (activities are non-facility based)"}else{if(feature.properties.PRIM_PURP==="B"){var pubAccessText="Recreation and Conservation"}else{if(feature.properties.PRIM_PURP==="H"){var pubAccessText="Historical/Cultural"}else{if(feature.properties.PRIM_PURP==="A"){var pubAccessText="Agriculture"}else{if(feature.properties.PRIM_PURP==="W"){var pubAccessText="Water Supply Protection"}else{if(feature.properties.PRIM_PURP==="S"){var pubAccessText="Scenic (official designation only)"}else{if(feature.properties.PRIM_PURP==="F"){var pubAccessText="Flood Control"}else{if(feature.properties.PRIM_PURP==="Q"){var pubAccessText="Habitat protection"}else{if(feature.properties.PRIM_PURP==="U"){var pubAccessText="Site is underwater"}else{if(feature.properties.PRIM_PURP==="O"){var pubAccessText="Undefined"}else{if(feature.properties.PRIM_PURP==="X"){var pubAccessText="Unknown"}else{}}}}}}}}}}}}popupText+="<strong>Primary Purpose:</strong> "+pubAccessText+"<br>"}else{}popupText+="<a class='deselectOpenSpaceLink' href='#'>Deselect</a>";layer.bindPopup(popupText)}else{}if(feature.properties&&feature.properties.SITE_NAME){if((feature.geometry.type==="MultiPolygon")||(feature.geometry.type==="Polygon")){for(var i=0;i<feature.geometry.coordinates.length;i++){var polygonStringArray=feature.geometry.coordinates[i][0];polygon.push(polygonStringArray);console.log(JSON.stringify(polygon[0]))}}else{}if(feature.properties.NBHD){nbhdString=feature.properties.NBHD.replace(/\s+/g,"");nbhdArray.push(nbhdString);console.log(nbhdArray);var recreationalActivities=L.geoJson.ajax(recreationalActivitiesUrl,{onEachFeature:function(feature,layer){if(feature.geometry.type==="Point"){markersArray.push(feature.geometry.coordinates);console.log([inside(feature.geometry.coordinates,polygon[0])]);if(inside(feature.geometry.coordinates,polygon[0])){intersectResults.push(feature);console.log(JSON.stringify(intersectResults));L.geoJson(feature,{pointToLayer:$activitiesPointToLayer,onEachFeature:$activitiesOnEachFeature}).addTo(myActivitiesMarkerClusterGroup)}else{}}else{}}});recreationalActivities.on("data:loaded",function(){map.addLayer(myActivitiesMarkerClusterGroup);myActivitiesMarkerClusterGroup.refreshClusters(recreationalActivities)})}else{}}else{}};
     // on each feature with filtered activities
-    function $indivOpenSpaceOnEachFeatureActivitiesFiltered(feature,layer){var nbhdArray=[];var polygon=[];var markersArray=[];var selectedActivitiesText=$("#activitiesForm").find(".chosen-single").children("span").text();var recreationalActivitiesUrl="http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson";if(feature.properties){var popupText="";if(feature.properties.SITE_NAME){popupText+="<strong class='openSpacePopupTitle'>"+feature.properties.SITE_NAME+"</strong><br>"}else{}if(feature.properties.FEE_OWNER){popupText+="<strong>Owner:</strong> "+feature.properties.FEE_OWNER+"<br>"}else{}if(feature.properties.OWNER_TYPE){if(feature.properties.OWNER_TYPE==="F"){var ownerTypeText="Federal"}else{if(feature.properties.OWNER_TYPE==="S"){var ownerTypeText="State"}else{if(feature.properties.OWNER_TYPE==="C"){var ownerTypeText="County"}else{if(feature.properties.OWNER_TYPE==="M"){var ownerTypeText="Municipal"}else{if(feature.properties.OWNER_TYPE==="N"){var ownerTypeText="Private Nonprofit"}else{if(feature.properties.OWNER_TYPE==="P"){var ownerTypeText="Private for profit"}else{if(feature.properties.OWNER_TYPE==="B"){var ownerTypeText="Public Nonprofit"}else{if(feature.properties.OWNER_TYPE==="L"){var ownerTypeText="Land Trust"}else{if(feature.properties.OWNER_TYPE==="G"){var ownerTypeText="Conservation Organization"}else{if(feature.properties.OWNER_TYPE==="O"){var ownerTypeText="Undefined (e.g.joint ownership)"}else{if(feature.properties.OWNER_TYPE==="X"){var ownerTypeText="Unknown"}else{if(feature.properties.OWNER_TYPE==="I"){var ownerTypeText="Inholding (a piece of unprotected property surrounded on all sides by a protected property or a recreational facility)"}else{}}}}}}}}}}}}popupText+="<strong>Owner Type:</strong> "+ownerTypeText+"<br>"}else{}if(feature.properties.MANAGER){popupText+="<strong>Manager:</strong> "+feature.properties.MANAGER+"<br>"}else{}if(feature.properties.PUB_ACCESS){if(feature.properties.PUB_ACCESS==="Y"){var pubAccessText="Yes (open to public)"}else{if(feature.properties.PUB_ACCESS==="N"){var pubAccessText="No (not open to public)"}else{if(feature.properties.PUB_ACCESS==="L"){var pubAccessText="Limited (membership only)"}else{if(feature.properties.PUB_ACCESS==="X"){var pubAccessText="Unknown"}else{}}}}popupText+="<strong>Public Access:</strong> "+pubAccessText+"<br>"}else{}if(feature.properties.PRIM_PURP){if(feature.properties.PRIM_PURP==="R"){var pubAccessText="Recreation (activities are facility based)"}else{if(feature.properties.PRIM_PURP==="C"){var pubAccessText="Conservation (activities are non-facility based)"}else{if(feature.properties.PRIM_PURP==="B"){var pubAccessText="Recreation and Conservation"}else{if(feature.properties.PRIM_PURP==="H"){var pubAccessText="Historical/Cultural"}else{if(feature.properties.PRIM_PURP==="A"){var pubAccessText="Agriculture"}else{if(feature.properties.PRIM_PURP==="W"){var pubAccessText="Water Supply Protection"}else{if(feature.properties.PRIM_PURP==="S"){var pubAccessText="Scenic (official designation only)"}else{if(feature.properties.PRIM_PURP==="F"){var pubAccessText="Flood Control"}else{if(feature.properties.PRIM_PURP==="Q"){var pubAccessText="Habitat protection"}else{if(feature.properties.PRIM_PURP==="U"){var pubAccessText="Site is underwater"}else{if(feature.properties.PRIM_PURP==="O"){var pubAccessText="Undefined"}else{if(feature.properties.PRIM_PURP==="X"){var pubAccessText="Unknown"}else{}}}}}}}}}}}}popupText+="<strong>Primary Purpose:</strong> "+pubAccessText+"<br>"}else{}popupText+="<a class='deselectOpenSpaceLink' href='#'>Deselect</a>";layer.bindPopup(popupText)}else{}if(feature.properties&&feature.properties.SITE_NAME){if((feature.geometry.type==="MultiPolygon")||(feature.geometry.type==="Polygon")){for(var i=0;i<feature.geometry.coordinates.length;i++){var polygonStringArray=feature.geometry.coordinates[i][0];polygon.push(polygonStringArray);console.log(JSON.stringify(polygon[0]))}}else{}if(feature.properties.NBHD){nbhdString=feature.properties.NBHD.replace(/\s+/g,"");nbhdArray.push(nbhdString);console.log(nbhdArray);var selectedActivityMarkers=L.geoJson.ajax(recreationalActivitiesUrl,{onEachFeature:function(feature,layer){if(feature.geometry.type==="Point"){markersArray.push(feature.geometry.coordinates);console.log([inside(feature.geometry.coordinates,polygon[0])]);if(inside(feature.geometry.coordinates,polygon[0])){intersectResults.push(feature);console.log(JSON.stringify(intersectResults));L.geoJson(feature,{filter:function(feature,layer){if(feature.properties.Category===selectedActivitiesText){return true}if(feature.properties.Category_2===selectedActivitiesText){return true}if(feature.properties.Category_3===selectedActivitiesText){return true}else{return false}},pointToLayer:$activitiesPointToLayer,onEachFeature:$activitiesOnEachFeature}).addTo(myActivitiesMarkerClusterGroup)}else{}}else{}}});selectedActivityMarkers.on("data:loaded",function(){map.addLayer(myActivitiesMarkerClusterGroup);myActivitiesMarkerClusterGroup.refreshClusters(selectedActivityMarkers)})}else{}}else{}};
+    function $indivOpenSpaceOnEachFeatureActivitiesFiltered(feature,layer){var nbhdArray=[];var polygon=[];var markersArray=[];var selectedActivitiesText=$("#activitiesForm").find(".chosen-single").children("span").text();var recreationalActivitiesUrl="http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson";if(feature.properties){var popupText="";if(feature.properties.SITE_NAME){popupText+="<strong class='openSpacePopupTitle'>"+feature.properties.SITE_NAME+"</strong><br>"}else{}if(feature.properties.FEE_OWNER){popupText+="<strong>Owner:</strong> "+feature.properties.FEE_OWNER+"<br>"}else{}if(feature.properties.OWNER_TYPE){if(feature.properties.OWNER_TYPE==="F"){var ownerTypeText="Federal"}else{if(feature.properties.OWNER_TYPE==="S"){var ownerTypeText="State"}else{if(feature.properties.OWNER_TYPE==="C"){var ownerTypeText="County"}else{if(feature.properties.OWNER_TYPE==="M"){var ownerTypeText="Municipal"}else{if(feature.properties.OWNER_TYPE==="N"){var ownerTypeText="Private Nonprofit"}else{if(feature.properties.OWNER_TYPE==="P"){var ownerTypeText="Private for profit"}else{if(feature.properties.OWNER_TYPE==="B"){var ownerTypeText="Public Nonprofit"}else{if(feature.properties.OWNER_TYPE==="L"){var ownerTypeText="Land Trust"}else{if(feature.properties.OWNER_TYPE==="G"){var ownerTypeText="Conservation Organization"}else{if(feature.properties.OWNER_TYPE==="O"){var ownerTypeText="Undefined (e.g.joint ownership)"}else{if(feature.properties.OWNER_TYPE==="X"){var ownerTypeText="Unknown"}else{if(feature.properties.OWNER_TYPE==="I"){var ownerTypeText="Inholding (a piece of unprotected property surrounded on all sides by a protected property or a recreational facility)"}else{}}}}}}}}}}}}popupText+="<strong>Owner Type:</strong> "+ownerTypeText+"<br>"}else{}if(feature.properties.MANAGER){popupText+="<strong>Manager:</strong> "+feature.properties.MANAGER+"<br>"}else{}if(feature.properties.PUB_ACCESS){if(feature.properties.PUB_ACCESS==="Y"){var pubAccessText="Yes (open to public)"}else{if(feature.properties.PUB_ACCESS==="N"){var pubAccessText="No (not open to public)"}else{if(feature.properties.PUB_ACCESS==="L"){var pubAccessText="Limited (membership only)"}else{if(feature.properties.PUB_ACCESS==="X"){var pubAccessText="Unknown"}else{}}}}popupText+="<strong>Public Access:</strong> "+pubAccessText+"<br>"}else{}if(feature.properties.PRIM_PURP){if(feature.properties.PRIM_PURP==="R"){var pubAccessText="Recreation (activities are facility based)"}else{if(feature.properties.PRIM_PURP==="C"){var pubAccessText="Conservation (activities are non-facility based)"}else{if(feature.properties.PRIM_PURP==="B"){var pubAccessText="Recreation and Conservation"}else{if(feature.properties.PRIM_PURP==="H"){var pubAccessText="Historical/Cultural"}else{if(feature.properties.PRIM_PURP==="A"){var pubAccessText="Agriculture"}else{if(feature.properties.PRIM_PURP==="W"){var pubAccessText="Water Supply Protection"}else{if(feature.properties.PRIM_PURP==="S"){var pubAccessText="Scenic (official designation only)"}else{if(feature.properties.PRIM_PURP==="F"){var pubAccessText="Flood Control"}else{if(feature.properties.PRIM_PURP==="Q"){var pubAccessText="Habitat protection"}else{if(feature.properties.PRIM_PURP==="U"){var pubAccessText="Site is underwater"}else{if(feature.properties.PRIM_PURP==="O"){var pubAccessText="Undefined"}else{if(feature.properties.PRIM_PURP==="X"){var pubAccessText="Unknown"}else{}}}}}}}}}}}}popupText+="<strong>Primary Purpose:</strong> "+pubAccessText+"<br>"}else{}popupText+="<a class='deselectOpenSpaceLink' href='#'>Deselect</a>";layer.bindPopup(popupText)}else{}if(feature.properties&&feature.properties.SITE_NAME){if((feature.geometry.type==="MultiPolygon")||(feature.geometry.type==="Polygon")){for(var i=0;i<feature.geometry.coordinates.length;i++){var polygonStringArray=feature.geometry.coordinates[i][0];polygon.push(polygonStringArray);console.log(JSON.stringify(polygon[0]))}}else{}if(feature.properties.NBHD){nbhdString=feature.properties.NBHD.replace(/\s+/g,"");nbhdArray.push(nbhdString);console.log(nbhdArray);var selectedActivityMarkers=L.geoJson.ajax(recreationalActivitiesUrl,{onEachFeature:function(feature,layer){if(feature.geometry.type==="Point"){markersArray.push(feature.geometry.coordinates);console.log([inside(feature.geometry.coordinates,polygon[0])]);if(inside(feature.geometry.coordinates,polygon[0])){intersectResults.push(feature);console.log(JSON.stringify(intersectResults));L.geoJson(feature,{filter:function(feature,layer){if(feature.properties.Category===selectedActivitiesText){return true}if(feature.properties.Category_2===selectedActivitiesText){return true}if(feature.properties.Category_3===selectedActivitiesText){return true}else{return false}},pointToLayer:$activitiesPointToLayer,onEachFeature:$activitiesOnEachFeature}).addTo(myActivitiesMarkerClusterGroup)}else{}}else{}}});selectedActivityMarkers.on("data:loaded",function(){map.addLayer(myActivitiesMarkerClusterGroup);myActivitiesMarkerClusterGroup.refreshClusters(selectedActivityMarkers)})}else{}}else{}};
     // style
     function $indivOpenSpaceStyle(feature){if(feature.properties&&feature.properties.SITE_NAME){return{weight:1,color:"Olive",fillColor:"Olive",opacity:0.5,fillOpacity:0.5,className:feature.properties.SITE_NAME.replace(/[^a-z0-9\s]/gi,"").replace(/\s+/g,"").replace(/\d+/g,"")+" indiv-openSpace-active"}}else{}};
     /*!
@@ -109,7 +109,7 @@
         } else {}
     };
     // add layer
-    var bikeTrailsUrl="http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/bikeTrails.geojson";var bikeTrails=new L.GeoJSON.AJAX(bikeTrailsUrl,{onEachFeature:$bikeTrailsOnEachFeature,style:$bikeTrailsStyle});
+    var bikeTrailsUrl="http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/bikeTrails.geojson";var bikeTrails=new L.GeoJSON.AJAX(bikeTrailsUrl,{onEachFeature:$bikeTrailsOnEachFeature,style:$bikeTrailsStyle});
     /*!
     *		|		Recreational Activities
     *		|		=======================
@@ -143,7 +143,7 @@
         }
     };
     // add layer
-    var farmersMarketsUrl = "http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/farmersMarkets.geojson";
+    var farmersMarketsUrl = "http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/farmersMarkets.geojson";
     var farmersMarkets = new L.GeoJSON.AJAX(farmersMarketsUrl, {
         onEachFeature: $farmersMarketsOnEachFeature,
         pointToLayer: $farmersMarketsPointToLayer
@@ -220,7 +220,7 @@
         }
     };
     // add layer
-    var publicArtUrl = "http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/publicArt.geojson";
+    var publicArtUrl = "http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/publicArt.geojson";
     var publicArt = new L.GeoJSON.AJAX(publicArtUrl, {
         onEachFeature: $publicArtOnEachFeature,
         pointToLayer: $publicArtPointToLayer
@@ -241,7 +241,7 @@
     myActivitiesMarkerClusterGroup.checkIn(farmersMarkets);
     myActivitiesMarkerClusterGroup.checkIn(publicArt);
     myActivitiesMarkerClusterGroup.addTo(map);
-    var recreationalActivitiesUrl = "http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson";
+    var recreationalActivitiesUrl = "http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson";
     var recreationalActivities = L.geoJson.ajax(recreationalActivitiesUrl, {
         onEachFeature: $activitiesOnEachFeature,
         pointToLayer: $activitiesPointToLayer
@@ -284,7 +284,7 @@
     var openSpaceDataPlaceholder = $('#Bos_openSpaceSelect').attr('data-placeholder');
     var activitiesDataPlaceholder = $('#activitiesSelect').attr('data-placeholder');
     var selectedActivityText = $('#activitiesForm').find('.chosen-single').children('span').text();
-    var recreationalActivitiesUrl = 'http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson';
+    var recreationalActivitiesUrl = 'http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson';
     // clear layers
     myNbhdLayer.clearLayers();
     myOpenSpaceLayer.clearLayers();
@@ -477,7 +477,7 @@
     map.fitBounds(myNbhdLayer.getBounds());
     }
     else {
-    var recreationalActivitiesUrl = 'http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson';
+    var recreationalActivitiesUrl = 'http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson';
     var recreationalActivities = L.geoJson.ajax(recreationalActivitiesUrl, {
     onEachFeature: $activitiesOnEachFeature,
     pointToLayer: $activitiesPointToLayer
@@ -544,7 +544,7 @@
     var openSpaceDataPlaceholder = $('#Bos_openSpaceSelect').attr('data-placeholder');
     var activitiesDataPlaceholder = $('#activitiesSelect').attr('data-placeholder');
     var selectedActivityText = $('#activitiesForm').find('.chosen-single').children('span').text();
-    var recreationalActivitiesUrl = 'http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson';
+    var recreationalActivitiesUrl = 'http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson';
     // clear layers
     myNbhdLayer.clearLayers();
     myOpenSpaceLayer.clearLayers();
@@ -698,7 +698,7 @@
         var openSpaceDataPlaceholder = $('#Bos_openSpaceSelect').attr('data-placeholder');
         var selectedOpenSpaceName = $('#Bos_openSpaceForm').find('.chosen-single').children('span').text();
         var selectedNbhds = $("#Bos_nbhdForm").find('.chosen-choices').children('.search-choice');
-        var recreationalActivitiesUrl = 'http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson';
+        var recreationalActivitiesUrl = 'http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson';
         // clear layers
         myIndivOpenSpaceLayer.clearLayers();
         myActivitiesMarkerClusterGroup.clearLayers();
@@ -775,7 +775,7 @@
         // if an open space is being deselected, and no neighborhoods are selected
         else if ((selectedOpenSpaceName === openSpaceDataPlaceholder) && (selectedNbhds.length == 0)) {
             alert('open space is being deselected and no neighborhoods are selected');
-            var recreationalActivitiesUrl = 'http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson';
+            var recreationalActivitiesUrl = 'http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson';
             var recreationalActivities = L.geoJson.ajax(recreationalActivitiesUrl, {
                 onEachFeature: $activitiesOnEachFeature,
                 pointToLayer: $activitiesPointToLayer
@@ -935,7 +935,7 @@
     $('#map').on('click', '.deselectOpenSpaceLink', function(event) {
         event.preventDefault();
         var selectedNbhds = $("#Bos_nbhdForm").find('.chosen-choices').children('.search-choice');
-        var recreationalActivitiesUrl = 'http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson';
+        var recreationalActivitiesUrl = 'http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson';
         // clear layers
         myIndivOpenSpaceLayer.clearLayers();
         myActivitiesMarkerClusterGroup.clearLayers();
@@ -1005,7 +1005,7 @@
         // if no neighborhood is selected
         else {
             alert('no neighborhood is selected');
-            var recreationalActivitiesUrl = 'http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson';
+            var recreationalActivitiesUrl = 'http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson';
             var recreationalActivities = L.geoJson.ajax(recreationalActivitiesUrl, {
                 onEachFeature: $activitiesOnEachFeature,
                 pointToLayer: $activitiesPointToLayer
@@ -1034,13 +1034,13 @@
         var selectedOpenSpaceName = $('#Bos_openSpaceForm').find('.chosen-single').children('span').text();
         var selectedNbhds = $("#Bos_nbhdForm").find('.chosen-choices').children('.search-choice');
         var nbhdEach = $('#Bos_nbhdForm').find('.search-choice').children('span');
-        var recreationalActivitiesUrl = 'http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson';
+        var recreationalActivitiesUrl = 'http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson';
         // if no neighborhood and no open space are selected
         if ((selectedNbhds.length == 0) && (selectedOpenSpaceName === openSpaceDataPlaceholder)) {
             // and an activity is being selected
             if (activitiesDataPlaceholder != selectedActivityText) {
                 alert('an activity is being selected, and no neighborhood and no open space are selected');
-                var recreationalActivitiesUrl = 'http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson';
+                var recreationalActivitiesUrl = 'http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson';
                 var selectedActivityMarkers = L.geoJson.ajax(recreationalActivitiesUrl, {
                     filter: function(feature, layer) {
                         if (feature.properties.Category === params.selected) {
@@ -1067,7 +1067,7 @@
             // and an activity is being deselected
             else {
                 alert('an activity is being deselected, and no neighborhood and no open space are selected');
-                var recreationalActivitiesUrl = 'http://rawgit.com/nbeaumont/bosOpenSpace-recreationActivity-map/master/_geoJson/recreationalActivities.geojson';
+                var recreationalActivitiesUrl = 'http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson';
                 var recreationalActivities = L.geoJson.ajax(recreationalActivitiesUrl, {
                     onEachFeature: $activitiesOnEachFeature,
                     pointToLayer: $activitiesPointToLayer
@@ -1162,14 +1162,13 @@
     // reoder layers
     map.on('overlayadd', onOverlayAdd);
     // patch to enable scrolling the control layers base element on touch devices
-    var container = document.getElementsByClassName("leaflet-control-layers-base")[0];
+    var container = document.getElementsByClassName("leaflet-control-layers")[0];
     if (!L.Browser.touch) {
         L.DomEvent
         .disableClickPropagation(container)
         .disableScrollPropagation(container);
     } else {
         L.DomEvent.disableClickPropagation(container);
-        
     }
     // dropdown menu options
     var config = {

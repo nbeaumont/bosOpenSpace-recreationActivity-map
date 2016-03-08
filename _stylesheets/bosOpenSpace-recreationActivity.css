@@ -91,7 +91,8 @@ h2.mapTitle{font-size:32px;line-height:44px;margin:0 0 16px}
 #Bos_nbhdForm .chosen-choices{max-height:56px;overflow:auto}
 #map{clear:both;width:100%;height:calc(100% - 116px);z-index:9}
 .iconsCredits{clear:both;width:100%}
-.leaflet-top.leaflet-right{z-index:1010;overflow:scroll;max-height:144px}
+.leaflet-top.leaflet-right{z-index:1010}
+.leaflet-control-layers{max-height:207px;overflow-y:scroll}
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
@@ -155,7 +156,6 @@ only screen and (max-width:480px) and (orientation:landscape) {
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:24px;line-height:33px}
 .selectorsWrapper{display:none}
-/*.leaflet-control-layers-base{max-height:72px;overflow:auto}*/
 }
 
 @media 
@@ -205,7 +205,6 @@ only screen and (device-width:320px) and (orientation:portrait) and (min-resolut
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:24px;line-height:33px}
 .selectorsWrapper{display:none}
-/*.leaflet-control-layers-base{max-height:72px;overflow:auto}*/
 }
 
 @media 
@@ -257,7 +256,6 @@ only screen and (min-device-width:375px) and (max-device-width:667px) and (orien
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:24px;line-height:33px}
 .selectorsWrapper{display:none}
-/*.leaflet-control-layers-base{max-height:none;overflow:auto}*/
 }
 
 @media 
@@ -309,7 +307,6 @@ only screen and (device-width:480px) and (device-height:854px) {
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:28px;line-height:39px}
 .selectorsWrapper{display:none}
-/*.leaflet-control-layers-base{max-height:none;overflow:auto}*/
 }
 
 @media 
@@ -356,7 +353,6 @@ only screen and (min-device-width:720px) and (device-aspect-ratio:9/16) and (ori
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:32px;line-height:44px}
 .selectorsWrapper{display:none}
-/*.leaflet-control-layers-base{max-height:none;overflow:auto}*/
 }
 
 @media 

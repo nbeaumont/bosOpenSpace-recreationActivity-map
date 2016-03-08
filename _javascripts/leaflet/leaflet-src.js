@@ -8404,8 +8404,8 @@ L.Control.Layers = L.Control.extend({
 		if (this.options.collapsed) {
 			if (!L.Browser.android) {
 				L.DomEvent
-				    .on(container, 'mouseover', this._expand, this)
-				    .on(container, 'mouseout', this._collapse, this);
+				    .on(container, 'mouseenter', this._expand, this)
+				    .on(container, 'mouseleave', this._collapse, this);
 			}
 			var link = this._layersLink = L.DomUtil.create('a', className + '-toggle', container);
 			link.href = '#';
