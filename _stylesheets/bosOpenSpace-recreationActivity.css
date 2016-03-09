@@ -81,17 +81,20 @@ h2.mapTitle{font-size:32px;line-height:44px;margin:0 0 16px}
 .farmersMarketsPopupTitle{color:Purple}
 .publicArtPopupTitle{color:#d2691e}
 
-.mainContentWrapper,.selectorsWrapper,.nbhdFormWrapper,.openSpaceFormWrapper,.activitiesFormWrapper,.iconsCredits{display:block;float:left;margin:0;padding:0}
-.mainContentWrapper,.selectorsWrapper{clear:both;width:100%}
-.mainContentWrapper{height:600px;height:100vh;position:relative}
-.selectorsWrapper{height:28px}
+.mainContentWrapper,.mapWrapper,.selectorsWrapper,.nbhdFormWrapper,.openSpaceFormWrapper,.activitiesFormWrapper,.iconsCredits{display:block;float:left;margin:0;padding:0}
+.mainContentWrapper,.mapWrapper,.selectorsWrapper{clear:both;width:100%}
+.mainContentWrapper{}
+.mapWrapper{height:600px;height:100vh;position:relative}
+.selectorsWrapper{height:29px;position:absolute;top:10px;left:0;padding-left:46px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 .nbhdFormWrapper{clear:both;width:50%}.openSpaceFormWrapper{clear:none;width:30%}.activitiesFormWrapper{clear:none;width:20%}
+.chosen-container{z-index:99}
+.chosen-container-multi .chosen-choices{background:rgba(255,255,255,.5)}
 #Bos_nbhdForm .chosen-container,#Bos_openSpaceForm .chosen-container,#activitiesForm .chosen-container{width:98%!important}
-#Bos_nbhdForm .chosen-container{z-index:99}
-#Bos_nbhdForm{margin-left:46px}
-#map{clear:both;width:100%;height:calc(100% - 116px);z-index:9}
+/*#Bos_nbhdForm .chosen-container{z-index:99}*/
+/*#Bos_nbhdForm{margin-left:46px}*/
+#map{clear:both;width:100%;height:100%;z-index:9}
 .iconsCredits{clear:both;width:100%}
-.leaflet-top.leaflet-right{z-index:1010}
+.leaflet-top.leaflet-right{z-index:1010;top:39px}
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
@@ -155,6 +158,7 @@ only screen and (max-width:480px) and (orientation:landscape) {
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:24px;line-height:33px}
 .selectorsWrapper{display:none}
+.leaflet-top.leaflet-right{top:0}
 }
 
 @media 
@@ -205,6 +209,7 @@ only screen and (device-width:320px) and (orientation:portrait) and (min-resolut
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:24px;line-height:33px}
 .selectorsWrapper{display:none}
+.leaflet-top.leaflet-right{top:0}
 }
 
 @media 
@@ -257,6 +262,7 @@ only screen and (min-device-width:375px) and (max-device-width:667px) and (orien
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:24px;line-height:33px}
 .selectorsWrapper{display:none}
+.leaflet-top.leaflet-right{top:0}
 }
 
 @media 
@@ -309,6 +315,7 @@ only screen and (device-width:480px) and (device-height:854px) {
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:28px;line-height:39px}
 .selectorsWrapper{display:none}
+.leaflet-top.leaflet-right{top:0}
 }
 
 @media 
@@ -356,6 +363,7 @@ only screen and (min-device-width:720px) and (device-aspect-ratio:9/16) and (ori
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:32px;line-height:44px}
 .selectorsWrapper{display:none}
+.leaflet-top.leaflet-right{top:0}
 }
 
 @media 
