@@ -54,6 +54,12 @@ img, object, embed, video {
 	float: none;
 }
 #div1 {
+	clear: both;
+  padding:0;
+	margin: 0;
+	width: 100%;
+	float: left;
+	display: block;
 }
 .zeroMargin_mobile {
     margin-left: 0;
@@ -62,16 +68,30 @@ img, object, embed, video {
     display: none;
 }
 
-/* My styles 
- * =========
+/*! My styles 
+ * ==========
  */
  
+/*! general */
 #isMobileDevice{position:absolute;top:-999em;left:-999em}
+.mainContentWrapper,.mapWrapper,.selectorsContainer,.nbhdFormWrapper,.openSpaceFormWrapper,.activitiesFormWrapper,.iconsCredits{display:block;float:left;margin:0;padding:0}
+.mainContentWrapper,.mapWrapper,.selectorsContainer,.iconCredits{clear:both;width:100%}
+.mapWrapper{height:600px;height:100vh;position:relative}
+#map{clear:both;width:100%;height:100%}
+
+/*! selectors */
+.selectorsWrapper{font-size:87.5%;display:block;width:100%;padding:0 5px 0 47px;margin:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute;top:10px;left:0}
+.selectorsContainer{position:relative;z-index:9999}
+.nbhdFormWrapper,.openSpaceFormWrapper,.activitiesFormWrapper{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:relative;z-index:9}
+.nbhdFormWrapper,.openSpaceFormWrapper,.activitiesFormWrapper{clear:both;width:100%;padding:0}
+.searchIconWrapper{width:30px;height:30px;position:absolute;top:10px;left:10px;z-index:99;text-align:center;background-color:#FFF;border:2px solid rgba(0,0,0,0.2);background-clip:padding-box;border-radius:4px}
+#searchIcon{line-height:30px;font-size:24px;}
+
+/* leaflet */
 .leaflet-popup-content a{text-decoration:none}
 h2.mapTitle,.openSpacePopupTitle,.openSpacePopupSubTitle,.nbhdTitle,.bikeTrailsPopupTitle,.farmersMarketsPopupTitle,.farmersMarketsPopupSubTitle,.publicArtPopupTitle{font-family:'Open Sans Condensed',Arial Narrow,Sans-Serif;font-style:normal;font-weight:700}
 h2.mapTitle{font-size:32px;line-height:44px;margin:0 0 16px}
-.chosen-container,.iconsCredits{font-family:'Open Sans',Sans-Serif;font-style:normal;font-weight:400}
-.chosen-container{font-size:13px;line-height:24px}
+.iconsCredits,.selectorsWrapper,input,.select2-container{font-family:'Open Sans',Sans-Serif;font-style:normal;font-weight:400}
 .iconsCredits{font-size:12px;line-height:18px}
 .openSpacePopupTitle,.nbhdTitle,.bikeTrailsPopupTitle,.farmersMarketsPopupTitle,.publicArtPopupTitle{font-size:14px}
 .openSpacePopupSubTitle,.farmersMarketsPopupSubTitle{font-size:13px}
@@ -80,64 +100,40 @@ h2.mapTitle{font-size:32px;line-height:44px;margin:0 0 16px}
 .bikeTrailsPopupTitle{color:#00008b}
 .farmersMarketsPopupTitle{color:Purple}
 .publicArtPopupTitle{color:#d2691e}
-
-.mainContentWrapper,.mapWrapper,.selectorsWrapper,.nbhdFormWrapper,.openSpaceFormWrapper,.activitiesFormWrapper,.iconsCredits{display:block;float:left;margin:0;padding:0}
-.mainContentWrapper,.mapWrapper,.selectorsWrapper{clear:both;width:100%}
-.mainContentWrapper{}
-.mapWrapper{height:600px;height:100vh;position:relative}
-.selectorsWrapper{height:29px;position:absolute;top:10px;left:0;padding-left:46px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
-.nbhdFormWrapper{clear:both;width:50%}.openSpaceFormWrapper{clear:none;width:30%}.activitiesFormWrapper{clear:none;width:20%}
-.chosen-container{z-index:99}
-.chosen-container-multi .chosen-choices{background:rgba(255,255,255,.5)}
-#Bos_nbhdForm .chosen-container,#Bos_openSpaceForm .chosen-container,#activitiesForm .chosen-container{width:98%!important}
-/*#Bos_nbhdForm .chosen-container{z-index:99}*/
-/*#Bos_nbhdForm{margin-left:46px}*/
-#map{clear:both;width:100%;height:100%;z-index:9}
-.iconsCredits{clear:both;width:100%}
-.leaflet-top.leaflet-right{z-index:1010;top:39px}
+.leaflet-top.leaflet-right{top:0/*;z-index:1060*/}
+.leaflet-top.leaflet-left{top:44px}
+.leaflet-control-attribution, .leaflet-control-layers, .leaflet-bar{box-shadow:none}
+.leaflet-control-layers,.leaflet-bar{border:2px solid rgba(0,0,0,0.2);background-clip:padding-box}
+.leaflet-control-layers-toggle {width:44px; height:44px}
+.leaflet-bar a {width: 30px;height: 30px;line-height: 30px}
+.leaflet-control-zoom-in {font-size: 22px;}
+.leaflet-control-zoom-out {font-size: 24px}
+/* select2 */
+.selectorsWrapper,.select2-container {font-size:87.5%}
+.select2-selection__clear {font-size:28px}
+/*.select2-container--default .select2-selection--multiple, .select2-container--default .select2-selection--single{background-color:rgba(255,255,255,.8)}*/
+.select2-dropdown{z-index:9999}
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
-
 @media only screen and (min-width: 481px) {
-.gridContainer {
-	width: 90.675%;
-	padding-left: 1.1625%;
-	padding-right: 1.1625%;
-	clear: none;
-	float: none;
-	margin-left: auto;
-}
-#div1 {
-}
-.zeroMargin_tablet {
-    margin-left: 0;
-}
-.hide_tablet {
-    display: none;
-}
+.gridContainer {width: 90.675%;padding-left: 1.1625%;padding-right: 1.1625%;clear: none;float: none;margin-left: auto}
+#div1 {}
+.zeroMargin_tablet {margin-left: 0;}
+.hide_tablet {display: none;}
 }
 
 /* Desktop Layout: 769px to a max of 1600px.  Inherits styles from: Mobile Layout and Tablet Layout. */
 
 @media only screen and (min-width: 769px) {
-.gridContainer {
-	width: 88.5%;
-	max-width: 1600px;
-	padding-left: 0.75%;
-	padding-right: 0.75%;
-	margin: auto;
-	clear: none;
-	float: none;
-	margin-left: auto;
-}
-#div1 {
-}
-.zeroMargin_desktop {
-    margin-left: 0;
-}
-.hide_desktop {
-    display: none;
-}
+.gridContainer {width: 88.5%;max-width: 1600px;padding-left: 0.75%;padding-right: 0.75%;margin: auto;clear: none;float: none;margin-left: auto;}
+#div1 {}
+.zeroMargin_desktop {margin-left: 0;}
+.hide_desktop {display: none;}
+/* ******** */
+.selectorsContainer{padding:4px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;border:1px solid rgba(0,0,0,0.2);background-clip:padding-box;border-radius:4px;position:relative;z-index:9;background-color:#FFF;background-color:rgba(255,255,255,.5)}
+.openSpaceFormWrapper,.activitiesFormWrapper{width:50%;margin-top:10px}
+.openSpaceFormWrapper{clear:both;padding-right:5px}
+.activitiesFormWrapper{clear:none;padding-left:5px}
 }
   
 /* = MEDIA QUERIES =
@@ -157,8 +153,6 @@ only screen and (max-width:480px) and (orientation:landscape) {
 #isMobileDevice:before{content:"yes"}
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:24px;line-height:33px}
-.selectorsWrapper{display:none}
-.leaflet-top.leaflet-right{top:0}
 }
 
 @media 
@@ -208,9 +202,9 @@ only screen and (device-width:320px) and (orientation:portrait) and (min-resolut
 #isMobileDevice:before{content:"yes"}
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:24px;line-height:33px}
-.selectorsWrapper{display:none}
+/*.selectorsWrapper{display:none}
 .leaflet-top.leaflet-right{top:0}
-}
+*/}
 
 @media 
 only screen and (min-width:321px) and (max-width:400px) and (orientation:portrait), 
@@ -261,9 +255,9 @@ only screen and (min-device-width:375px) and (max-device-width:667px) and (orien
 #isMobileDevice:before{content:"yes"}
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:24px;line-height:33px}
-.selectorsWrapper{display:none}
+/*.selectorsWrapper{display:none}
 .leaflet-top.leaflet-right{top:0}
-}
+*/}
 
 @media 
 only screen and (min-width:401px) and (max-width:480px) and (orientation:portrait), 
@@ -314,9 +308,9 @@ only screen and (device-width:480px) and (device-height:854px) {
 #isMobileDevice:before{content:"yes"}
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:28px;line-height:39px}
-.selectorsWrapper{display:none}
+/*.selectorsWrapper{display:none}
 .leaflet-top.leaflet-right{top:0}
-}
+*/}
 
 @media 
 only screen and (min-width:481px) and (max-width:768px) and (orientation:portrait), 
@@ -362,9 +356,9 @@ only screen and (min-device-width:720px) and (device-aspect-ratio:9/16) and (ori
 #isMobileDevice:before{content:"yes"}
 .mainContentWrapper{height:auto}
 h2.mapTitle{font-size:32px;line-height:44px}
-.selectorsWrapper{display:none}
+/*.selectorsWrapper{display:none}
 .leaflet-top.leaflet-right{top:0}
-}
+*/}
 
 @media 
 only screen and (min-width:769px) and (max-width:1024px) and (orientation:portrait),
@@ -405,8 +399,8 @@ only screen and (min-device-width:720px) and (orientation:portrait) and (device-
 only screen and (min-width:1025px) and (orientation:portrait),
 only screen and (min-width:1281px) and (orientation:landscape) {
 #isMobileDevice:before{content:"no"}
-.selectorsWrapper{display:Block}
-}
+/*.selectorsWrapper{display:Block}
+*/}
 
 /*! 
  *  |		* devicePixelRatio >= 2 
