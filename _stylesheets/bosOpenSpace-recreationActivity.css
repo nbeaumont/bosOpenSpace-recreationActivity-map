@@ -114,6 +114,8 @@ h2.mapTitle{font-size:32px;line-height:44px;margin:0 0 16px}
 .select2-selection__clear {font-size:28px}
 /*.select2-container--default .select2-selection--multiple, .select2-container--default .select2-selection--single{background-color:rgba(255,255,255,.8)}*/
 .select2-dropdown{z-index:9999}
+.select2-container .select2-search--inline{width:100%;float:none}
+.select2-container .select2-search--inline .select2-search__field{width:100%!important}
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 @media only screen and (min-width: 481px) {

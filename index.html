@@ -49,9 +49,10 @@ Do the following if you're using your customized build of modernizr (http://www.
             <h2 class="mapTitle">Boston Open Spaces, Recreational Activities and Public Art</strong></h2>
             <div class="mapWrapper">
                 <div class="searchIconWrapper"> 
-<script>
+                    <script>
 $(document).ready(function() {
     var t = $(".selectorsWrapper");
+    t.hide();
     $(".searchIconWrapper").click(function(e) {
         $(".selectorsWrapper").slideToggle("400");
         e.preventDefault()
@@ -64,19 +65,8 @@ $(".searchIconWrapper").on("click", function(a) {
     $("#searchIcon").toggleClass("fa-search fa-times");
     a.preventDefault()
 });
-</script> 
-<!--<script>
-$(document).ready(function() {
-if ($(".selectorsWrapper").is(":hidden")) {
-$("#searchIcon").addClass("fa-search").removeClass("fa-times")
-} else {}
-});
-$(".searchIconWrapper").on("click", function(a) {
-$("#searchIcon").toggleClass("fa-search fa-times");
-a.preventDefault()
-});
 </script>
--->                    <div id="searchIcon" class="fa topNavBar fa-search"></div>
+                    <div id="searchIcon" class="fa topNavBar fa-search"></div>
                 </div>
                 <div class="selectorsWrapper">
                     <div class="selectorsContainer">

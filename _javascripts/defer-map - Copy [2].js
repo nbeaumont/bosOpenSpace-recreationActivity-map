@@ -1180,15 +1180,209 @@
      *		|		Open Space Select Menu
      *		|		======================
      */
-    /*$("#Bos_openSpaceSelect").on("change",function(){var openSpaceDataPlaceholder=$("#Bos_openSpaceSelect").attr("data-placeholder");var selectedOpenSpaceName=$("#Bos_openSpaceForm").find(".chosen-single").children("span").text();var selectedNbhds=$("#Bos_nbhdForm").find(".chosen-choices").children(".search-choice");var recreationalActivitiesUrl="http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson";myIndivOpenSpaceLayer.clearLayers();myActivitiesMarkerClusterGroup.clearLayers();if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}else{}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}else{}$("#activitiesSelect option").slice(1).remove();$("#activitiesSelect").trigger("chosen:updated");if((selectedOpenSpaceName!=openSpaceDataPlaceholder)&&(selectedNbhds.length==0)){alert("no neighborhoods are selected");L.geoJson(Bos_openSpace,{filter:function(feature,layer){return(feature.properties.SITE_NAME===selectedOpenSpaceName)},onEachFeature:$indivOpenSpaceOnEachFeature,style:$indivOpenSpaceStyle}).addTo(myIndivOpenSpaceLayer);if(map.hasLayer(bikeTrails)){bikeTrails.bringToFront()}else{}map.fitBounds(myIndivOpenSpaceLayer.getBounds())}else{if((selectedOpenSpaceName!=openSpaceDataPlaceholder)&&(selectedNbhds.length>0)){alert("one or more neighborhoods are selected");myNbhdLayer.clearLayers();myOpenSpaceLayer.clearLayers();var nbhdEach=$("#Bos_nbhdForm").find(".search-choice").children("span");nbhdEach.each(function(index){var text=$(this).text();L.geoJson(Bos_nbhd,{filter:function(feature,layer){return(feature.properties.Name===text)},onEachFeature:$nbhdSelectedOnEachFeature,style:$nbhdSelectedStyle2}).addTo(myNbhdLayer);L.geoJson(Bos_openSpace,{filter:function(feature,layer){if((feature.properties.SITE_NAME)&&(feature.properties.NBHD===text)){return true}else{return false}},onEachFeature:$openSpaceSelectedOnEachFeature,style:$openSpaceSelectedStyle2}).addTo(myOpenSpaceLayer)});L.geoJson(Bos_openSpace,{filter:function(feature,layer){return(feature.properties.SITE_NAME===selectedOpenSpaceName)},onEachFeature:$indivOpenSpaceOnEachFeature,style:$indivOpenSpaceStyle}).addTo(myIndivOpenSpaceLayer);if(map.hasLayer(bikeTrails)){bikeTrails.bringToFront()}else{}map.fitBounds(myIndivOpenSpaceLayer.getBounds())}else{if((selectedOpenSpaceName===openSpaceDataPlaceholder)&&(selectedNbhds.length==0)){alert("open space is being deselected and no neighborhoods are selected");var recreationalActivitiesUrl="http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson";var recreationalActivities=L.geoJson.ajax(recreationalActivitiesUrl,{onEachFeature:$activitiesOnEachFeature,pointToLayer:$activitiesPointToLayer});recreationalActivities.on("data:loaded",function(){myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);map.addLayer(myActivitiesMarkerClusterGroup)});map.setView([42.31250108313083,-71.05701449023424],12)}else{if((selectedOpenSpaceName===openSpaceDataPlaceholder)&&(selectedNbhds.length>0)){alert("open space is being deselected and one or more neighborhoods are selected");myNbhdLayer.clearLayers();myOpenSpaceLayer.clearLayers();var nbhdEach=$("#Bos_nbhdForm").find(".search-choice").children("span");nbhdEach.each(function(index){var text=$(this).text();L.geoJson(Bos_nbhd,{filter:function(feature,layer){return(feature.properties.Name===text)},onEachFeature:$nbhdSelectedOnEachFeature,style:$nbhdSelectedStyle}).addTo(myNbhdLayer);L.geoJson(Bos_openSpace,{filter:function(feature,layer){if((feature.properties.SITE_NAME)&&(feature.properties.NBHD===text)){return true}else{return false}},onEachFeature:$openSpaceSelectedOnEachFeature,style:$openSpaceSelectedStyle}).addTo(myOpenSpaceLayer);var recreationalActivities=L.geoJson.ajax(recreationalActivitiesUrl,{onEachFeature:$activitiesOnEachFeature,pointToLayer:$activitiesPointToLayer,filter:function(feature,layer){if(feature.properties.NBHD===text){return true}else{return false}}});recreationalActivities.on("data:loaded",function(){myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);map.addLayer(myActivitiesMarkerClusterGroup)})});map.fitBounds(myNbhdLayer.getBounds())}else{}}}}});*/
-    /*!
+$("#Bos_openSpaceSelect").on("change", function() {
+    var openSpaceDataPlaceholder = $("#Bos_openSpaceSelect").attr("data-placeholder");
+    var selectedOpenSpaceName = $("#Bos_openSpaceForm").find(".chosen-single").children("span").text();
+    var selectedNbhds = $("#Bos_nbhdForm").find(".chosen-choices").children(".search-choice");
+    var recreationalActivitiesUrl = "http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson";
+    myIndivOpenSpaceLayer.clearLayers();
+    myActivitiesMarkerClusterGroup.clearLayers();
+    if (map.hasLayer(farmersMarkets)) {
+        farmersMarkets.addTo(myActivitiesMarkerClusterGroup)
+    } else {}
+    if (map.hasLayer(publicArt)) {
+        publicArt.addTo(myActivitiesMarkerClusterGroup)
+    } else {}
+    $("#activitiesSelect option").slice(1).remove();
+    $("#activitiesSelect").trigger("chosen:updated");
+    if ((selectedOpenSpaceName != openSpaceDataPlaceholder) && (selectedNbhds.length == 0)) {
+        alert("no neighborhoods are selected");
+        L.geoJson(Bos_openSpace, {
+            filter: function(feature, layer) {
+                return (feature.properties.SITE_NAME === selectedOpenSpaceName)
+            },
+            onEachFeature: $indivOpenSpaceOnEachFeature,
+            style: $indivOpenSpaceStyle
+        }).addTo(myIndivOpenSpaceLayer);
+        if (map.hasLayer(bikeTrails)) {
+            bikeTrails.bringToFront()
+        } else {}
+        map.fitBounds(myIndivOpenSpaceLayer.getBounds())
+    } else {
+        if ((selectedOpenSpaceName != openSpaceDataPlaceholder) && (selectedNbhds.length > 0)) {
+            alert("one or more neighborhoods are selected");
+            myNbhdLayer.clearLayers();
+            myOpenSpaceLayer.clearLayers();
+            var nbhdEach = $("#Bos_nbhdForm").find(".search-choice").children("span");
+            nbhdEach.each(function(index) {
+                var text = $(this).text();
+                L.geoJson(Bos_nbhd, {
+                    filter: function(feature, layer) {
+                        return (feature.properties.Name === text)
+                    },
+                    onEachFeature: $nbhdSelectedOnEachFeature,
+                    style: $nbhdSelectedStyle2
+                }).addTo(myNbhdLayer);
+                L.geoJson(Bos_openSpace, {
+                    filter: function(feature, layer) {
+                        if ((feature.properties.SITE_NAME) && (feature.properties.NBHD === text)) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    },
+                    onEachFeature: $openSpaceSelectedOnEachFeature,
+                    style: $openSpaceSelectedStyle2
+                }).addTo(myOpenSpaceLayer)
+            });
+            L.geoJson(Bos_openSpace, {
+                filter: function(feature, layer) {
+                    return (feature.properties.SITE_NAME === selectedOpenSpaceName)
+                },
+                onEachFeature: $indivOpenSpaceOnEachFeature,
+                style: $indivOpenSpaceStyle
+            }).addTo(myIndivOpenSpaceLayer);
+            if (map.hasLayer(bikeTrails)) {
+                bikeTrails.bringToFront()
+            } else {}
+            map.fitBounds(myIndivOpenSpaceLayer.getBounds())
+        } else {
+            if ((selectedOpenSpaceName === openSpaceDataPlaceholder) && (selectedNbhds.length == 0)) {
+                alert("open space is being deselected and no neighborhoods are selected");
+                var recreationalActivitiesUrl = "http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson";
+                var recreationalActivities = L.geoJson.ajax(recreationalActivitiesUrl, {
+                    onEachFeature: $activitiesOnEachFeature,
+                    pointToLayer: $activitiesPointToLayer
+                });
+                recreationalActivities.on("data:loaded", function() {
+                    myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+                    map.addLayer(myActivitiesMarkerClusterGroup)
+                });
+                map.setView([42.31250108313083, -71.05701449023424], 12)
+            } else {
+                if ((selectedOpenSpaceName === openSpaceDataPlaceholder) && (selectedNbhds.length > 0)) {
+                    alert("open space is being deselected and one or more neighborhoods are selected");
+                    myNbhdLayer.clearLayers();
+                    myOpenSpaceLayer.clearLayers();
+                    var nbhdEach = $("#Bos_nbhdForm").find(".search-choice").children("span");
+                    nbhdEach.each(function(index) {
+                        var text = $(this).text();
+                        L.geoJson(Bos_nbhd, {
+                            filter: function(feature, layer) {
+                                return (feature.properties.Name === text)
+                            },
+                            onEachFeature: $nbhdSelectedOnEachFeature,
+                            style: $nbhdSelectedStyle
+                        }).addTo(myNbhdLayer);
+                        L.geoJson(Bos_openSpace, {
+                            filter: function(feature, layer) {
+                                if ((feature.properties.SITE_NAME) && (feature.properties.NBHD === text)) {
+                                    return true
+                                } else {
+                                    return false
+                                }
+                            },
+                            onEachFeature: $openSpaceSelectedOnEachFeature,
+                            style: $openSpaceSelectedStyle
+                        }).addTo(myOpenSpaceLayer);
+                        var recreationalActivities = L.geoJson.ajax(recreationalActivitiesUrl, {
+                            onEachFeature: $activitiesOnEachFeature,
+                            pointToLayer: $activitiesPointToLayer,
+                            filter: function(feature, layer) {
+                                if (feature.properties.NBHD === text) {
+                                    return true
+                                } else {
+                                    return false
+                                }
+                            }
+                        });
+                        recreationalActivities.on("data:loaded", function() {
+                            myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+                            map.addLayer(myActivitiesMarkerClusterGroup)
+                        })
+                    });
+                    map.fitBounds(myNbhdLayer.getBounds())
+                } else {}
+            }
+        }
+    }
+});    /*!
      *		|		Open Space Popup
      *		|		================
      *		|		|		select
      *		|		|		------
      */
-    /*$("#map").on("click",".selectOpenSpaceLink",function(event){event.preventDefault();var openSpaceDataPlaceholder=$("#Bos_openSpaceSelect").attr("data-placeholder");var selectedOpenSpaceName=$(".openSpacePopupTitle").text();var selectedNbhds=$("#Bos_nbhdForm").find(".chosen-choices").children(".search-choice");myIndivOpenSpaceLayer.clearLayers();myActivitiesMarkerClusterGroup.clearLayers();if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}else{}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}else{}$("#activitiesSelect option").slice(1).remove();$("#activitiesSelect").trigger("chosen:updated");$("#Bos_openSpaceSelect").val(selectedOpenSpaceName).trigger("chosen:updated");map.closePopup();if((selectedOpenSpaceName!=openSpaceDataPlaceholder)&&(selectedNbhds.length==0)){alert("no neighborhoods are selected");L.geoJson(Bos_openSpace,{filter:function(feature,layer){return(feature.properties.SITE_NAME===selectedOpenSpaceName)},onEachFeature:$indivOpenSpaceOnEachFeature,style:$indivOpenSpaceStyle}).addTo(myIndivOpenSpaceLayer);if(map.hasLayer(bikeTrails)){bikeTrails.bringToFront()}else{}map.fitBounds(myIndivOpenSpaceLayer.getBounds())}else{if((selectedOpenSpaceName!=openSpaceDataPlaceholder)&&(selectedNbhds.length>0)){alert("one or more neighborhoods are selected");myNbhdLayer.clearLayers();myOpenSpaceLayer.clearLayers();var nbhdEach=$("#Bos_nbhdForm").find(".search-choice").children("span");nbhdEach.each(function(index){var text=$(this).text();L.geoJson(Bos_nbhd,{filter:function(feature,layer){return(feature.properties.Name===text)},onEachFeature:$nbhdSelectedOnEachFeature,style:$nbhdSelectedStyle2}).addTo(myNbhdLayer);L.geoJson(Bos_openSpace,{filter:function(feature,layer){if((feature.properties.SITE_NAME)&&(feature.properties.NBHD===text)){return true}else{return false}},onEachFeature:$openSpaceSelectedOnEachFeature,style:$openSpaceSelectedStyle2}).addTo(myOpenSpaceLayer)});L.geoJson(Bos_openSpace,{filter:function(feature,layer){return(feature.properties.SITE_NAME===selectedOpenSpaceName)},onEachFeature:$indivOpenSpaceOnEachFeature,style:$indivOpenSpaceStyle}).addTo(myIndivOpenSpaceLayer);if(map.hasLayer(bikeTrails)){bikeTrails.bringToFront()}else{}map.fitBounds(myIndivOpenSpaceLayer.getBounds())}else{}}});*/
-    /*!
+$("#map").on("click", ".selectOpenSpaceLink", function(event) {
+    event.preventDefault();
+    var openSpaceDataPlaceholder = $("#Bos_openSpaceSelect").attr("data-placeholder");
+    var selectedOpenSpaceName = $(".openSpacePopupTitle").text();
+    var selectedNbhds = $("#Bos_nbhdForm").find(".chosen-choices").children(".search-choice");
+    myIndivOpenSpaceLayer.clearLayers();
+    myActivitiesMarkerClusterGroup.clearLayers();
+    if (map.hasLayer(farmersMarkets)) {
+        farmersMarkets.addTo(myActivitiesMarkerClusterGroup)
+    } else {}
+    if (map.hasLayer(publicArt)) {
+        publicArt.addTo(myActivitiesMarkerClusterGroup)
+    } else {}
+    $("#activitiesSelect option").slice(1).remove();
+    $("#activitiesSelect").trigger("chosen:updated");
+    $("#Bos_openSpaceSelect").val(selectedOpenSpaceName).trigger("chosen:updated");
+    map.closePopup();
+    if ((selectedOpenSpaceName != openSpaceDataPlaceholder) && (selectedNbhds.length == 0)) {
+        alert("no neighborhoods are selected");
+        L.geoJson(Bos_openSpace, {
+            filter: function(feature, layer) {
+                return (feature.properties.SITE_NAME === selectedOpenSpaceName)
+            },
+            onEachFeature: $indivOpenSpaceOnEachFeature,
+            style: $indivOpenSpaceStyle
+        }).addTo(myIndivOpenSpaceLayer);
+        if (map.hasLayer(bikeTrails)) {
+            bikeTrails.bringToFront()
+        } else {}
+        map.fitBounds(myIndivOpenSpaceLayer.getBounds())
+    } else {
+        if ((selectedOpenSpaceName != openSpaceDataPlaceholder) && (selectedNbhds.length > 0)) {
+            alert("one or more neighborhoods are selected");
+            myNbhdLayer.clearLayers();
+            myOpenSpaceLayer.clearLayers();
+            var nbhdEach = $("#Bos_nbhdForm").find(".search-choice").children("span");
+            nbhdEach.each(function(index) {
+                var text = $(this).text();
+                L.geoJson(Bos_nbhd, {
+                    filter: function(feature, layer) {
+                        return (feature.properties.Name === text)
+                    },
+                    onEachFeature: $nbhdSelectedOnEachFeature,
+                    style: $nbhdSelectedStyle2
+                }).addTo(myNbhdLayer);
+                L.geoJson(Bos_openSpace, {
+                    filter: function(feature, layer) {
+                        if ((feature.properties.SITE_NAME) && (feature.properties.NBHD === text)) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    },
+                    onEachFeature: $openSpaceSelectedOnEachFeature,
+                    style: $openSpaceSelectedStyle2
+                }).addTo(myOpenSpaceLayer)
+            });
+            L.geoJson(Bos_openSpace, {
+                filter: function(feature, layer) {
+                    return (feature.properties.SITE_NAME === selectedOpenSpaceName)
+                },
+                onEachFeature: $indivOpenSpaceOnEachFeature,
+                style: $indivOpenSpaceStyle
+            }).addTo(myIndivOpenSpaceLayer);
+            if (map.hasLayer(bikeTrails)) {
+                bikeTrails.bringToFront()
+            } else {}
+            map.fitBounds(myIndivOpenSpaceLayer.getBounds())
+        } else {}
+    }
+});    /*!
      *		|		|		deselect
      *		|		|		--------
      */
