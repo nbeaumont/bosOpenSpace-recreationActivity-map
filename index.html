@@ -48,20 +48,24 @@ Do the following if you're using your customized build of modernizr (http://www.
         <div class="mainContentWrapper">
             <h2 class="mapTitle">Boston Open Spaces, Recreational Activities and Public Art</strong></h2>
             <div class="mapWrapper">
-            
-            <div class="searchIconWrapper"> 
+                <div class="searchIconWrapper"> 
 <script>
 $(document).ready(function() {
-
-var t = $(".selectorsWrapper");
-/*$(t).hide();*/
-$(".searchIconWrapper").click(function(e) {
-    $(".selectorsWrapper").slideToggle("400");
-    e.preventDefault()
-})
-})
-</script>
-<script>
+    var t = $(".selectorsWrapper");
+    $(".searchIconWrapper").click(function(e) {
+        $(".selectorsWrapper").slideToggle("400");
+        e.preventDefault()
+    });
+    if ($(".selectorsWrapper").is(":hidden")) {
+        $("#searchIcon").addClass("fa-search").removeClass("fa-times")
+    } else {};
+});
+$(".searchIconWrapper").on("click", function(a) {
+    $("#searchIcon").toggleClass("fa-search fa-times");
+    a.preventDefault()
+});
+</script> 
+<!--<script>
 $(document).ready(function() {
 if ($(".selectorsWrapper").is(":hidden")) {
 $("#searchIcon").addClass("fa-search").removeClass("fa-times")
@@ -72,31 +76,32 @@ $("#searchIcon").toggleClass("fa-search fa-times");
 a.preventDefault()
 });
 </script>
-                        <div id="searchIcon" class="fa topNavBar fa-search"></div>
-                    </div>
-
+-->                    <div id="searchIcon" class="fa topNavBar fa-search"></div>
+                </div>
                 <div class="selectorsWrapper">
-                   <div class="selectorsContainer"> <div class="nbhdFormWrapper">
-                        <form id="Bos_nbhdForm">
-                            <select name="Bos_nbhd" id="Bos_nbhdSelect" class="js-responsive" multiple="multiple" style="width:100%" tabindex="5">
-                                <option></option>
-                            </select>
-                        </form>
+                    <div class="selectorsContainer">
+                        <div class="nbhdFormWrapper">
+                            <form id="Bos_nbhdForm">
+                                <select name="Bos_nbhd" id="Bos_nbhdSelect" class="js-responsive" multiple="multiple" style="width:100%" tabindex="5">
+                                    <option></option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="openSpaceFormWrapper">
+                            <form id="Bos_openSpaceForm">
+                                <select name="Bos_openSpace" id="Bos_openSpaceSelect" class="js-responsive" style="width:100%" tabindex="10">
+                                    <option></option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="activitiesFormWrapper">
+                            <form id="activitiesForm">
+                                <select name="activities" data-placeholder="Filter activities by name..." id="activitiesSelect" class="js-responsive" style="width:100%" tabindex="15">
+                                    <option></option>
+                                </select>
+                            </form>
+                        </div>
                     </div>
-                    <div class="openSpaceFormWrapper">
-                        <form id="Bos_openSpaceForm">
-                            <select name="Bos_openSpace" id="Bos_openSpaceSelect" class="js-responsive" style="width:100%" tabindex="10">
-                                <option></option>
-                            </select>
-                        </form>
-                    </div>
-                    <div class="activitiesFormWrapper">
-                        <form id="activitiesForm">
-                            <select name="activities" data-placeholder="Filter activities by name..." id="activitiesSelect" class="js-responsive" style="width:100%" tabindex="15">
-                                <option></option>
-                            </select>
-                        </form>
-                    </div></div>
                 </div>
                 <div id="map"></div>
             </div>
