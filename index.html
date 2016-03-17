@@ -8,17 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Boston Open Space</title>
+<title>Boston Open Spaces</title>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700|Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
 <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
-<link href="boilerplate.css" rel="stylesheet" type="text/css">
-<!--<link href="_javascripts/chosen_v1/chosen.min.css" rel="stylesheet" type="text/css">-->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
-<link href="_javascripts/leaflet/leaflet.css" rel="stylesheet" type="text/css">
-<link href="_javascripts/Leaflet.ExtraMarkers-master/dist/css/leaflet.extra-markers.min.css" rel="stylesheet" type="text/css">
-<link href="_javascripts/Leaflet.markercluster-master/dist/MarkerCluster.css" rel="stylesheet" type="text/css">
-<link href="_javascripts/Leaflet.markercluster-master/dist/MarkerCluster.Default.css" rel="stylesheet" type="text/css">
 <link href="_stylesheets/Icons/my-icons/font/flaticon.css" rel="stylesheet" type="text/css">
+<link href="boilerplate.css" rel="stylesheet" type="text/css">
+<!--<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />-->
+<!--<link href="_stylesheets/leaflet.css" rel="stylesheet" type="text/css">-->
+<!--<link href="_stylesheets/leaflet.extra-markers.min.css" rel="stylesheet" type="text/css">-->
+<!--<link href="_javascripts/Leaflet.markercluster-master/dist/MarkerCluster.css" rel="stylesheet" type="text/css">-->
+<!--<link href="_javascripts/Leaflet.markercluster-master/dist/MarkerCluster.Default.css" rel="stylesheet" type="text/css">-->
 <link href="_stylesheets/Icons/flaticonCustom.css" rel="stylesheet" type="text/css">
 <link href="_stylesheets/bosOpenSpace-recreationActivity.css" rel="stylesheet" type="text/css">
 <!-- 
@@ -46,26 +45,10 @@ Do the following if you're using your customized build of modernizr (http://www.
 <div class="gridContainer clearfix">
     <div id="div1" class="fluid">
         <div class="mainContentWrapper">
-            <h2 class="mapTitle">Boston Open Spaces, Recreational Activities and Public Art</strong></h2>
+            <h2 class="mapTitle">Recreational Activities in Open Spaces in the Metro Boston Area</strong></h2>
             <div class="mapWrapper">
                 <div class="searchIconWrapper"> 
-                    <script>
-$(document).ready(function() {
-    var t = $(".selectorsWrapper");
-    t.hide();
-    $(".searchIconWrapper").click(function(e) {
-        $(".selectorsWrapper").slideToggle("400");
-        e.preventDefault()
-    });
-    if ($(".selectorsWrapper").is(":hidden")) {
-        $("#searchIcon").addClass("fa-search").removeClass("fa-times")
-    } else {};
-});
-$(".searchIconWrapper").on("click", function(a) {
-    $("#searchIcon").toggleClass("fa-search fa-times");
-    a.preventDefault()
-});
-</script>
+<script>$(document).ready(function(){var t=$(".selectorsWrapper");t.hide();$(".searchIconWrapper").click(function(e){$(".selectorsWrapper").slideToggle("400");e.preventDefault()});if($(".selectorsWrapper").is(":hidden")){$("#searchIcon").addClass("fa-search").removeClass("fa-times")}else{}});$(".searchIconWrapper").on("click",function(a){$("#searchIcon").toggleClass("fa-search fa-times");a.preventDefault()});</script>
                     <div id="searchIcon" class="fa topNavBar fa-search"></div>
                 </div>
                 <div class="selectorsWrapper">
