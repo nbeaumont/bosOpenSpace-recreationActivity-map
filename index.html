@@ -13,11 +13,6 @@
 <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 <link href="_stylesheets/Icons/my-icons/font/flaticon.css" rel="stylesheet" type="text/css">
 <link href="boilerplate.css" rel="stylesheet" type="text/css">
-<!--<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />-->
-<!--<link href="_stylesheets/leaflet.css" rel="stylesheet" type="text/css">-->
-<!--<link href="_stylesheets/leaflet.extra-markers.min.css" rel="stylesheet" type="text/css">-->
-<!--<link href="_javascripts/Leaflet.markercluster-master/dist/MarkerCluster.css" rel="stylesheet" type="text/css">-->
-<!--<link href="_javascripts/Leaflet.markercluster-master/dist/MarkerCluster.Default.css" rel="stylesheet" type="text/css">-->
 <link href="_stylesheets/Icons/flaticonCustom.css" rel="stylesheet" type="text/css">
 <link href="_stylesheets/bosOpenSpace-recreationActivity.css" rel="stylesheet" type="text/css">
 <!-- 
@@ -39,6 +34,7 @@ Do the following if you're using your customized build of modernizr (http://www.
 <script type="text/javascript" src="_javascripts/bosOpenSpaceMap.min.js"></script>
 <script type="text/javascript" src="_javascripts/Bos_neighborhoods_new.js"></script>
 <script type="text/javascript" src="_javascripts/Bos_openSpace.js"></script>
+
 </head>
 <body>
 <div id="isMobileDevice"></div>
@@ -47,13 +43,13 @@ Do the following if you're using your customized build of modernizr (http://www.
         <div class="mainContentWrapper">
             <h2 class="mapTitle">Recreational Activities in Open Spaces in the Metro Boston Area</strong></h2>
             <div class="mapWrapper">
-                <div class="searchIconWrapper"> 
-<script>$(document).ready(function(){var t=$(".selectorsWrapper");t.hide();$(".searchIconWrapper").click(function(e){$(".selectorsWrapper").slideToggle("400");e.preventDefault()});if($(".selectorsWrapper").is(":hidden")){$("#searchIcon").addClass("fa-search").removeClass("fa-times")}else{}});$(".searchIconWrapper").on("click",function(a){$("#searchIcon").toggleClass("fa-search fa-times");a.preventDefault()});</script>
-                    <div id="searchIcon" class="fa topNavBar fa-search"></div>
+                <div class="searchIconWrapper">
+                    <div id="searchIcon" class="fa topNavBar"></div>
                 </div>
                 <div class="selectorsWrapper">
                     <div class="selectorsContainer">
                         <div class="nbhdFormWrapper">
+                            <div id="nbhdSelectionChoiceRemover" class="fa fa-times-circle js-programmatic-multi-clear"></div>
                             <form id="Bos_nbhdForm">
                                 <select name="Bos_nbhd" id="Bos_nbhdSelect" class="js-responsive" multiple="multiple" style="width:100%" tabindex="5">
                                     <option></option>
@@ -83,6 +79,21 @@ Do the following if you're using your customized build of modernizr (http://www.
         <div class="iconsCredits">Icons made by <a href="http://www.flaticon.com/authors/daniel-bruce" title="Daniel Bruce">Daniel Bruce</a>, <a href="http://www.freepik.com" title="Freepik">Freepik</a>, <a href="http://www.flaticon.com/authors/scott-de-jonge" title="Scott de Jonge">Scott de Jonge</a>, <a href="http://www.flaticon.com/authors/google" title="Google">Google</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
     </div>
 </div>
+<script>
+$(document).ready(function() {
+    var t = $(".selectorsWrapper");
+    t.show();
+    $(".searchIconWrapper").click(function(e) {
+        $(".selectorsWrapper").slideToggle("400");
+        e.preventDefault()
+    });
+    $("#searchIcon").addClass("fa-times").removeClass("fa-search")
+});
+$(".searchIconWrapper").on("click", function(a) {
+    $("#searchIcon").toggleClass("fa-search fa-times");
+    a.preventDefault()
+});
+</script>
 <script type="text/javascript">
 function downloadJSAtOnload() {
     var element = document.createElement("script");
