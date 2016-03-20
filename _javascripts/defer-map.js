@@ -1,7 +1,6 @@
 (function($) {
-    jQuery('body').bind('focusin focus', function(e){
-      e.preventDefault();
-    })
+    // function to toggle selectors visibility
+    $(document).ready(function(){var t=$(".selectorsWrapper");t.show();$(".searchIconWrapper").click(function(e){$(".selectorsWrapper").slideToggle("400");e.preventDefault()});$("#searchIcon").addClass("fa-times").removeClass("fa-search")});$(".searchIconWrapper").on("click",function(a){$("#searchIcon").toggleClass("fa-search fa-times");a.preventDefault()});
     // function to remove duplicate
     $.fn.removeDuplicate=function(){var seen={};this.each(function(){var txt=$(this).text();if(seen[txt]){$(this).remove()}else{seen[txt]=true}})};
     // function to sort elements alphabetically
@@ -1593,24 +1592,40 @@
         $("#searchIcon").addClass("fa-search").removeClass("fa-times");
     }
     else {};
-    // programmatically select all and clear neighborhoods
-    $(".js-programmatic-multi-clear").on("click", function () {
-        $("#Bos_nbhdSelect").val(null).trigger("change");
+    // programmatically clear all neighborhoods
+    $(".js-programmatic-multi-clear").click(function () {
+        $("#Bos_nbhdSelect").each(function() {
+            $(this).select2('val', '');
+        });
+        myNbhdLayer.clearLayers();
+        myOpenSpaceLayer.clearLayers();
+        myActivitiesMarkerClusterGroup.clearLayers();
+        $("#activitiesSelect option").slice(1).remove();
+        $("#activitiesSelect").val('').trigger('change');
+        var recreationalActivitiesUrl = "http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/recreationalActivities.geojson";
+        var recreationalActivities = L.geoJson.ajax(recreationalActivitiesUrl, {
+            onEachFeature: $activitiesOnEachFeature,
+            pointToLayer: $activitiesPointToLayer
+        });
+        recreationalActivities.on("data:loaded", function() {
+            myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+            map.addLayer(myActivitiesMarkerClusterGroup)
+        });
+        map.setView([42.31250108313083, -71.05701449023424], 12);
     });
     $("#nbhdSelectionChoiceRemover").hide();
     $("#Bos_nbhdSelect").on("change", function(e) {
     var count = $("#Bos_nbhdSelect :selected").length;
-          if (count >= 2) {
-          $(".select2-selection__rendered li:first-child").css('margin-left', 21 + 'px');
-          $("#nbhdSelectionChoiceRemover").show();
-          } else {
-          /*$("#Bos_nbhdSelect").val('').trigger('change');*/
-          $("#nbhdSelectionChoiceRemover").hide();
-          }
+        if (count >= 2) {
+            $(".select2-selection__rendered li:first-child").css('margin-left', 19 + 'px');
+            $("#nbhdSelectionChoiceRemover").show();
+        } else {
+            $("#nbhdSelectionChoiceRemover").hide();
+        };
     });
     /*$(".js-programmatic-multi-set-val").on("click", function () { $("#Bos_nbhdSelect").val(allNbhdArray).trigger("change"); });*/
-    // disable alerts, and console logs
-    /*window.alert=function(){};*/
+    // disable alerts and console logs
+    window.alert=function(){};
     console.log=function(){};
     })
 (jQuery);

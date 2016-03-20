@@ -9,11 +9,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Boston Open Spaces</title>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700|Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600|Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
 <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
-<link href="_stylesheets/Icons/my-icons/font/flaticon.css" rel="stylesheet" type="text/css">
-<link href="boilerplate.css" rel="stylesheet" type="text/css">
-<link href="_stylesheets/Icons/flaticonCustom.css" rel="stylesheet" type="text/css">
+<link href="_stylesheets/my-icons/font/flaticon.css" rel="stylesheet" type="text/css">
 <link href="_stylesheets/bosOpenSpace-recreationActivity.css" rel="stylesheet" type="text/css">
 <!-- 
 To learn more about the conditional comments around the html tags at the top of the file:
@@ -34,14 +32,13 @@ Do the following if you're using your customized build of modernizr (http://www.
 <script type="text/javascript" src="_javascripts/bosOpenSpaceMap.min.js"></script>
 <script type="text/javascript" src="_javascripts/Bos_neighborhoods_new.js"></script>
 <script type="text/javascript" src="_javascripts/Bos_openSpace.js"></script>
-
 </head>
 <body>
 <div id="isMobileDevice"></div>
 <div class="gridContainer clearfix">
     <div id="div1" class="fluid">
         <div class="mainContentWrapper">
-            <h2 class="mapTitle">Recreational Activities in Open Spaces in the Metro Boston Area</strong></h2>
+            <h2 class="mapTitle">Recreational Activities in Open Spaces in the Metro Boston Area</h2>
             <div class="mapWrapper">
                 <div class="searchIconWrapper">
                     <div id="searchIcon" class="fa topNavBar"></div>
@@ -79,30 +76,8 @@ Do the following if you're using your customized build of modernizr (http://www.
         <div class="iconsCredits">Icons made by <a href="http://www.flaticon.com/authors/daniel-bruce" title="Daniel Bruce">Daniel Bruce</a>, <a href="http://www.freepik.com" title="Freepik">Freepik</a>, <a href="http://www.flaticon.com/authors/scott-de-jonge" title="Scott de Jonge">Scott de Jonge</a>, <a href="http://www.flaticon.com/authors/google" title="Google">Google</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
     </div>
 </div>
-<script>
-$(document).ready(function() {
-    var t = $(".selectorsWrapper");
-    t.show();
-    $(".searchIconWrapper").click(function(e) {
-        $(".selectorsWrapper").slideToggle("400");
-        e.preventDefault()
-    });
-    $("#searchIcon").addClass("fa-times").removeClass("fa-search")
-});
-$(".searchIconWrapper").on("click", function(a) {
-    $("#searchIcon").toggleClass("fa-search fa-times");
-    a.preventDefault()
-});
-</script>
 <script type="text/javascript">
-function downloadJSAtOnload() {
-    var element = document.createElement("script");
-    element.src = "_javascripts/defer-map.js";
-    document.body.appendChild(element);
-}
-if (window.addEventListener) window.addEventListener("load", downloadJSAtOnload, false);
-else if (window.attachEvent) window.attachEvent("onload", downloadJSAtOnload);
-else window.onload = downloadJSAtOnload;
+function downloadJSAtOnload(){var element=document.createElement("script");element.src="_javascripts/defer-map.js";document.body.appendChild(element)}if(window.addEventListener){window.addEventListener("load",downloadJSAtOnload,false)}else{if(window.attachEvent){window.attachEvent("onload",downloadJSAtOnload)}else{window.onload=downloadJSAtOnload}};
 </script>
 </body>
 </html>
