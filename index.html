@@ -34,49 +34,7 @@ Do the following if you're using your customized build of modernizr (http://www.
 <script type="text/javascript" src="_javascripts/Bos_openSpace.js"></script>
 </head>
 <body>
-<div id="isMobileDevice"></div>
-<div class="gridContainer clearfix">
-    <div id="div1" class="fluid">
-        <div class="mainContentWrapper">
-            <h2 class="mapTitle">Recreational Activities in Open Spaces in the Metro Boston Area</h2>
-            <div class="mapWrapper">
-                <div class="searchIconWrapper">
-                    <div id="searchIcon" class="fa topNavBar"></div>
-                </div>
-                <div class="selectorsWrapper">
-                    <div class="selectorsContainer">
-                        <div class="nbhdFormWrapper">
-                            <div id="nbhdSelectionChoiceRemover" class="fa fa-times-circle js-programmatic-multi-clear"></div>
-                            <form id="Bos_nbhdForm">
-                                <select name="Bos_nbhd" id="Bos_nbhdSelect" class="js-responsive" multiple="multiple" style="width:100%" tabindex="5">
-                                    <option></option>
-                                </select>
-                            </form>
-                        </div>
-                        <div class="openSpaceFormWrapper">
-                            <form id="Bos_openSpaceForm">
-                                <select name="Bos_openSpace" id="Bos_openSpaceSelect" class="js-responsive" style="width:100%" tabindex="10">
-                                    <option></option>
-                                </select>
-                            </form>
-                        </div>
-                        <div class="activitiesFormWrapper">
-                            <form id="activitiesForm">
-                                <select name="activities" data-placeholder="Filter activities by name..." id="activitiesSelect" class="js-responsive" style="width:100%" tabindex="15">
-                                    <option></option>
-                                </select>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div id="map"></div>
-            </div>
-        </div>
-        <br>
-        <div class="iconsCredits">Icons made by <a href="http://www.flaticon.com/authors/daniel-bruce" title="Daniel Bruce">Daniel Bruce</a>, <a href="http://www.freepik.com" title="Freepik">Freepik</a>, <a href="http://www.flaticon.com/authors/scott-de-jonge" title="Scott de Jonge">Scott de Jonge</a>, <a href="http://www.flaticon.com/authors/google" title="Google">Google</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
-    </div>
-</div>
-<script type="text/javascript">
+<div id="isMobileDevice"></div><div class="gridContainer clearfix"> <div id="div1" class="fluid"> <div class="mainContentWrapper"> <h2 class="mapTitle">Recreational Activities in Open Spaces in the Metro Boston Area</h2> <div class="mapWrapper"> <div class="searchIconWrapper"> <div id="searchIcon" class="fa topNavBar"></div> </div> <div class="selectorsWrapper"> <div class="selectorsContainer"> <div class="nbhdFormWrapper"> <div id="nbhdSelectionChoiceRemover" class="fa fa-times-circle js-programmatic-multi-clear"></div> <form id="Bos_nbhdForm"> <select name="Bos_nbhd" id="Bos_nbhdSelect" class="js-responsive" multiple="multiple" style="width:100%" tabindex="5"> <option></option> </select> </form> </div> <div class="openSpaceFormWrapper"> <form id="Bos_openSpaceForm"> <select name="Bos_openSpace" id="Bos_openSpaceSelect" class="js-responsive" style="width:100%" tabindex="10"> <option></option> </select> </form> </div> <div class="activitiesFormWrapper"> <form id="activitiesForm"> <select name="activities" data-placeholder="Filter activities by name..." id="activitiesSelect" class="js-responsive" style="width:100%" tabindex="15"> <option></option> </select> </form> </div> </div> </div> <div id="map"></div> </div> </div> <br> <div class="iconsCredits">Icons made by <a href="http://www.flaticon.com/authors/daniel-bruce" title="Daniel Bruce">Daniel Bruce</a>, <a href="http://www.freepik.com" title="Freepik">Freepik</a>, <a href="http://www.flaticon.com/authors/scott-de-jonge" title="Scott de Jonge">Scott de Jonge</a>, <a href="http://www.flaticon.com/authors/google" title="Google">Google</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div> </div></div><script type="text/javascript">
 function downloadJSAtOnload(){var element=document.createElement("script");element.src="_javascripts/defer-map.js";document.body.appendChild(element)}if(window.addEventListener){window.addEventListener("load",downloadJSAtOnload,false)}else{if(window.attachEvent){window.attachEvent("onload",downloadJSAtOnload)}else{window.onload=downloadJSAtOnload}};
 </script>
 </body>
