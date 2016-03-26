@@ -63,12 +63,22 @@ Do the following if you're using your customized build of modernizr (http://www.
                             </form>
                         </div>
                         <div class="activitiesFormWrapper">
-                            <div id="activitiesToggle" class="js-programmatic-toggle"><i class="fa fa-eye-slash"> Hide recreational activities</i> </div>
-                            <form id="activitiesForm" onsubmit="return false">
-                                <select name="activities" data-placeholder="Filter activities by name..." id="activitiesSelect" class="js-responsive" style="width:100%" tabindex="15">
+                            
+                            <div class="activities-fluidColumn">
+                                <div class="activities-fluidColumnContent">
+                                    <form id="activitiesForm" onsubmit="return false">
+                                    <select name="activities" data-placeholder="Filter activities by name..." id="activitiesSelect" class="js-responsive" style="width:100%" tabindex="15">
                                     <option></option>
-                                </select>
-                            </form>
+                                    </select>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="activities-fixedWidthColumn">
+                                 <div id="activitiesToggle" class="js-programmatic-toggle"><i class="fa fa-eye-slash"></i> </div>
+                            </div>
+
+                            
+                           
                         </div>
                     </div>
                 </div>
