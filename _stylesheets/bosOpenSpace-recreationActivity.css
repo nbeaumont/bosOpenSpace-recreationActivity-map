@@ -84,16 +84,23 @@ h2.mapTitle{font-size:32px;line-height:44px;margin:0 0 16px}
 .leaflet-control-zoom-in{font-size:22px;}
 .leaflet-control-zoom-out{font-size:24px}
 
-.selectorsWrapper{font-size:87.5%}
+.selectorsWrapper{font-size:75%}
 .select2-selection__clear{font-size:28px}
 .select2-dropdown{z-index:9999}
-.select2-container .select2-search--inline{width:100%;float:none}
 .select2-container--default .select2-selection--multiple,.select2-container--default .select2-selection--single{background-color:rgba(255,255,255,.8)}
 .select2-selection__clear{font-size:26px;line-height:26px;padding:0 8px}
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove{padding-right:3px}
+.select2-container--default .select2-search--inline .select2-search__field{text-indent:19px}
 
-#nbhdSelectionChoiceRemover{position:absolute;top:1px;left:0;z-index:9;line-height:30px;padding:0 6px;color:#999;display:none;cursor:pointer}
-#nbhdSelectionChoiceRemover:hover{color:#333}
+.select2-container .select2-search--inline .select2-search__field{font-size:11px}
+.select2-results{font-size:81.3%}
+.select2-container--default .select2-selection--single .select2-selection__rendered{line-height:25px}
+.select2-container--default .select2-selection--multiple .select2-selection__choice,.select2-container .select2-search--inline .select2-search__field{margin-top:6px}
+
+#nbhdSelectionChoiceRemover,#nbhdSelectionChoiceSetAll{font-size:16px;position:absolute;top:1px;z-index:9;line-height:32px;padding-left:5px;color:#999;cursor:pointer}
+#nbhdSelectionChoiceRemover{left:21px;display:none}
+#nbhdSelectionChoiceSetAll{left:1px}
+#nbhdSelectionChoiceRemover:hover,#nbhdSelectionChoiceSetAll:hover{color:#333}
 .zeroMargin_desktop{margin-left: 0;}
 .hide_desktop{display: none;}
 
@@ -108,6 +115,8 @@ h2.mapTitle{font-size:32px;line-height:44px;margin:0 0 16px}
 .gridContainer{width:90.675%;padding-left:1.1625%;padding-right:1.1625%;clear:none;float:none;margin-left:auto}
 .zeroMargin_tablet{margin-left:0}
 .hide_tablet{display:none}
+
+
 }
 
 /*! Desktop Layout: 769px to a max of 1600px.  Inherits styles from: Mobile Layout and Tablet Layout. */
@@ -121,6 +130,11 @@ h2.mapTitle{font-size:32px;line-height:44px;margin:0 0 16px}
 .activitiesFormWrapper{clear:none;padding-left:5px}
 .zeroMargin_desktop{margin-left:0}
 .hide_desktop{display:none}
+
+.selectorsWrapper{font-size:87.5%}
+.select2-container .select2-search--inline .select2-search__field{font-size:14px}
+.select2-results{font-size:87.5%}
+.select2-container--default .select2-selection--multiple .select2-selection__choice,.select2-container .select2-search--inline .select2-search__field{margin-top:5px}
 }
   
 /* MEDIA QUERIES (v1.0 - March 2016) 
