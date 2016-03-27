@@ -87,7 +87,6 @@ h2.mapTitle{font-size:32px;line-height:44px;margin:0 0 16px}
 .selectorsWrapper{font-size:75%}
 .select2-selection__clear{font-size:28px}
 .select2-dropdown{z-index:9999}
-.select2-container--default .select2-selection--multiple,.select2-container--default .select2-selection--single{background-color:rgba(255,255,255,.8)}
 .select2-selection__clear{font-size:26px;line-height:26px;padding:0 8px}
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove{padding-right:3px}
 .select2-container--default .select2-search--inline .select2-search__field{text-indent:19px}
@@ -135,6 +134,7 @@ h2.mapTitle{font-size:32px;line-height:44px;margin:0 0 16px}
 .select2-container .select2-search--inline .select2-search__field{font-size:14px}
 .select2-results{font-size:87.5%}
 .select2-container--default .select2-selection--multiple .select2-selection__choice,.select2-container .select2-search--inline .select2-search__field{margin-top:5px}
+.select2-container--default .select2-selection--multiple,.select2-container--default .select2-selection--single{background-color:rgba(255,255,255,.8)}
 }
   
 /* MEDIA QUERIES (v1.0 - March 2016) 
