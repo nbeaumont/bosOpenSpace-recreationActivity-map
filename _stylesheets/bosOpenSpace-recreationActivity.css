@@ -106,7 +106,7 @@ h2.mapTitle{font-size:32px;line-height:44px;margin:0 0 16px}
 .activities-fluidColumn{float:left;width:100%;margin-right:-44px}
 .activities-fluidColumnContent{margin-right:44px}
 .activities-fixedWidthColumn{float:left;width:44px}
-#activitiesToggle{font-size:24px;line-height:26px;margin-left:2px;text-align:center;background-color:#FFF;background-color:rgba(255,255,255,.8);border:1px solid #aaa;background-clip:padding-box;border-radius:4px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+#activitiesToggle{font-size:24px;line-height:26px;margin-left:2px;text-align:center;background-color:#FFF;border:1px solid #aaa;background-clip:padding-box;border-radius:4px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 #activitiesToggle:hover{cursor:pointer}
 /*! Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
@@ -134,7 +134,7 @@ h2.mapTitle{font-size:32px;line-height:44px;margin:0 0 16px}
 .select2-container .select2-search--inline .select2-search__field{font-size:14px}
 .select2-results{font-size:87.5%}
 .select2-container--default .select2-selection--multiple .select2-selection__choice,.select2-container .select2-search--inline .select2-search__field{margin-top:5px}
-.select2-container--default .select2-selection--multiple,.select2-container--default .select2-selection--single{background-color:rgba(255,255,255,.8)}
+.select2-container--default .select2-selection--multiple,.select2-container--default .select2-selection--single,#activitiesToggle{background-color:rgba(255,255,255,.8)}
 }
   
 /* MEDIA QUERIES (v1.0 - March 2016) 
