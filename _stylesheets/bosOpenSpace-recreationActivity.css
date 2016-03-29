@@ -96,18 +96,22 @@ h2.mapTitle{font-size:32px;line-height:44px;margin:0 0 16px}
 .select2-container--default .select2-selection--single .select2-selection__rendered{line-height:25px}
 .select2-container--default .select2-selection--multiple .select2-selection__choice,.select2-container .select2-search--inline .select2-search__field{margin-top:6px}
 
-#nbhdSelectionChoiceRemover,#nbhdSelectionChoiceSetAll{font-size:16px;position:absolute;top:1px;z-index:9;line-height:32px;padding-left:5px;color:#999;cursor:pointer}
-#nbhdSelectionChoiceRemover{left:21px;display:none}
-#nbhdSelectionChoiceSetAll{left:1px}
+#nbhdSelectionChoiceRemover,#nbhdSelectionChoiceSetAll,#nbhdSelectionChoiceRemover-inactive,#nbhdSelectionChoiceSetAll-inactive{font-size:16px;position:absolute;top:1px;z-index:9;line-height:32px;padding-left:5px;color:#999;cursor:pointer}
+#nbhdSelectionChoiceRemover,#nbhdSelectionChoiceRemover-inactive{left:21px;display:none}
+#nbhdSelectionChoiceSetAll,#nbhdSelectionChoiceSetAll-inactive{left:1px}
 #nbhdSelectionChoiceRemover:hover,#nbhdSelectionChoiceSetAll:hover{color:#333}
+#nbhdSelectionChoiceSetAll-inactive{display:none}
+#nbhdSelectionChoiceRemover-inactive,#nbhdSelectionChoiceSetAll-inactive{cursor:default}
 .zeroMargin_desktop{margin-left: 0;}
 .hide_desktop{display: none;}
 
 .activities-fluidColumn{float:left;width:100%;margin-right:-44px}
 .activities-fluidColumnContent{margin-right:44px}
 .activities-fixedWidthColumn{float:left;width:44px}
-#activitiesToggle{font-size:24px;line-height:26px;margin-left:2px;text-align:center;background-color:#FFF;border:1px solid #aaa;background-clip:padding-box;border-radius:4px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+#activitiesToggle,#activitiesToggle-inactive{font-size:24px;line-height:26px;margin-left:2px;text-align:center;background-color:#FFF;border:1px solid #aaa;background-clip:padding-box;border-radius:4px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+#activitiesToggle-inactive{background-color:#eee}
 #activitiesToggle:hover{cursor:pointer}
+#activitiesToggle-inactive{display:none}
 /*! Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
 @media only screen and (min-width: 481px) {
