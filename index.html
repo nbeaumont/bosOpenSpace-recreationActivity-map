@@ -29,6 +29,9 @@ Do the following if you're using your customized build of modernizr (http://www.
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/js/select2.min.js"></script>
+<script type="text/javascript" src="resources/Bos_neighborhoods_new.js"></script>
+<script type="text/javascript" src="resources/Bos_openSpace.js"></script>
+<script type="text/javascript" src="resources/Bos_recActivities.js"></script>
 <script type="text/javascript" src="_javascripts/bosOpenSpaceMap.min.js"></script>
 </head>
 <body>
@@ -48,10 +51,8 @@ Do the following if you're using your customized build of modernizr (http://www.
                 <div class="selectorsWrapper">
                     <div class="selectorsContainer">
                         <div class="nbhdFormWrapper">
-                            <div id="nbhdSelectionChoiceRemover" class="fa fa-times-circle js-programmatic-multi-clear"></div>
-                            <div id="nbhdSelectionChoiceRemover-inactive" class="fa fa-times-circle"></div>
-                            <div id="nbhdSelectionChoiceSetAll" class="fa fa-check-circle js-programmatic-multi-set-val"></div>
-                            <div id="nbhdSelectionChoiceSetAll-inactive" class="fa fa-check-circle"></div>
+                            <div id="nbhdSelectionChoiceRemoverWrapper"><div id="nbhdSelectionChoiceRemover" class="fa fa-times-circle js-programmatic-multi-clear"></div></div>
+                            <div id="nbhdSelectionChoiceSetAllWrapper"><div id="nbhdSelectionChoiceSetAll" class="fa fa-check-circle js-programmatic-multi-set-val"></div></div>
                             <form id="Bos_nbhdForm" onsubmit="return false">
                                 <select name="Bos_nbhd" id="Bos_nbhdSelect" class="js-responsive" multiple="multiple" style="width:100%" tabindex="5">
                                     <option></option>
@@ -78,7 +79,6 @@ Do the following if you're using your customized build of modernizr (http://www.
                             </div>
                             <div class="activities-fixedWidthColumn">
                                  <div id="activitiesToggle" class="js-programmatic-toggle"><i class="fa fa-eye-slash"></i> </div>
-                                 <div id="activitiesToggle-inactive"><i class="fa fa-ban"></i> </div>
                             </div>
 
                             
