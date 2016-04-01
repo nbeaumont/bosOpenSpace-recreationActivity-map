@@ -54,7 +54,7 @@ b,strong{font-weight:600}
 .mapWrapper{height:600px;height:100vh;position:relative}
 #map{clear:both;width:100%;height:100%}
 
-.selectorsWrapper{display:block;width:100%;padding:0 5px 0 47px;margin:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute;top:5px;left:0}
+.selectorsWrapper{display:block;width:100%;padding:0 10px 0 54px;margin:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute;top:10px;left:0}
 .selectorsContainer{position:relative;z-index:9999}
 .nbhdFormWrapper,.openSpaceFormWrapper,.activitiesFormWrapper{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:relative;z-index:9}
 .nbhdFormWrapper,.openSpaceFormWrapper,.activitiesFormWrapper{clear:both;width:100%;padding:0}
