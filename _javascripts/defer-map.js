@@ -1,7 +1,7 @@
 (function($) {
-    var overlay = jQuery('<div id="overlay"> </div>');
+    /*var overlay = jQuery('<div id="overlay"> </div>');
     overlay.appendTo(document.body);
-    $("#overlay").hide();
+    $("#overlay").hide();*/
 /*! function to toggle selectors visibility */
 $(document).ready(function(){var t=$(".selectorsWrapper");t.show();$(".searchIconWrapper").click(function(e){$(".selectorsWrapper").slideToggle("400");e.preventDefault()});$("#searchIcon").addClass("fa-times").removeClass("fa-search")});$(".searchIconWrapper").on("click",function(a){$("#searchIcon").toggleClass("fa-search fa-times");a.preventDefault()});
 /*! function to remove duplicate */
@@ -13,16 +13,37 @@ $.fn.clearMenu=function(){$("option",this).slice(1).remove();$(this).val("").tri
 /*! function to toggle text */
 $.fn.extend({toggleText:function(a,b){var that=this;if(that.text()!=a&&that.text()!=b){that.text(a)}else{if(that.text()==a){that.text(b)}else{if(that.text()==b){that.text(a)}}}return this}});
 /*! function to show activity menu if hidden when selecting/deselecting a neighborhood or an open space */
-$.fn.showActivitiesMenu=function(){var icon=$("i",this);if(icon.hasClass("fa-eye")){icon.toggleClass("fa-eye-slash fa-eye")/*.toggleText(" Show"," Hide")*/;$("#activitiesSelect").prop("disabled",false)}};
+$.fn.showActivitiesMenu=function(){var icon=$("i",this);if(icon.hasClass("fa-eye")){icon.toggleClass("fa-eye-slash fa-eye");$("#activitiesSelect").prop("disabled",false)}};
 /*! function to reorder layers when an overlay is selected through the control panel layer*/
 function onOverlayAdd(e){if(map.hasLayer(myOpenSpaceLayer)){myOpenSpaceLayer.bringToBack()}else{}if(map.hasLayer(myNbhdLayer)){myNbhdLayer.bringToBack()}else{}if(map.hasLayer(myBos_openSpace)){myBos_openSpace.bringToBack()}else{}if(map.hasLayer(myBos_nbhd)){myBos_nbhd.bringToBack()}else{}if(map.hasLayer(bikeTrails)){bikeTrails.bringToFront()}else{}}
 /*! hide page preloader */
 $("#status").fadeOut();$("#preloader").delay(350).fadeOut("slow");$("body").delay(350).css({overflow:"visible"});
 /*! initialize the map */
-var map=L.map("map",{loadingControl:true}).setView([42.31250108313083,-71.05701449023424],12);
+var map=L.map("map",{loadingControl:true}).setView([42.31250108313083,-71.05701449023424],11);
 /*! close opened menu and the layer control panel when clicking on map or when opening a popup */
-map.on("click",function(e){$(".leaflet-control-layers").removeClass("leaflet-control-layers-expanded");if($("#Bos_nbhdSelect").data("select2").isOpen()){$("#Bos_nbhdSelect").select2("close")}else{}if($("#Bos_openSpaceSelect").data("select2").isOpen()){$("#Bos_openSpaceSelect").select2("close")}else{}if($("#activitiesSelect").data("select2").isOpen()){$("#activitiesSelect").select2("close")}else{}}).on("popupopen",function(e){$(".leaflet-control-layers").removeClass("leaflet-control-layers-expanded");if($("#Bos_nbhdSelect").data("select2").isOpen()){$("#Bos_nbhdSelect").select2("close")}else{}if($("#Bos_openSpaceSelect").data("select2").isOpen()){$("#Bos_openSpaceSelect").select2("close")}else{}if($("#activitiesSelect").data("select2").isOpen()){$("#activitiesSelect").select2("close")}else{}});    
-/*!
+map.on("click", function(e) {
+    $(".leaflet-control-layers").removeClass("leaflet-control-layers-expanded");
+    if ($("#Bos_nbhdSelect").data("select2").isOpen()) {
+        $("#Bos_nbhdSelect").select2("close")
+    } else {}
+    if ($("#Bos_openSpaceSelect").data("select2").isOpen()) {
+        $("#Bos_openSpaceSelect").select2("close")
+    } else {}
+    if ($("#activitiesSelect").data("select2").isOpen()) {
+        $("#activitiesSelect").select2("close")
+    } else {}
+}).on("popupopen", function(e) {
+    $(".leaflet-control-layers").removeClass("leaflet-control-layers-expanded");
+    if ($("#Bos_nbhdSelect").data("select2").isOpen()) {
+        $("#Bos_nbhdSelect").select2("close")
+    } else {}
+    if ($("#Bos_openSpaceSelect").data("select2").isOpen()) {
+        $("#Bos_openSpaceSelect").select2("close")
+    } else {}
+    if ($("#activitiesSelect").data("select2").isOpen()) {
+        $("#activitiesSelect").select2("close")
+    } else {}
+});/*!
     Tile Layers
     ===========
     ===========
@@ -46,7 +67,7 @@ var BING_KEY="Atgl8hUwAtp6pgQ8B3ydX0M0P3VYedjKRR_6mvJ4iYpJo4vNgm--_aXG7g1z6b8S";
 */
 var allNbhdArray=new Array();
 /*! on each feature */
-function $nbhdDeselectedOnEachFeature(feature,layer){if(feature.properties&&feature.properties.Name){$("#Bos_nbhdSelect").append($("<option>",{value:feature.properties.Name,text:feature.properties.Name}));allNbhdArray.push(feature.properties.Name);console.log(allNbhdArray)}else{}if(feature.properties){var popupText="";if(feature.properties.Name){popupText+="<span class='nbhdTitle'><strong>"+feature.properties.Name+"</strong></span><br>";popupText+="<a class='selectNbhdLink' href='#'>Select</a>";layer.bindPopup(popupText)}else{}}else{}}
+function $nbhdDeselectedOnEachFeature(feature,layer){if(feature.properties&&feature.properties.Name){$("#Bos_nbhdSelect").append($("<option>",{value:feature.properties.Name,text:feature.properties.Name}));allNbhdArray.push(feature.properties.Name);console.log(allNbhdArray)}else{}if(feature.properties){var popupText="";if(feature.properties.Name){popupText+="<span class='nbhdPopupTitle'><strong>"+feature.properties.Name+"</strong></span><br>";popupText+="<a class='selectNbhdLink' href='#'>Select</a>";layer.bindPopup(popupText)}else{}}else{}}
 /*! style */
 function $nbhdDeselectedStyle(feature){return{weight:4,opacity:0.1,color:"Red",fillOpacity:0.1}}
 /*! add to map */
@@ -55,7 +76,7 @@ var myBos_nbhd=L.geoJson().addTo(map);var nbhdDeselected=L.geoJson(Bos_nbhd,{onE
     |   |   --------
 */
 /*! on each feature */
-function $nbhdSelectedOnEachFeature(feature,layer){if(feature.properties){var popupText="";if(feature.properties.Name){popupText+="<span class='nbhdTitle'><strong>"+feature.properties.Name+"</strong></span><br>";popupText+="<a class='deselectNbhdLink' href='#'>Deselect</a>";layer.bindPopup(popupText)}else{}}else{}}
+function $nbhdSelectedOnEachFeature(feature,layer){if(feature.properties){var popupText="";if(feature.properties.Name){popupText+="<span class='nbhdPopupTitle'><strong>"+feature.properties.Name+"</strong></span><br>";popupText+="<a class='deselectNbhdLink' href='#'>Deselect</a>";layer.bindPopup(popupText)}else{}}else{}}
 /*! style */
 function $nbhdSelectedStyle(feature){return{color:"Red",weight:4,opacity:0.5,fillOpacity:0.25}}
 /*! style2 */
@@ -321,7 +342,6 @@ var myNbhdLayer=L.geoJson().addTo(map);var myOpenSpaceLayer=L.geoJson().addTo(ma
 var $el = $('#Bos_nbhdSelect, #Bos_openSpaceSelect, #activitiesSelect');
 $el.on('select2:selecting', function(e) {
         myActivitiesMarkerClusterGroup.clearLayers();
-        $("#overlay").show();
     })
     .on('select2:select', function(e) {
         if (map.hasLayer(farmersMarkets)) {
@@ -333,7 +353,6 @@ $el.on('select2:selecting', function(e) {
     })
     .on('select2:unselecting', function(e) {
         $el.data('unselecting', true);
-        $("#overlay").show();
     })
     .on('select2:unselect', function(e) {
         myOpenSpaceLayer.bringToBack();
@@ -357,8 +376,9 @@ $el.on('select2:selecting', function(e) {
         setTimeout(function() {
             $(".select2-container--focus").removeClass("select2-container--focus");
             $(":focus").blur();
+            /*$("html, body").scrollTop($("#map").offset().top);*/
         }, 1);
-        $("html, body").scrollTop($("#map").offset().top);
+        
     });
 
 
@@ -412,6 +432,7 @@ $("#Bos_nbhdSelect").select2({
             onEachFeature: $nbhdSelectedOnEachFeature,
             style: $nbhdSelectedStyle
         }).addTo(myNbhdLayer);
+        alert("nbhd done")
         L.geoJson(Bos_openSpace, {
             filter: function(feature, layer) {
                 if ((feature.properties.SITE_NAME) && (feature.properties.NBHD === nbhdName)) {
@@ -423,6 +444,7 @@ $("#Bos_nbhdSelect").select2({
             onEachFeature: $openSpaceSelectedOnEachFeature,
             style: $openSpaceSelectedStyle
         }).addTo(myOpenSpaceLayer);
+        alert("open space done")
         if ($("#activitiesToggle i").hasClass("fa-eye-slash")) {
             var recreationalActivities = L.geoJson(Bos_recActivities, {
                 onEachFeature: $activitiesOnEachFeature,
@@ -437,13 +459,13 @@ $("#Bos_nbhdSelect").select2({
             });
             myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
             map.addLayer(myActivitiesMarkerClusterGroup);
+            alert("activities done")
         };
-    });
+    })
     map.fitBounds(myNbhdLayer.getBounds());
     if (map.hasLayer(bikeTrails)) {
         bikeTrails.bringToFront()
     };
-    $("#overlay").hide();
 }).on("select2:unselect", function() {
     var count = $("#Bos_nbhdSelect :selected").length;
     /*! a neighborhood is being deselected, no open space is selected... */
@@ -462,7 +484,7 @@ $("#Bos_nbhdSelect").select2({
                 myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
                 map.addLayer(myActivitiesMarkerClusterGroup)
             };
-            map.setView([42.31250108313083, -71.05701449023424], 12);
+            map.setView([42.31250108313083, -71.05701449023424], 11);
             /*! and there are one or more neighborhoods selected */
         } else {
             alert("and there are one or more neighborhoods selected");
@@ -500,7 +522,7 @@ $("#Bos_nbhdSelect").select2({
                         }
                     });
                     myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
-                    map.addLayer(myActivitiesMarkerClusterGroup)
+                    map.addLayer(myActivitiesMarkerClusterGroup);
                 };
             });
             map.fitBounds(myNbhdLayer.getBounds())
@@ -530,14 +552,14 @@ $("#Bos_nbhdSelect").select2({
                     onEachFeature: $openSpaceSelectedOnEachFeature,
                     style: $openSpaceSelectedStyle2
                 }).addTo(myOpenSpaceLayer)
-            })
+            });
         };
     }
     if (map.hasLayer(bikeTrails)) {
         bikeTrails.bringToFront()
     };
-    $("#overlay").hide();
 });
+        
 
 /*!
     |   Neighborhood Popup
@@ -547,12 +569,11 @@ $("#Bos_nbhdSelect").select2({
 */
 $("#map").on("click", ".selectNbhdLink", function(event) {
     event.preventDefault();
-    $("#overlay").show();
     myNbhdLayer.clearLayers();
     myOpenSpaceLayer.clearLayers();
     myActivitiesMarkerClusterGroup.clearLayers();
     $("#activitiesSelect").clearMenu();
-    var nbhdValue = $(".nbhdTitle").text();
+    var nbhdValue = $(".nbhdPopupTitle").text();
     var selected = $("#Bos_nbhdSelect option:selected").map(function() {
         return this.value
     }).get();
@@ -616,7 +637,6 @@ $("#map").on("click", ".selectNbhdLink", function(event) {
     if (map.hasLayer(bikeTrails)) {
         bikeTrails.bringToFront()
     };
-    $("#overlay").hide();
 });
 /*!
     |   |   deselect
@@ -624,8 +644,7 @@ $("#map").on("click", ".selectNbhdLink", function(event) {
 */
 $("#map").on("click", ".deselectNbhdLink", function(event) {
     event.preventDefault();
-    $("#overlay").show();
-    var nbhdValue = $(".nbhdTitle").text();
+    var nbhdValue = $(".nbhdPopupTitle").text();
     alert(nbhdValue);
     $("#Bos_nbhdSelect").children().filter(function() {
         return this.value === nbhdValue
@@ -651,7 +670,7 @@ $("#map").on("click", ".deselectNbhdLink", function(event) {
                 myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
                 map.addLayer(myActivitiesMarkerClusterGroup)
             }
-            map.setView([42.31250108313083, -71.05701449023424], 12);
+            map.setView([42.31250108313083, -71.05701449023424], 11);
             /*! and there are one or more neighborhoods selected */
         } else {
             alert("and there are one or more neighborhoods selected");
@@ -739,7 +758,6 @@ $("#map").on("click", ".deselectNbhdLink", function(event) {
             bikeTrails.bringToFront()
         }
     }
-    $("#overlay").hide();
 });
 
 /*!
@@ -803,6 +821,9 @@ $("#Bos_openSpaceSelect").select2({
         }).addTo(myIndivOpenSpaceLayer);
         map.fitBounds(myIndivOpenSpaceLayer.getBounds())
     }
+    if (map.hasLayer(bikeTrails)) {
+        bikeTrails.bringToFront()
+    }
 }).on("select2:unselect", function() {
     myIndivOpenSpaceLayer.clearLayers();
     myActivitiesMarkerClusterGroup.clearLayers();
@@ -819,8 +840,7 @@ $("#Bos_openSpaceSelect").select2({
                 myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
                 map.addLayer(myActivitiesMarkerClusterGroup)
             }
-            else {}
-        map.setView([42.31250108313083, -71.05701449023424], 12);
+        map.setView([42.31250108313083, -71.05701449023424], 11);
         /*! an open space is being deselected and one or more neighborhoods are selected */
     } else {
         alert("an open space is being deselected and one or more neighborhoods are selected");
@@ -847,33 +867,28 @@ $("#Bos_openSpaceSelect").select2({
                 style: $openSpaceSelectedStyle
             }).addTo(myOpenSpaceLayer);
             if ($("#activitiesToggle i").hasClass("fa-eye-slash")) {
-            var recreationalActivities = L.geoJson(Bos_recActivities, {
-                onEachFeature: $activitiesOnEachFeature,
-                pointToLayer: $activitiesPointToLayer,
-                filter: function(feature,layer){
-                    if (feature.properties.NBHD===nbhdName){
-                        return true
-                    } else {
-                        return false
+                var recreationalActivities = L.geoJson(Bos_recActivities, {
+                    onEachFeature: $activitiesOnEachFeature,
+                    pointToLayer: $activitiesPointToLayer,
+                    filter: function(feature,layer){
+                        if (feature.properties.NBHD===nbhdName){
+                            return true
+                        } else {
+                            return false
+                        }
                     }
-                }
-            });
+                });
                 myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
                 map.addLayer(myActivitiesMarkerClusterGroup);
-            } else {}
+            }
         });
         map.fitBounds(myNbhdLayer.getBounds())
     }
-    if (map.hasLayer(farmersMarkets)) {
-        farmersMarkets.addTo(myActivitiesMarkerClusterGroup)
-    } else {}
-    if (map.hasLayer(publicArt)) {
-        publicArt.addTo(myActivitiesMarkerClusterGroup)
-    } else {}
     if (map.hasLayer(bikeTrails)) {
         bikeTrails.bringToFront()
-    } else {}
+    }
 });
+
 /*!
     |   Open Space Popup
     |   ================
@@ -883,11 +898,11 @@ $("#Bos_openSpaceSelect").select2({
 $("#map").on("click", ".selectOpenSpaceLink", function(event) {
     event.preventDefault();
     var openSpaceValue = $(".openSpacePopupTitle").text();
+    var count = $("#Bos_nbhdSelect :selected").length;
     myIndivOpenSpaceLayer.clearLayers();
     myActivitiesMarkerClusterGroup.clearLayers();
     $("#Bos_openSpaceSelect").val(openSpaceValue).trigger("change");
     $("#activitiesSelect").clearMenu();
-    var count = $("#Bos_nbhdSelect :selected").length;
     map.closePopup();
     /*! an open space is being selected and no neighborhoods are selected */
     if (count === 0) {
@@ -937,13 +952,13 @@ $("#map").on("click", ".selectOpenSpaceLink", function(event) {
     }
     if (map.hasLayer(farmersMarkets)) {
         farmersMarkets.addTo(myActivitiesMarkerClusterGroup)
-    } else {}
+    }
     if (map.hasLayer(publicArt)) {
         publicArt.addTo(myActivitiesMarkerClusterGroup)
-    } else {}
+    }
     if (map.hasLayer(bikeTrails)) {
         bikeTrails.bringToFront()
-    } else {}
+    }
 });
 /*!
     |   |   deselect
@@ -951,11 +966,11 @@ $("#map").on("click", ".selectOpenSpaceLink", function(event) {
 */
 $("#map").on("click", ".deselectOpenSpaceLink", function(event) {
     event.preventDefault();
+    var count = $("#Bos_nbhdSelect :selected").length;
     myIndivOpenSpaceLayer.clearLayers();
     myActivitiesMarkerClusterGroup.clearLayers();
     $("#Bos_openSpaceSelect").val("").trigger("change");
     $("#activitiesSelect").clearMenu();
-    var count = $("#Bos_nbhdSelect :selected").length;
     /*! an open space is being deselected and no neighborhoods are selected */
     if (count === 0) {
         alert("an open space is being deselected and no neighborhoods are selected");
@@ -966,9 +981,8 @@ $("#map").on("click", ".deselectOpenSpaceLink", function(event) {
         });
             myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
             map.addLayer(myActivitiesMarkerClusterGroup)
-        } else {}
-            
-        map.setView([42.31250108313083, -71.05701449023424], 12)
+        }
+        map.setView([42.31250108313083, -71.05701449023424], 11)
             /*! an open space is being deselected and one or more neighborhoods are selected */
     } else {
         alert("an open space is being deselected and one or more neighborhoods are selected");
@@ -1008,19 +1022,19 @@ $("#map").on("click", ".deselectOpenSpaceLink", function(event) {
             });
                 myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
                 map.addLayer(myActivitiesMarkerClusterGroup)
-            } else {}
+            }
         });
         map.fitBounds(myNbhdLayer.getBounds())
     }
     if (map.hasLayer(farmersMarkets)) {
         farmersMarkets.addTo(myActivitiesMarkerClusterGroup)
-    } else {}
+    }
     if (map.hasLayer(publicArt)) {
         publicArt.addTo(myActivitiesMarkerClusterGroup)
-    } else {}
+    }
     if (map.hasLayer(bikeTrails)) {
         bikeTrails.bringToFront()
-    } else {}
+    }
 });
 
 /*!
@@ -1116,7 +1130,7 @@ $("#activitiesSelect").select2({
             })
                 myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
                 map.addLayer(myActivitiesMarkerClusterGroup)
-            map.setView([42.31250108313083, -71.05701449023424], 12)
+            map.setView([42.31250108313083, -71.05701449023424], 11)
                 /*! an activity is being deselected, one or more neighborhoods are selected, and no open space is selected */
         } else {
             alert("an activity is being deselected, one or more neighborhoods are selected, and no open space is selected");
@@ -1157,7 +1171,6 @@ $("#activitiesSelect").select2({
 
 
 $("#nbhdSelectionChoiceSetAll").on('click', function() {
-    $("#overlay").show();
     $("#Bos_nbhdSelect").val(allNbhdArray).trigger("change");
     myNbhdLayer.clearLayers();
     myOpenSpaceLayer.clearLayers();
@@ -1206,7 +1219,8 @@ $("#nbhdSelectionChoiceSetAll").on('click', function() {
                 }
             });
             myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
-            map.addLayer(myActivitiesMarkerClusterGroup)
+            map.addLayer(myActivitiesMarkerClusterGroup);
+            
         } else {}
     });
     if (map.hasLayer(farmersMarkets)) {
@@ -1219,7 +1233,7 @@ $("#nbhdSelectionChoiceSetAll").on('click', function() {
         bikeTrails.bringToFront()
     } else {}
     map.fitBounds(myNbhdLayer.getBounds());
-    $("#overlay").hide();
+    
 });
 
 /*!
@@ -1227,7 +1241,6 @@ $("#nbhdSelectionChoiceSetAll").on('click', function() {
     |   ============================================
 */
 $(".js-programmatic-multi-clear").click(function() {
-    $("#overlay").show();
     $("#Bos_nbhdSelect").each(function() {
         $(this).select2("val", "")
     });
@@ -1247,7 +1260,7 @@ $(".js-programmatic-multi-clear").click(function() {
             map.addLayer(myActivitiesMarkerClusterGroup)
         } else {}
             
-        map.setView([42.31250108313083, -71.05701449023424], 12);
+        map.setView([42.31250108313083, -71.05701449023424], 11);
         if (map.hasLayer(farmersMarkets)) {
             farmersMarkets.addTo(myActivitiesMarkerClusterGroup)
         } else {}
@@ -1266,7 +1279,6 @@ $(".js-programmatic-multi-clear").click(function() {
             bikeTrails.bringToFront()
         } else {}
     }
-    $("#overlay").hide();
 });
 /*!
     |   programmatically toggle activities
@@ -1296,7 +1308,7 @@ window.addEventListener("orientationchange",function(){$(document).scrollTop($("
 var elem=document.getElementById("isMobileDevice");var myString=window.getComputedStyle(elem,":before").content;var beforeContent=myString.replace(/["']/g,"");if(beforeContent===("yes")){$(".selectorsWrapper").hide();$("#searchIcon").addClass("fa-search").removeClass("fa-times")}else{}
     
 /*! disable alerts and console logs */
-/*window.alert=function(){};*/
-/*console.log=function(){};*/
+window.alert=function(){};
+console.log=function(){};
     })
 (jQuery);
