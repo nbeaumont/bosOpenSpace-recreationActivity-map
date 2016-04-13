@@ -4,16 +4,17 @@
 <!--[if IE 8]>    <html class="ie8 oldie"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="">
-<!--<![endif]-->
-<head>
+<!--<![endif]--><head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<meta name="mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+<!--<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">-->
 <title>Boston Open Spaces</title>
+<!--<link rel="manifest"  href="_javascripts/manifest.json">-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700|Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
 <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 <link href="_stylesheets/my-icons/font/flaticon.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://domoritz.github.io/leaflet-locatecontrol/dist/L.Control.Locate.min.css" />
 <link href="_stylesheets/bosOpenSpace-recreationActivity.css" rel="stylesheet" type="text/css">
 <!-- 
 To learn more about the conditional comments around the html tags at the top of the file:
@@ -30,59 +31,62 @@ Do the following if you're using your customized build of modernizr (http://www.
 <![endif]-->
 </head>
 <body>
+<div id="mainContainer" class="mainContainer">
 <div id="mapOverlay"></div>
 <!-- Preloader -->
 <div id="preloader"></div>
 <div id="isMobileDevice"></div>
 <div class="gridContainer clearfix">
-<div class="mainHeaderWrapper">
-    <div class="mainHeader">
-        <h1 class="mapTitle">Boston Open Spaces</h1>
-    </div>
-</div>
-<div class="mainContentWrapper">
-    <div class="mapWrapper">
-        <div class="searchIconWrapper">
-            <div id="searchIcon" class="fa topNavBar"></div>
+    <div class="mainHeaderWrapper">
+        <div class="mainHeader">
+            <h1 class="mapTitle">Boston Open Spaces</h1>
         </div>
-        <div class="selectorsWrapper">
-            <div class="selectorsContainer">
-                <div class="nbhdFormWrapper">
-                    <form id="Bos_nbhdForm" onsubmit="return false">
-                        <select name="Bos_nbhd" id="Bos_nbhdSelect"  multiple="multiple" style="width:100%" tabindex="5">
-                        </select>
-                    </form>
-                </div>
-                <div class="openSpaceFormWrapper">
-                    <div class="openSpace-fluidColumn">
-                        <div class="openSpace-fluidColumnContent">
-                            <form id="Bos_openSpaceForm" onsubmit="return false">
-                                <select name="Bos_openSpace" id="Bos_openSpaceSelect" multiple="multiple" style="width:100%" tabindex="10">
-                                </select>
-                            </form>
+        <button id="fullscreenToggle"><i class="fa fa-expand"></i></button>
+    </div>
+    <div class="mainContentWrapper">
+        <div class="mapWrapper">
+            <div class="searchIconWrapper">
+                <div id="searchIcon" class="fa topNavBar"></div>
+            </div>
+            <div class="selectorsWrapper">
+                <div class="selectorsContainer">
+                    <div class="nbhdFormWrapper">
+                        <form id="Bos_nbhdForm" onsubmit="return false">
+                            <select name="Bos_nbhd" id="Bos_nbhdSelect"  multiple="multiple" style="width:100%" tabindex="5">
+                            </select>
+                        </form>
+                    </div>
+                    <div class="openSpaceFormWrapper">
+                        <div class="openSpace-fluidColumn">
+                            <div class="openSpace-fluidColumnContent">
+                                <form id="Bos_openSpaceForm" onsubmit="return false">
+                                    <select name="Bos_openSpace" id="Bos_openSpaceSelect" multiple="multiple" style="width:100%" tabindex="10">
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="openSpace-fixedWidthColumn">
+                            <button id="openSpaceDeselectBtn"><i class="fa fa-times"></i> </button>
                         </div>
                     </div>
-                    <div class="openSpace-fixedWidthColumn">
-                        <button id="openSpaceDeselectBtn"><i class="fa fa-times"></i> </button>
-                    </div>
-                </div>
-                <div class="activitiesFormWrapper">
-                    <div class="activities-fluidColumn">
-                        <div class="activities-fluidColumnContent">
-                            <form id="activitiesForm" onsubmit="return false">
-                                <select name="activities" id="activitiesSelect" multiple="multiple" style="width:100%" tabindex="15">
-                                </select>
-                            </form>
+                    <div class="activitiesFormWrapper">
+                        <div class="activities-fluidColumn">
+                            <div class="activities-fluidColumnContent">
+                                <form id="activitiesForm" onsubmit="return false">
+                                    <select name="activities" id="activitiesSelect" multiple="multiple" style="width:100%" tabindex="15">
+                                    </select>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                    <div class="activities-fixedWidthColumn">
-                        <button id="activitiesDeselectBtn"><i class="fa fa-times"></i> </button>
-                        <button id="activitiesToggleBtn"><i class="fa fa-eye-slash"></i> </button>
+                        <div class="activities-fixedWidthColumn">
+                            <button id="activitiesDeselectBtn"><i class="fa fa-times"></i> </button>
+                            <!--<button id="activitiesToggleBtn"><i class="fa fa-eye-slash"></i> </button>-->
+                        </div>
                     </div>
                 </div>
             </div>
+            <div id="map"></div>
         </div>
-        <div id="map"></div>
     </div>
 </div>
 <!--<br>
@@ -99,7 +103,6 @@ new Spinner().spin(target);
 <script type="text/javascript" src="_javascripts/Bos_openSpace.js"></script> 
 <script type="text/javascript" src="_javascripts/Bos_recActivities.js"></script> 
 <script type="text/javascript" src="_javascripts/bosOpenSpaceMap.min.js"></script> 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/3.0.0/screenfull.min.js"></script> 
 <script type="text/javascript">
 function downloadJSAtOnload(){var element=document.createElement("script");element.src="_javascripts/defer-map.js";document.body.appendChild(element)}if(window.addEventListener){window.addEventListener("load",downloadJSAtOnload,false)}else{if(window.attachEvent){window.attachEvent("onload",downloadJSAtOnload)}else{window.onload=downloadJSAtOnload}};
 </script>

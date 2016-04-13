@@ -1,5 +1,7 @@
 (function($) {
-
+  
+L.Icon.Default.imagePath = '_stylesheets/images/';
+  
 /*! function to toggle selectors visibility */
 $(document).ready(function(){var t=$(".selectorsWrapper");t.show();$(".searchIconWrapper").click(function(e){$(".selectorsWrapper").slideToggle("400");e.preventDefault()});$("#searchIcon").addClass("fa-times").removeClass("fa-search")});$(".searchIconWrapper").on("click",function(a){$("#searchIcon").toggleClass("fa-search fa-times");a.preventDefault()});
 /*! function to remove duplicate */
@@ -132,7 +134,7 @@ function $publicArtOnEachFeature(feature,layer){if(feature.properties){var popup
 /*! point to layer */
 function $publicArtPointToLayer(feature,latlng){var publicArtIcon=L.ExtraMarkers.icon({icon:"fa-camera",markerColor:"orange",iconColor:"white",shape:"penta",prefix:"fa"});if(feature.properties){return L.marker(latlng,{icon:publicArtIcon})}}
 /*! add to map */
-var publicArtUrl="http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/publicArt.geojson";var publicArt=new L.GeoJSON.AJAX(publicArtUrl,{onEachFeature:$publicArtOnEachFeature,pointToLayer:$publicArtPointToLayer});
+var publicArtUrl="http://www.nicolasbeaumont.com/bosOpenSpace2/_geoJson/publicArt.geojson";var publicArt=new L.GeoJSON.AJAX(publicArtUrl,{onEachFeature:$publicArtOnEachFeature,pointToLayer:$publicArtPointToLayer});
 /*!
  *  Controls
  *  ========
@@ -141,7 +143,41 @@ var publicArtUrl="http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/publicArt
 /*!
  * layers
  */
-var myNbhdLayer=L.geoJson().addTo(map);var myOpenSpaceLayer=L.geoJson().addTo(map);var myIndivOpenSpaceLayer=L.geoJson().addTo(map);var myOverlayLayersGroup=L.layerGroup([myBos_nbhd,myBos_openSpace,myNbhdLayer,myOpenSpaceLayer,myIndivOpenSpaceLayer]).addTo(map);var myActivitiesMarkerClusterGroup=L.markerClusterGroup.layerSupport();myActivitiesMarkerClusterGroup.checkIn(farmersMarkets);myActivitiesMarkerClusterGroup.checkIn(publicArt);myActivitiesMarkerClusterGroup.addTo(map);var recreationalActivities=L.geoJson(Bos_recActivities,{onEachFeature:$activitiesOnEachFeature,pointToLayer:$activitiesPointToLayer});myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);map.addLayer(myActivitiesMarkerClusterGroup);var baseMaps={"Mass GIS":mapc,"Open Street Map":OpenStreetMap_Mapnik,"Open Street Map (Black and White)":OpenStreetMap_BlackAndWhite,"ESRI Street":Esri_WorldStreetMap,"ESRI Topography":Esri_WorldTopoMap,"ESRI National Geographic":Esri_NatGeoWorldMap,"Bing Road":bingLayerRoad,"Bing Aerial":bingLayerAerial,"Bing Aerial with Labels":bingLayerAerialWithLabels};var overlays={"Neighborhoods and Open Spaces":myOverlayLayersGroup,"Bike Trails":bikeTrails,"Farmers Markets":farmersMarkets,"Public Art":publicArt};ctrl=L.control.layers(baseMaps,overlays,{position:"bottomright"}).addTo(map);
+var myNbhdLayer = L.geoJson().addTo(map);
+var myOpenSpaceLayer = L.geoJson().addTo(map);
+var myIndivOpenSpaceLayer = L.geoJson().addTo(map);
+var myOverlayLayersGroup = L.layerGroup([myBos_nbhd, myBos_openSpace, myNbhdLayer, myOpenSpaceLayer, myIndivOpenSpaceLayer]).addTo(map);
+var myActivitiesMarkerClusterGroup = L.markerClusterGroup.layerSupport();
+myActivitiesMarkerClusterGroup.checkIn(farmersMarkets);
+myActivitiesMarkerClusterGroup.checkIn(publicArt);
+myActivitiesMarkerClusterGroup.addTo(map);
+var recreationalActivities = L.geoJson(Bos_recActivities, {
+    onEachFeature: $activitiesOnEachFeature,
+    pointToLayer: $activitiesPointToLayer
+});
+myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+map.addLayer(myActivitiesMarkerClusterGroup);
+var baseMaps = {
+    "Mass GIS": mapc,
+    "Open Street Map": OpenStreetMap_Mapnik,
+    "Open Street Map (Black and White)": OpenStreetMap_BlackAndWhite,
+    "ESRI Street": Esri_WorldStreetMap,
+    "ESRI Topography": Esri_WorldTopoMap,
+    "ESRI National Geographic": Esri_NatGeoWorldMap,
+    "Bing Road": bingLayerRoad,
+    "Bing Aerial": bingLayerAerial,
+    "Bing Aerial with Labels": bingLayerAerialWithLabels
+};
+var overlays = {
+    "Neighborhoods and Open Spaces": myOverlayLayersGroup,
+    "Bike Trails": bikeTrails,
+    "Farmers Markets": farmersMarkets,
+    "Public Art": publicArt
+};
+ctrl = L.control.layers(baseMaps, overlays, {
+    position: "bottomright"
+}).addTo(map);
+
 /*!
  * zoom home
  */
@@ -479,10 +515,49 @@ $("#activitiesDeselectBtn").click(function() {
     $(this).prop('disabled', true);
 });
 
+/*!
+ *  |   Activities Toggle Button
+ *  |   ========================
+ */
+ 
+/*$("#activitiesToggleBtn").click(function(event) {
+    event.preventDefault();
+    if(map.hasLayer(myActivitiesMarkerClusterGroup)) {
+      $(this).removeClass('selected');
+      map.removeLayer(myActivitiesMarkerClusterGroup);
+                
+    } else {
+        map.addLayer(myActivitiesMarkerClusterGroup);        
+        $(this).addClass('selected');
+   }
+});
+*/
+
+
+ 
+
 /*! reorder layers */
 map.on("overlayadd",onOverlayAdd);
 /*! patch to enable scrolling the control layers base element on touch devices */
 var container=document.getElementsByClassName("leaflet-control-layers")[0];if(!L.Browser.touch){L.DomEvent.disableClickPropagation(container).disableScrollPropagation(container)}else{L.DomEvent.disableClickPropagation(container)}
+/*! screenfull */
+$(function() {
+    $('#fullscreenToggle').click(function() {
+        screenfull.toggle($('#mainContainer')[0]);
+    });
+    function fullscreenchange() {
+        if (!screenfull.isFullscreen) {
+            $('#external-iframe').remove();
+            document.body.style.overflow = 'auto';
+            $('#fullscreenToggle').children('i').addClass('fa-expand').removeClass('fa-compress');
+        } else {
+            $('#fullscreenToggle').children('i').addClass('fa-compress').removeClass('fa-expand');
+        }
+    }
+    document.addEventListener(screenfull.raw.fullscreenchange, fullscreenchange);
+    // set the initial values
+    fullscreenchange();
+});		
 /*! disable alerts and console logs */
 window.alert=function(){};
 console.log=function(){};
