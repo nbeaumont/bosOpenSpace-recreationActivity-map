@@ -44,9 +44,9 @@ html,body,.gridContainer,.mapWrapper,#map{height:100%}
 .openSpace-fluidColumn{float:left;width:100%;margin-right:-44px}
 .openSpace-fluidColumnContent{margin-right:44px}
 .openSpace-fixedWidthColumn{float:left;width:44px}
-.activities-fluidColumn{float:left;width:100%;margin-right:-44px}
-.activities-fluidColumnContent{margin-right:44px}
-.activities-fixedWidthColumn{float:left;width:44px}
+.activities-fluidColumn{float:left;width:100%;margin-right:-88px}
+.activities-fluidColumnContent{margin-right:88px}
+.activities-fixedWidthColumn{float:left;width:88px}
 /*! Buttons */
 button{display:block;float:left;width:44px;height:26px;padding:0;overflow:hidden;cursor:pointer;border:1px solid #aaa;text-align:left;white-space:nowrap;line-height:26px;color:#444;text-decoration:none;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;background-color:#fff;line-height:24px;text-align:center}button[disabled]{background-color:#f4f4f4;background-image:none;border:1px solid #ddd;cursor:default;color:#999}
 #activitiesToggleBtn{display:block}

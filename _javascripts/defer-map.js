@@ -110,7 +110,64 @@ var bikeTrailsUrl="http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/bikeTrai
  *  |   =======================
  */
 /*! on each feature */
-function $activitiesOnEachFeature(feature,layer){if(feature.properties){var popupText="";if(feature.properties.Name){popupText+="<strong class='openSpacePopupTitle'>"+feature.properties.Name+"</strong><br>"}else{}if(feature.properties.Type){popupText+="<strong class='openSpacePopupSubTitle'>"+feature.properties.Type+"</strong><br>"}else{}if(feature.properties.Address){popupText+='<i class="fa fa-map-marker"></i> '+feature.properties.Address+"<br>"}else{}if(feature.properties.Website){popupText+='<i class="fa fa-globe"></i> <a href='+feature.properties.Website+" target='_blank'>Website</a><br>"}else{}if(feature.properties.Link1){popupText+='<i class="fa fa-wikipedia-w"></i> <a href='+feature.properties.Link1+" target='_blank'>View on Wikipedia</a><br>"}else{}if(feature.properties.Link3){popupText+='<i class="fa fa-google"></i> <a href='+feature.properties.Link3+" target='_blank'>View in Google Street View</a><br>"}else{}if(feature.properties.Descr){popupText+="<em>"+feature.properties.Descr+"</em><br>"}else{}if(feature.properties.Activity){popupText+="<strong>Activities:</strong> "+feature.properties.Activity+"<br>"}else{}layer.bindPopup(popupText)}else{}if(feature.properties&&feature.properties.Category){$("#activitiesSelect").append($("<option>",{value:feature.properties.Category,text:feature.properties.Category}));$("#activitiesSelect option").removeDuplicate();$("#activitiesSelect option").sortAlpha()}else{}if(feature.properties&&feature.properties.Category_2){$("#activitiesSelect").append($("<option>",{value:feature.properties.Category_2,text:feature.properties.Category_2}));$("#activitiesSelect option").removeDuplicate();$("#activitiesSelect option").sortAlpha()}else{}if(feature.properties&&feature.properties.Category_3){$("#activitiesSelect").append($("<option>",{value:feature.properties.Category_3,text:feature.properties.Category_3}));$("#activitiesSelect option").removeDuplicate();$("#activitiesSelect option").sortAlpha()}else{}};
+function $activitiesOnEachFeature(feature, layer) {
+    if (feature.properties) {
+        var popupText = "";
+        if (feature.properties.Name) {
+            popupText += "<strong class='openSpacePopupTitle'>" + feature.properties.Name + "</strong><br>"
+        } else {}
+        if (feature.properties.Type) {
+            popupText += "<strong class='openSpacePopupSubTitle'>" + feature.properties.Type + "</strong><br>"
+        } else {}
+        if (feature.properties.Address) {
+            popupText += '<i class="fa fa-map-marker"></i> ' + feature.properties.Address + "<br>"
+        } else {}
+        if (feature.properties.Website) {
+            popupText += '<i class="fa fa-globe"></i> <a href=' + feature.properties.Website + " target='_blank'>Website</a><br>"
+        } else {}
+        if (feature.properties.Link1) {
+            popupText += '<i class="fa fa-wikipedia-w"></i> <a href=' + feature.properties.Link1 + " target='_blank'>View on Wikipedia</a><br>"
+        } else {}
+        if (feature.properties.Link3) {
+            popupText += '<i class="fa fa-google"></i> <a href=' + feature.properties.Link3 + " target='_blank'>View in Google Street View</a><br>"
+        } else {}
+        if (feature.properties.Descr) {
+            popupText += "<em>" + feature.properties.Descr + "</em><br>"
+        } else {}
+        if (feature.properties.Activity) {
+            popupText += "<strong>Activities:</strong> " + feature.properties.Activity + "<br>"
+        } else {}
+        layer.bindPopup(popupText)
+    } else {}
+    if (feature.properties && feature.properties.Category) {
+        $("#activitiesSelect").append($("<option>", {
+            value: feature.properties.Category,
+            text: feature.properties.Category
+        }));
+        $("#activitiesSelect option").removeDuplicate();
+        $("#activitiesSelect option").sortAlpha();
+        
+    } else {}
+    if (feature.properties && feature.properties.Category_2) {
+        $("#activitiesSelect").append($("<option>", {
+            value: feature.properties.Category_2,
+            text: feature.properties.Category_2
+        }));
+        $("#activitiesSelect option").removeDuplicate();
+        $("#activitiesSelect option").sortAlpha()
+    } else {}
+    if (feature.properties && feature.properties.Category_3) {
+        $("#activitiesSelect").append($("<option>", {
+            value: feature.properties.Category_3,
+            text: feature.properties.Category_3
+        }));
+        $("#activitiesSelect option").removeDuplicate();
+        $("#activitiesSelect option").sortAlpha()
+    } else {}
+    if (feature.properties) {
+    activitiesMarkersCounter++;
+    }
+};
 /*! on each feature popup only */
 function $activitiesOnEachFeaturePopup(feature,layer){if(feature.properties){var popupText="";if(feature.properties.Name){popupText+="<strong class='openSpacePopupTitle'>"+feature.properties.Name+"</strong><br>"}else{}if(feature.properties.Type){popupText+="<strong class='openSpacePopupSubTitle'>"+feature.properties.Type+"</strong><br>"}else{}if(feature.properties.Address){popupText+='<i class="fa fa-map-marker"></i> '+feature.properties.Address+"<br>"}else{}if(feature.properties.Website){popupText+='<i class="fa fa-globe"></i> <a href='+feature.properties.Website+" target='_blank'>Website</a><br>"}else{}if(feature.properties.Link1){popupText+='<i class="fa fa-wikipedia-w"></i> <a href='+feature.properties.Link1+" target='_blank'>View on Wikipedia</a><br>"}else{}if(feature.properties.Link3){popupText+='<i class="fa fa-google"></i> <a href='+feature.properties.Link3+" target='_blank'>View in Google Street View</a><br>"}else{}if(feature.properties.Descr){popupText+="<em>"+feature.properties.Descr+"</em><br>"}else{}if(feature.properties.Activity){popupText+="<strong>Activities:</strong> "+feature.properties.Activity+"<br>"}else{}layer.bindPopup(popupText)}else{}}
 /*! point to layer */
@@ -196,70 +253,692 @@ var lc=L.control.locate({follow:true,strings:{title:"Show me where I am, yo!"}})
  *  |   Neighborhoods Select Menu
  *  |   =========================
  */
-var nbhdOnOpen=[];var nbhdOnClose=[];$("#Bos_nbhdSelect").multipleSelect({placeholder:"Select one or more neighborhoods...",width:"100%",filter:false,selectAllText:"Select all neighborhoods",allSelected:"All neighborhoods selected",countSelected:"# of % neighborhoods selected",onOpen:function(){nbhdOnOpen=[];var nbhdSelectedValues=$("#Bos_nbhdSelect").multipleSelect("getSelects");var nbhdSelectedValuesObjLenght=Object.keys(nbhdSelectedValues).length;Array.prototype.push.apply(nbhdOnOpen,nbhdSelectedValues)},onClose:function(){nbhdOnClose=[];var nbhdSelectedValues=$("#Bos_nbhdSelect").multipleSelect("getSelects");var nbhdSelectedValuesObjLenght=Object.keys(nbhdSelectedValues).length;var openSpaceSelectedValues=$("#Bos_openSpaceSelect").multipleSelect("getSelects");var openSpaceSelectedValuesObjLenght=Object.keys(openSpaceSelectedValues).length;var activitiesSelectedValues=$("#activitiesSelect").multipleSelect("getSelects");var activitiesSelectedValuesObjLenght=Object.keys(activitiesSelectedValues).length;Array.prototype.push.apply(nbhdOnClose,nbhdSelectedValues);if($(nbhdOnOpen).not(nbhdOnClose).length===0&&$(nbhdOnClose).not(nbhdOnOpen).length===0){}else{$("#mapOverlay").show();map.spin(true);setTimeout(function(){myNbhdLayer.clearLayers();myOpenSpaceLayer.clearLayers();
-/*! if no neighborhoods are selected... */
-if(nbhdSelectedValuesObjLenght===0){alert("no neighborhoods are selected...");
-/*! ... and no open space is selected. */
-if(openSpaceSelectedValuesObjLenght===0){alert("... and no open space is selected.");myActivitiesMarkerClusterGroup.clearLayers();$("#activitiesSelect").clearMenu();$("#activitiesSelect").multipleSelect("refresh");$("#openSpaceDeselectBtn, #activitiesDeselectBtn").prop("disabled",true);map.setView([42.31250108313083,-71.05701449023424],11);
-/*! ... and an open space is selected. */
-}else{alert("... and an open space is selected.")}
-/*! one or more neighborhoods are selected, and zero or one open space is selected. */
-}else{alert("one or more neighborhoods are selected, and zero or one open space is selected.");myIndivOpenSpaceLayer.clearLayers();myActivitiesMarkerClusterGroup.clearLayers();$("#Bos_openSpaceSelect").multipleSelect("uncheckAll");$("#activitiesSelect").clearMenu();$("#openSpaceDeselectBtn, #activitiesDeselectBtn").prop("disabled",true);$.each(nbhdSelectedValues,function(i,value){L.geoJson(Bos_nbhd,{filter:function(feature,layer){return(feature.properties.Name===value)},onEachFeature:$nbhdSelectedOnEachFeature,style:$nbhdSelectedStyle}).addTo(myNbhdLayer);L.geoJson(Bos_openSpace,{filter:function(feature,layer){if((feature.properties.SITE_NAME)&&(feature.properties.NBHD===value)){return true}else{return false}},onEachFeature:$openSpaceSelectedOnEachFeature,style:$openSpaceSelectedStyle}).addTo(myOpenSpaceLayer);var recreationalActivities=L.geoJson(Bos_recActivities,{onEachFeature:$activitiesOnEachFeature,pointToLayer:$activitiesPointToLayer,filter:function(feature,layer){if(feature.properties.NBHD===value){return true}else{return false}}});myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);$("#activitiesSelect").multipleSelect("refresh");map.addLayer(myActivitiesMarkerClusterGroup)});map.fitBounds(myNbhdLayer.getBounds())}myOpenSpaceLayer.bringToBack();myNbhdLayer.bringToBack();myBos_openSpace.bringToBack();myBos_nbhd.bringToBack();if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}if(map.hasLayer(bikeTrails)){bikeTrails.bringToFront()}$("#mapOverlay").fadeOut();map.spin(false)},10)}},});
+var activitiesMarkersCounter = 0;
+var nbhdOnOpen = [];
+var nbhdOnClose = [];
+$("#Bos_nbhdSelect").multipleSelect({
+    placeholder: "Select one or more neighborhoods...",
+    width: "100%",
+    filter: false,
+    selectAllText: "Select all neighborhoods",
+    allSelected: "All neighborhoods selected",
+    countSelected: "# of % neighborhoods selected",
+    onOpen: function() {
+        nbhdOnOpen = [];
+        var nbhdSelectedValues = $("#Bos_nbhdSelect").multipleSelect("getSelects");
+        var nbhdSelectedValuesObjLenght = Object.keys(nbhdSelectedValues).length;
+        Array.prototype.push.apply(nbhdOnOpen, nbhdSelectedValues)
+    },
+    onClose: function() {
+        nbhdOnClose = [];
+        var nbhdSelectedValues = $("#Bos_nbhdSelect").multipleSelect("getSelects");
+        var nbhdSelectedValuesObjLenght = Object.keys(nbhdSelectedValues).length;
+        var openSpaceSelectedValues = $("#Bos_openSpaceSelect").multipleSelect("getSelects");
+        var openSpaceSelectedValuesObjLenght = Object.keys(openSpaceSelectedValues).length;
+        var activitiesSelectedValues = $("#activitiesSelect").multipleSelect("getSelects");
+        var activitiesSelectedValuesObjLenght = Object.keys(activitiesSelectedValues).length;
+        Array.prototype.push.apply(nbhdOnClose, nbhdSelectedValues);
+        if ($(nbhdOnOpen).not(nbhdOnClose).length === 0 && $(nbhdOnClose).not(nbhdOnOpen).length === 0) {} else {
+            $("#mapOverlay").show();
+            map.spin(true);
+            setTimeout(function() {
+                myNbhdLayer.clearLayers();
+                myOpenSpaceLayer.clearLayers();
+                /*! if no neighborhoods are selected... */
+                if (nbhdSelectedValuesObjLenght === 0) {
+                    alert("no neighborhoods are selected...");
+                    /*! ... and no open space is selected. */
+                    if (openSpaceSelectedValuesObjLenght === 0) {
+                        alert("... and no open space is selected.");
+                        activitiesMarkersCounter = 0;
+                        myActivitiesMarkerClusterGroup.clearLayers();
+                        $("#activitiesSelect").clearMenu();
+                        var recreationalActivities = L.geoJson(Bos_recActivities, {
+                            onEachFeature: $activitiesOnEachFeature ,
+                            pointToLayer: $activitiesPointToLayer
+                        });
+                        myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+                        map.addLayer(myActivitiesMarkerClusterGroup);
+                        $("#activitiesSelect").multipleSelect("refresh");
+                        $("#openSpaceDeselectBtn, #activitiesDeselectBtn").prop("disabled", true);
+                        map.setView([42.31250108313083, -71.05701449023424], 11);
+                        /*! ... and an open space is selected. */
+                    } else {
+                        alert("... and an open space is selected.")
+                    }
+                /*! if one or more neighborhoods are selected, and zero or one open space is selected. */
+                } else {
+                    alert("one or more neighborhoods are selected, and zero or one open space is selected.");
+                    activitiesMarkersCounter = 0;
+                    myIndivOpenSpaceLayer.clearLayers();
+                    myActivitiesMarkerClusterGroup.clearLayers();
+                    $("#Bos_openSpaceSelect").multipleSelect("uncheckAll");
+                    $("#activitiesSelect").clearMenu();
+                    $("#openSpaceDeselectBtn, #activitiesDeselectBtn").prop("disabled", true);
+                    $.each(nbhdSelectedValues, function(i, value) {
+                        L.geoJson(Bos_nbhd, {
+                            filter: function(feature, layer) {
+                                return (feature.properties.Name === value)
+                            },
+                            onEachFeature: $nbhdSelectedOnEachFeature,
+                            style: $nbhdSelectedStyle
+                        }).addTo(myNbhdLayer);
+                        L.geoJson(Bos_openSpace, {
+                            filter: function(feature, layer) {
+                                if ((feature.properties.SITE_NAME) && (feature.properties.NBHD === value)) {
+                                    return true
+                                } else {
+                                    return false
+                                }
+                            },
+                            onEachFeature: $openSpaceSelectedOnEachFeature,
+                            style: $openSpaceSelectedStyle
+                        }).addTo(myOpenSpaceLayer);
+                        var recreationalActivities = L.geoJson(Bos_recActivities, {
+                            onEachFeature: $activitiesOnEachFeature,
+                            pointToLayer: $activitiesPointToLayer,
+                            filter: function(feature, layer) {
+                                if (feature.properties.NBHD === value) {
+                                    return true
+                                } else {
+                                    return false
+                                }
+                            }
+                        });
+                        myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+                        $("#activitiesSelect").multipleSelect("refresh");
+                        map.addLayer(myActivitiesMarkerClusterGroup)
+                    });
+                    map.fitBounds(myNbhdLayer.getBounds())
+                }
+                myOpenSpaceLayer.bringToBack();
+                myNbhdLayer.bringToBack();
+                myBos_openSpace.bringToBack();
+                myBos_nbhd.bringToBack();
+                if (map.hasLayer(farmersMarkets)) {
+                    farmersMarkets.addTo(myActivitiesMarkerClusterGroup)
+                }
+                if (map.hasLayer(publicArt)) {
+                    publicArt.addTo(myActivitiesMarkerClusterGroup)
+                }
+                if (map.hasLayer(bikeTrails)) {
+                    bikeTrails.bringToFront()
+                }
+                
+                alert(activitiesMarkersCounter);
+                if (activitiesMarkersCounter === 0) {
+                    $("#activitiesToggleBtn").prop("disabled", true);
+                    $("#activitiesSelect").multipleSelect("disable");
+                }
+                else {
+                    $("#activitiesToggleBtn").prop("disabled", false);
+                    $("#activitiesSelect").multipleSelect("enable");
+                }
+                
+                $("#mapOverlay").fadeOut();
+                map.spin(false)
+            }, 10)
+        }
+        if ($("#activitiesToggleBtn").hasClass("hideActivities")) {
+            $("#activitiesToggleBtn").removeClass("hideActivities").addClass("showActivities");
+            $("#activitiesToggleBtn").children("i").removeClass("fa-eye").addClass("fa-eye-slash");
+        }
+    },
+});
 /*!
  *  |   Neighborhood Popup
  *  |   ==================
  *  |   |   select
  *  |   |   ------
  */
-$("#map").on("click",".selectNbhdLink",function(event){var nbhdSelectedValues=$("#Bos_nbhdSelect").multipleSelect("getSelects");var openSpaceSelectedValues=$("#Bos_openSpaceSelect").multipleSelect("getSelects");var openSpaceSelectedValuesObjLenght=Object.keys(openSpaceSelectedValues).length;var nbhdValue=$(".nbhdPopupTitle").text();$("#mapOverlay").show();map.spin(true);event.preventDefault();myNbhdLayer.clearLayers();myOpenSpaceLayer.clearLayers();myActivitiesMarkerClusterGroup.clearLayers();$("#activitiesSelect").clearMenu();nbhdSelectedValues.push(nbhdValue);$("#Bos_nbhdSelect").multipleSelect("setSelects",nbhdSelectedValues);var nbhdSelectedValuesObjLenght=Object.keys(nbhdSelectedValues).length;alert(nbhdSelectedValues);console.log(nbhdSelectedValues);$("#Bos_nbhdSelect").multipleSelect("refresh");
-/*! one or more neighborhoods are selected... */
-if(nbhdSelectedValuesObjLenght!==0){alert("one or more neighborhoods are selected...");$.each(nbhdSelectedValues,function(i,value){L.geoJson(Bos_nbhd,{filter:function(feature,layer){return(feature.properties.Name===value)},onEachFeature:$nbhdSelectedOnEachFeature,style:$nbhdSelectedStyle}).addTo(myNbhdLayer);L.geoJson(Bos_openSpace,{filter:function(feature,layer){if((feature.properties.SITE_NAME)&&(feature.properties.NBHD===value)){return true}else{return false}},onEachFeature:$openSpaceSelectedOnEachFeature,style:$openSpaceSelectedStyle}).addTo(myOpenSpaceLayer);var recreationalActivities=L.geoJson(Bos_recActivities,{onEachFeature:$activitiesOnEachFeature,pointToLayer:$activitiesPointToLayer,filter:function(feature,layer){if(feature.properties.NBHD===value){return true}else{return false}}});myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);$("#activitiesSelect").multipleSelect("refresh");$("#activitiesDeselectBtn").prop("disabled",true);map.addLayer(myActivitiesMarkerClusterGroup)});map.fitBounds(myNbhdLayer.getBounds());
-/*! ... and an open space is selected. */
-if(openSpaceSelectedValuesObjLenght!==0){alert("... and an open space is selected.");myIndivOpenSpaceLayer.clearLayers();$("#Bos_openSpaceSelect").multipleSelect("uncheckAll");$("#openSpaceDeselectBtn").prop("disabled",true);
-/*! ... and no open space is selected. */
-}else{alert("... and no open space is selected.")}}myOpenSpaceLayer.bringToBack();myNbhdLayer.bringToBack();myBos_openSpace.bringToBack();myBos_nbhd.bringToBack();if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}if(map.hasLayer(bikeTrails)){bikeTrails.bringToFront()}$("#mapOverlay").fadeOut();map.spin(false);map.closePopup()});
+$("#map").on("click", ".selectNbhdLink", function(event) {
+    activitiesMarkersCounter = 0;
+    var nbhdSelectedValues = $("#Bos_nbhdSelect").multipleSelect("getSelects");
+    var openSpaceSelectedValues = $("#Bos_openSpaceSelect").multipleSelect("getSelects");
+    var openSpaceSelectedValuesObjLenght = Object.keys(openSpaceSelectedValues).length;
+    var nbhdValue = $(".nbhdPopupTitle").text();
+    $("#mapOverlay").show();
+    map.spin(true);
+    event.preventDefault();
+    myNbhdLayer.clearLayers();
+    myOpenSpaceLayer.clearLayers();
+    myActivitiesMarkerClusterGroup.clearLayers();
+    $("#activitiesSelect").clearMenu();
+    nbhdSelectedValues.push(nbhdValue);
+    $("#Bos_nbhdSelect").multipleSelect("setSelects", nbhdSelectedValues);
+    var nbhdSelectedValuesObjLenght = Object.keys(nbhdSelectedValues).length;
+    alert(nbhdSelectedValues);
+    console.log(nbhdSelectedValues);
+    $("#Bos_nbhdSelect").multipleSelect("refresh");
+    /*! one or more neighborhoods are selected... */
+    if (nbhdSelectedValuesObjLenght !== 0) {
+        alert("one or more neighborhoods are selected...");
+        $.each(nbhdSelectedValues, function(i, value) {
+            L.geoJson(Bos_nbhd, {
+                filter: function(feature, layer) {
+                    return (feature.properties.Name === value)
+                },
+                onEachFeature: $nbhdSelectedOnEachFeature,
+                style: $nbhdSelectedStyle
+            }).addTo(myNbhdLayer);
+            L.geoJson(Bos_openSpace, {
+                filter: function(feature, layer) {
+                    if ((feature.properties.SITE_NAME) && (feature.properties.NBHD === value)) {
+                        return true
+                    } else {
+                        return false
+                    }
+                },
+                onEachFeature: $openSpaceSelectedOnEachFeature,
+                style: $openSpaceSelectedStyle
+            }).addTo(myOpenSpaceLayer);
+            var recreationalActivities = L.geoJson(Bos_recActivities, {
+                onEachFeature: $activitiesOnEachFeature,
+                pointToLayer: $activitiesPointToLayer,
+                filter: function(feature, layer) {
+                    if (feature.properties.NBHD === value) {
+                        return true
+                    } else {
+                        return false
+                    }
+                }
+            });
+            myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+            $("#activitiesSelect").multipleSelect("refresh");
+            $("#activitiesDeselectBtn").prop("disabled", true);
+            map.addLayer(myActivitiesMarkerClusterGroup)
+        });
+        map.fitBounds(myNbhdLayer.getBounds());
+        /*! ... and an open space is selected. */
+        if (openSpaceSelectedValuesObjLenght !== 0) {
+            alert("... and an open space is selected.");
+            myIndivOpenSpaceLayer.clearLayers();
+            $("#Bos_openSpaceSelect").multipleSelect("uncheckAll");
+            $("#openSpaceDeselectBtn").prop("disabled", true);
+            /*! ... and no open space is selected. */
+        } else {
+            alert("... and no open space is selected.")
+        }
+    }
+    myOpenSpaceLayer.bringToBack();
+    myNbhdLayer.bringToBack();
+    myBos_openSpace.bringToBack();
+    myBos_nbhd.bringToBack();
+    if (map.hasLayer(farmersMarkets)) {
+        farmersMarkets.addTo(myActivitiesMarkerClusterGroup)
+    }
+    if (map.hasLayer(publicArt)) {
+        publicArt.addTo(myActivitiesMarkerClusterGroup)
+    }
+    if (map.hasLayer(bikeTrails)) {
+        bikeTrails.bringToFront()
+    }
+              
+    alert(activitiesMarkersCounter);
+    if (activitiesMarkersCounter === 0) {
+        $("#activitiesToggleBtn").prop("disabled", true);
+        $("#activitiesSelect").multipleSelect("disable");
+    }
+    else {
+        $("#activitiesToggleBtn").prop("disabled", false);
+        $("#activitiesSelect").multipleSelect("enable");
+    }
+
+    if ($("#activitiesToggleBtn").hasClass("hideActivities")) {
+        $("#activitiesToggleBtn").removeClass("hideActivities").addClass("showActivities");
+        $("#activitiesToggleBtn").children("i").removeClass("fa-eye").addClass("fa-eye-slash");
+    }
+    
+    $("#mapOverlay").fadeOut();
+    map.spin(false);
+    map.closePopup()
+});
 /*!
     |   |   deselect
     |   |   --------
 */
-$("#map").on("click",".deselectNbhdLink",function(event){var nbhdSelectedValues=$("#Bos_nbhdSelect").multipleSelect("getSelects");var openSpaceSelectedValues=$("#Bos_openSpaceSelect").multipleSelect("getSelects");var openSpaceSelectedValuesObjLenght=Object.keys(openSpaceSelectedValues).length;var nbhdValue=$(".nbhdPopupTitle").text();$("#mapOverlay").show();map.spin(true);event.preventDefault();var nbhdValue=$(".nbhdPopupTitle").text();nbhdSelectedValues=jQuery.grep(nbhdSelectedValues,function(value){return value!=nbhdValue});alert(nbhdSelectedValues);var nbhdSelectedValuesObjLenght=Object.keys(nbhdSelectedValues).length;myNbhdLayer.clearLayers();myOpenSpaceLayer.clearLayers();
-/*! a neighborhood is being deselected, and no open space is selected... */
-if(openSpaceSelectedValuesObjLenght===0){alert("a neighborhood is being deselected, no open space is selected...");myActivitiesMarkerClusterGroup.clearLayers();$("#activitiesSelect").clearMenu();$("#activitiesDeselectBtn").prop("disabled",true);
-/*! ... and there are no other neighborhoods selected. */
-if(nbhdSelectedValuesObjLenght===0){alert("... and there are no other neighborhoods selected.");$("#Bos_nbhdSelect").multipleSelect("uncheckAll");$("#activitiesSelect").multipleSelect("refresh");map.setView([42.31250108313083,-71.05701449023424],11);
-/*! ... and there are one or more other neighborhoods selected. */
-}else{alert("... and there are one or more other neighborhoods selected.");$("#Bos_nbhdSelect").multipleSelect("setSelects",nbhdSelectedValues);$.each(nbhdSelectedValues,function(i,value){L.geoJson(Bos_nbhd,{filter:function(feature,layer){return(feature.properties.Name===value)},onEachFeature:$nbhdSelectedOnEachFeature,style:$nbhdSelectedStyle}).addTo(myNbhdLayer);L.geoJson(Bos_openSpace,{filter:function(feature,layer){if((feature.properties.SITE_NAME)&&(feature.properties.NBHD===value)){return true}else{return false}},onEachFeature:$openSpaceSelectedOnEachFeature,style:$openSpaceSelectedStyle}).addTo(myOpenSpaceLayer);var recreationalActivities=L.geoJson(Bos_recActivities,{onEachFeature:$activitiesOnEachFeature,pointToLayer:$activitiesPointToLayer,filter:function(feature,layer){if(feature.properties.NBHD===value){return true}else{return false}}});myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);$("#activitiesSelect").multipleSelect("refresh");map.addLayer(myActivitiesMarkerClusterGroup)});map.fitBounds(myNbhdLayer.getBounds())}
-/*! a neighborhood is being deselected and an open space is selected */
-}else{alert("a neighborhood is being deselected and an open space is selected");if(openSpaceSelectedValuesObjLenght!==0){$("#Bos_nbhdSelect").multipleSelect("setSelects",nbhdSelectedValues);$.each(nbhdSelectedValues,function(i,value){L.geoJson(Bos_nbhd,{filter:function(feature,layer){return(feature.properties.Name===value)},onEachFeature:$nbhdSelectedOnEachFeature,style:$nbhdSelectedStyle2}).addTo(myNbhdLayer);L.geoJson(Bos_openSpace,{filter:function(feature,layer){if((feature.properties.SITE_NAME)&&(feature.properties.NBHD===value)){return true}else{return false}},onEachFeature:$openSpaceSelectedOnEachFeature,style:$openSpaceSelectedStyle2}).addTo(myOpenSpaceLayer)})}}myOpenSpaceLayer.bringToBack();myNbhdLayer.bringToBack();myBos_openSpace.bringToBack();myBos_nbhd.bringToBack();if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}if(map.hasLayer(bikeTrails)){bikeTrails.bringToFront()}$("#mapOverlay").fadeOut();map.spin(false);map.closePopup()});
+$("#map").on("click", ".deselectNbhdLink", function(event) {
+    var nbhdSelectedValues = $("#Bos_nbhdSelect").multipleSelect("getSelects");
+    var openSpaceSelectedValues = $("#Bos_openSpaceSelect").multipleSelect("getSelects");
+    var openSpaceSelectedValuesObjLenght = Object.keys(openSpaceSelectedValues).length;
+    var nbhdValue = $(".nbhdPopupTitle").text();
+    $("#mapOverlay").show();
+    map.spin(true);
+    event.preventDefault();
+    var nbhdValue = $(".nbhdPopupTitle").text();
+    nbhdSelectedValues = jQuery.grep(nbhdSelectedValues, function(value) {
+        return value != nbhdValue
+    });
+    var nbhdSelectedValuesObjLenght = Object.keys(nbhdSelectedValues).length;
+    myNbhdLayer.clearLayers();
+    myOpenSpaceLayer.clearLayers();
+    /*! a neighborhood is being deselected, and no open space is selected... */
+    if (openSpaceSelectedValuesObjLenght === 0) {
+        alert("a neighborhood is being deselected, no open space is selected...");
+        myActivitiesMarkerClusterGroup.clearLayers();
+        $("#activitiesSelect").clearMenu();
+        $("#activitiesDeselectBtn").prop("disabled", true);
+        /*! ... and there are no other neighborhoods selected. */
+        if (nbhdSelectedValuesObjLenght === 0) {
+            activitiesMarkersCounter = 0;
+            alert("... and there are no other neighborhoods selected.");
+            
+            var recreationalActivities = L.geoJson(Bos_recActivities, {
+                onEachFeature: $activitiesOnEachFeature ,
+                pointToLayer: $activitiesPointToLayer
+            });
+            myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+            map.addLayer(myActivitiesMarkerClusterGroup);
+            $("#Bos_nbhdSelect").multipleSelect("uncheckAll");
+            $("#activitiesSelect").multipleSelect("refresh");
+            
+            map.setView([42.31250108313083, -71.05701449023424], 11);
+            /*! ... and there are one or more other neighborhoods selected. */
+        } else {
+            activitiesMarkersCounter = 0;
+            alert("... and there are one or more other neighborhoods selected.");
+            $("#Bos_nbhdSelect").multipleSelect("setSelects", nbhdSelectedValues);
+            $.each(nbhdSelectedValues, function(i, value) {
+                L.geoJson(Bos_nbhd, {
+                    filter: function(feature, layer) {
+                        return (feature.properties.Name === value)
+                    },
+                    onEachFeature: $nbhdSelectedOnEachFeature,
+                    style: $nbhdSelectedStyle
+                }).addTo(myNbhdLayer);
+                L.geoJson(Bos_openSpace, {
+                    filter: function(feature, layer) {
+                        if ((feature.properties.SITE_NAME) && (feature.properties.NBHD === value)) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    },
+                    onEachFeature: $openSpaceSelectedOnEachFeature,
+                    style: $openSpaceSelectedStyle
+                }).addTo(myOpenSpaceLayer);
+                var recreationalActivities = L.geoJson(Bos_recActivities, {
+                    onEachFeature: $activitiesOnEachFeature,
+                    pointToLayer: $activitiesPointToLayer,
+                    filter: function(feature, layer) {
+                        if (feature.properties.NBHD === value) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                });
+                myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+                $("#activitiesSelect").multipleSelect("refresh");
+                map.addLayer(myActivitiesMarkerClusterGroup)
+            });
+            map.fitBounds(myNbhdLayer.getBounds())
+        }
+        
+        alert(activitiesMarkersCounter);
+        if (activitiesMarkersCounter === 0) {
+            $("#activitiesToggleBtn").prop("disabled", true);
+            $("#activitiesSelect").multipleSelect("disable");
+        }
+        else {
+            $("#activitiesToggleBtn").prop("disabled", false);
+            $("#activitiesSelect").multipleSelect("enable");
+        }
+    
+        /*! a neighborhood is being deselected and an open space is selected */
+    } else {
+        alert("a neighborhood is being deselected and an open space is selected");
+        if (openSpaceSelectedValuesObjLenght !== 0) {
+            $("#Bos_nbhdSelect").multipleSelect("setSelects", nbhdSelectedValues);
+            $.each(nbhdSelectedValues, function(i, value) {
+                L.geoJson(Bos_nbhd, {
+                    filter: function(feature, layer) {
+                        return (feature.properties.Name === value)
+                    },
+                    onEachFeature: $nbhdSelectedOnEachFeature,
+                    style: $nbhdSelectedStyle2
+                }).addTo(myNbhdLayer);
+                L.geoJson(Bos_openSpace, {
+                    filter: function(feature, layer) {
+                        if ((feature.properties.SITE_NAME) && (feature.properties.NBHD === value)) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    },
+                    onEachFeature: $openSpaceSelectedOnEachFeature,
+                    style: $openSpaceSelectedStyle2
+                }).addTo(myOpenSpaceLayer)
+            })
+        }
+    }
+    myOpenSpaceLayer.bringToBack();
+    myNbhdLayer.bringToBack();
+    myBos_openSpace.bringToBack();
+    myBos_nbhd.bringToBack();
+    if (map.hasLayer(farmersMarkets)) {
+        farmersMarkets.addTo(myActivitiesMarkerClusterGroup)
+    }
+    if (map.hasLayer(publicArt)) {
+        publicArt.addTo(myActivitiesMarkerClusterGroup)
+    }
+    if (map.hasLayer(bikeTrails)) {
+        bikeTrails.bringToFront()
+    }
+
+    
+    $("#mapOverlay").fadeOut();
+    map.spin(false);
+    map.closePopup()
+});
 /*!
  *  |   Open Space Select Menu
  *  |   ======================
  */
-$("#Bos_openSpaceSelect").multipleSelect({placeholder:"Select an open space...",single:true,width:"100%",filter:true,onClick:function(){var nbhdSelectedValues=$("#Bos_nbhdSelect").multipleSelect("getSelects");var nbhdSelectedValuesObjLenght=Object.keys(nbhdSelectedValues).length;myIndivOpenSpaceLayer.clearLayers();myActivitiesMarkerClusterGroup.clearLayers();$("#activitiesSelect").clearMenu();$("#mapOverlay").show();map.spin(true);setTimeout(function(){var openSpaceSelectedValues=$("#Bos_openSpaceSelect").multipleSelect("getSelects");var openSpaceSelectedValuesObjLenght=Object.keys(openSpaceSelectedValues).length;
-/*! an open space is being selected and no neighborhoods are selected */
-if(nbhdSelectedValues.length===0){alert("an open space is being selected and no neighborhoods are selected");L.geoJson(Bos_openSpace,{filter:function(feature,layer){return(feature.properties.SITE_NAME==openSpaceSelectedValues)},onEachFeature:$indivOpenSpaceOnEachFeature,style:$indivOpenSpaceStyle}).addTo(myIndivOpenSpaceLayer);$("#activitiesSelect").multipleSelect("refresh");map.fitBounds(myIndivOpenSpaceLayer.getBounds());
-/*! an open space is being selected and one or more neighborhoods are selected */
-}else{alert("an open space is being selected and one or more neighborhoods are selected");myNbhdLayer.clearLayers();myOpenSpaceLayer.clearLayers();$.each(nbhdSelectedValues,function(i,value){L.geoJson(Bos_nbhd,{filter:function(feature,layer){return(feature.properties.Name===value)},onEachFeature:$nbhdSelectedOnEachFeature,style:$nbhdSelectedStyle2}).addTo(myNbhdLayer);L.geoJson(Bos_openSpace,{filter:function(feature,layer){if((feature.properties.SITE_NAME)&&(feature.properties.NBHD===value)){return true}else{return false}},onEachFeature:$openSpaceSelectedOnEachFeature,style:$openSpaceSelectedStyle2}).addTo(myOpenSpaceLayer)});L.geoJson(Bos_openSpace,{filter:function(feature,layer){return(feature.properties.SITE_NAME==openSpaceSelectedValues)},onEachFeature:$indivOpenSpaceOnEachFeature,style:$indivOpenSpaceStyle}).addTo(myIndivOpenSpaceLayer);$("#activitiesSelect").multipleSelect("refresh");map.fitBounds(myIndivOpenSpaceLayer.getBounds())}if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}if(map.hasLayer(bikeTrails)){bikeTrails.bringToFront()}$("#mapOverlay").fadeOut();map.spin(false);$("#activitiesDeselectBtn").prop("disabled",true)},10)},onClose:function(){setTimeout(function(){var openSpaceSelectedValues=$("#Bos_openSpaceSelect").multipleSelect("getSelects");var openSpaceSelectedValuesObjLenght=Object.keys(openSpaceSelectedValues).length;if(openSpaceSelectedValuesObjLenght===0){$("#openSpaceDeselectBtn").prop("disabled",true)}else{$("#openSpaceDeselectBtn").prop("disabled",false)}},10)}});
+$("#Bos_openSpaceSelect").multipleSelect({
+    placeholder: "Select an open space...",
+    single: true,
+    width: "100%",
+    filter: true,
+    onClick: function() {
+        var nbhdSelectedValues = $("#Bos_nbhdSelect").multipleSelect("getSelects");
+        var nbhdSelectedValuesObjLenght = Object.keys(nbhdSelectedValues).length;
+        myIndivOpenSpaceLayer.clearLayers();
+        myActivitiesMarkerClusterGroup.clearLayers();
+        $("#activitiesSelect").clearMenu();
+        $("#mapOverlay").show();
+        map.spin(true);
+        setTimeout(function() {
+            var openSpaceSelectedValues = $("#Bos_openSpaceSelect").multipleSelect("getSelects");
+            var openSpaceSelectedValuesObjLenght = Object.keys(openSpaceSelectedValues).length;
+            /*! an open space is being selected and no neighborhoods are selected */
+            if (nbhdSelectedValues.length === 0) {
+                activitiesMarkersCounter = 0;
+                alert("an open space is being selected and no neighborhoods are selected");
+                L.geoJson(Bos_openSpace, {
+                    filter: function(feature, layer) {
+                        return (feature.properties.SITE_NAME == openSpaceSelectedValues)
+                    },
+                    onEachFeature: $indivOpenSpaceOnEachFeature,
+                    style: $indivOpenSpaceStyle
+                }).addTo(myIndivOpenSpaceLayer);
+                $("#activitiesSelect").multipleSelect("refresh");
+                map.fitBounds(myIndivOpenSpaceLayer.getBounds());
+            /*! an open space is being selected and one or more neighborhoods are selected */
+            } else {
+                activitiesMarkersCounter = 0;
+                alert("an open space is being selected and one or more neighborhoods are selected");
+                myNbhdLayer.clearLayers();
+                myOpenSpaceLayer.clearLayers();
+                $.each(nbhdSelectedValues, function(i, value) {
+                    L.geoJson(Bos_nbhd, {
+                        filter: function(feature, layer) {
+                            return (feature.properties.Name === value)
+                        },
+                        onEachFeature: $nbhdSelectedOnEachFeature,
+                        style: $nbhdSelectedStyle2
+                    }).addTo(myNbhdLayer);
+                    L.geoJson(Bos_openSpace, {
+                        filter: function(feature, layer) {
+                            if ((feature.properties.SITE_NAME) && (feature.properties.NBHD === value)) {
+                                return true
+                            } else {
+                                return false
+                            }
+                        },
+                        onEachFeature: $openSpaceSelectedOnEachFeature,
+                        style: $openSpaceSelectedStyle2
+                    }).addTo(myOpenSpaceLayer)
+                });
+                L.geoJson(Bos_openSpace, {
+                    filter: function(feature, layer) {
+                        return (feature.properties.SITE_NAME == openSpaceSelectedValues)
+                    },
+                    onEachFeature: $indivOpenSpaceOnEachFeature,
+                    style: $indivOpenSpaceStyle
+                }).addTo(myIndivOpenSpaceLayer);
+                $("#activitiesSelect").multipleSelect("refresh");
+                map.fitBounds(myIndivOpenSpaceLayer.getBounds())
+            }
+            if (map.hasLayer(farmersMarkets)) {
+                farmersMarkets.addTo(myActivitiesMarkerClusterGroup)
+            }
+            if (map.hasLayer(publicArt)) {
+                publicArt.addTo(myActivitiesMarkerClusterGroup)
+            }
+            if (map.hasLayer(bikeTrails)) {
+                bikeTrails.bringToFront()
+            }
+            
+            alert(activitiesMarkersCounter);
+            if (activitiesMarkersCounter === 0) {
+                $("#activitiesToggleBtn").prop("disabled", true);
+                $("#activitiesSelect").multipleSelect("disable");
+            }
+            else {
+                $("#activitiesToggleBtn").prop("disabled", false);
+                $("#activitiesSelect").multipleSelect("enable");
+            }
+
+            if ($("#activitiesToggleBtn").hasClass("hideActivities")) {
+                $("#activitiesToggleBtn").removeClass("hideActivities").addClass("showActivities");
+                $("#activitiesToggleBtn").children("i").removeClass("fa-eye").addClass("fa-eye-slash");
+            }
+            
+            $("#mapOverlay").fadeOut();
+            map.spin(false);
+            $("#activitiesDeselectBtn").prop("disabled", true)
+        }, 10)
+    },
+    onClose: function() {
+        setTimeout(function() {
+            var openSpaceSelectedValues = $("#Bos_openSpaceSelect").multipleSelect("getSelects");
+            var openSpaceSelectedValuesObjLenght = Object.keys(openSpaceSelectedValues).length;
+            if (openSpaceSelectedValuesObjLenght === 0) {
+                $("#openSpaceDeselectBtn").prop("disabled", true)
+            } else {
+                $("#openSpaceDeselectBtn").prop("disabled", false)
+            }
+        }, 10)
+    }
+});
 /*!
  *  |   Open Space Deselect Button
  *  |   ==========================
  */
-$("#openSpaceDeselectBtn").click(function(){var nbhdSelectedValues=$("#Bos_nbhdSelect").multipleSelect("getSelects");var nbhdSelectedValuesObjLenght=Object.keys(nbhdSelectedValues).length;var openSpaceSelectedValues=$("#Bos_openSpaceSelect").multipleSelect("getSelects");var openSpaceSelectedValuesObjLenght=Object.keys(openSpaceSelectedValues).length;myIndivOpenSpaceLayer.clearLayers();$("#Bos_openSpaceSelect").multipleSelect("uncheckAll");myActivitiesMarkerClusterGroup.clearLayers();$("#activitiesSelect").clearMenu();$("#mapOverlay").show();map.spin(true);
-/*! an open space is being deselected and no neighborhoods are selected */
-if(nbhdSelectedValuesObjLenght===0){alert("an open space is being deselected and no neighborhoods are selected");map.setView([42.31250108313083,-71.05701449023424],11);
-/*! an open space is being deselected and one or more neighborhoods are selected */
-}else{alert("an open space is being deselected and one or more neighborhoods are selected");myNbhdLayer.clearLayers();myOpenSpaceLayer.clearLayers();$.each(nbhdSelectedValues,function(i,value){L.geoJson(Bos_nbhd,{filter:function(feature,layer){return(feature.properties.Name==value)},onEachFeature:$nbhdSelectedOnEachFeature,style:$nbhdSelectedStyle}).addTo(myNbhdLayer);L.geoJson(Bos_openSpace,{filter:function(feature,layer){if((feature.properties.SITE_NAME)&&(feature.properties.NBHD==value)){return true}else{return false}},onEachFeature:$openSpaceSelectedOnEachFeature,style:$openSpaceSelectedStyle}).addTo(myOpenSpaceLayer);var recreationalActivities=L.geoJson(Bos_recActivities,{onEachFeature:$activitiesOnEachFeature,pointToLayer:$activitiesPointToLayer,filter:function(feature,layer){if(feature.properties.NBHD==value){return true}else{return false}}});myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);map.addLayer(myActivitiesMarkerClusterGroup)});map.fitBounds(myNbhdLayer.getBounds())}$("#activitiesSelect").multipleSelect("refresh");if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}if(map.hasLayer(bikeTrails)){bikeTrails.bringToFront()}$("#mapOverlay").fadeOut();map.spin(false);$("#openSpaceDeselectBtn").prop("disabled",true);$("#activitiesDeselectBtn").prop("disabled",true)});
+$("#openSpaceDeselectBtn").click(function() {
+    var nbhdSelectedValues = $("#Bos_nbhdSelect").multipleSelect("getSelects");
+    var nbhdSelectedValuesObjLenght = Object.keys(nbhdSelectedValues).length;
+    var openSpaceSelectedValues = $("#Bos_openSpaceSelect").multipleSelect("getSelects");
+    var openSpaceSelectedValuesObjLenght = Object.keys(openSpaceSelectedValues).length;
+    myIndivOpenSpaceLayer.clearLayers();
+    $("#Bos_openSpaceSelect").multipleSelect("uncheckAll");
+    myActivitiesMarkerClusterGroup.clearLayers();
+    $("#activitiesSelect").clearMenu();
+    $("#mapOverlay").show();
+    map.spin(true);
+    activitiesMarkersCounter = 0;
+    /*! an open space is being deselected and no neighborhoods are selected */
+    if (nbhdSelectedValuesObjLenght === 0) {
+        alert("an open space is being deselected and no neighborhoods are selected");
+        var recreationalActivities = L.geoJson(Bos_recActivities, {
+            onEachFeature: $activitiesOnEachFeature ,
+            pointToLayer: $activitiesPointToLayer
+        });
+        myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+        map.addLayer(myActivitiesMarkerClusterGroup);
+        $("#activitiesSelect").multipleSelect("refresh");
+        map.setView([42.31250108313083, -71.05701449023424], 11);
+        /*! an open space is being deselected and one or more neighborhoods are selected */
+    } else {
+        alert("an open space is being deselected and one or more neighborhoods are selected");
+        myNbhdLayer.clearLayers();
+        myOpenSpaceLayer.clearLayers();
+        $.each(nbhdSelectedValues, function(i, value) {
+            L.geoJson(Bos_nbhd, {
+                filter: function(feature, layer) {
+                    return (feature.properties.Name == value)
+                },
+                onEachFeature: $nbhdSelectedOnEachFeature,
+                style: $nbhdSelectedStyle
+            }).addTo(myNbhdLayer);
+            L.geoJson(Bos_openSpace, {
+                filter: function(feature, layer) {
+                    if ((feature.properties.SITE_NAME) && (feature.properties.NBHD == value)) {
+                        return true
+                    } else {
+                        return false
+                    }
+                },
+                onEachFeature: $openSpaceSelectedOnEachFeature,
+                style: $openSpaceSelectedStyle
+            }).addTo(myOpenSpaceLayer);
+            var recreationalActivities = L.geoJson(Bos_recActivities, {
+                onEachFeature: $activitiesOnEachFeature,
+                pointToLayer: $activitiesPointToLayer,
+                filter: function(feature, layer) {
+                    if (feature.properties.NBHD == value) {
+                        return true
+                    } else {
+                        return false
+                    }
+                }
+            });
+            myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+            map.addLayer(myActivitiesMarkerClusterGroup)
+        });
+        map.fitBounds(myNbhdLayer.getBounds())
+    }
+    $("#activitiesSelect").multipleSelect("refresh");
+    if (map.hasLayer(farmersMarkets)) {
+        farmersMarkets.addTo(myActivitiesMarkerClusterGroup)
+    }
+    if (map.hasLayer(publicArt)) {
+        publicArt.addTo(myActivitiesMarkerClusterGroup)
+    }
+    if (map.hasLayer(bikeTrails)) {
+        bikeTrails.bringToFront()
+    }
+    
+    alert(activitiesMarkersCounter);
+    if (activitiesMarkersCounter === 0) {
+        $("#activitiesToggleBtn").prop("disabled", true);
+        $("#activitiesSelect").multipleSelect("disable");
+    }
+    else {
+        $("#activitiesToggleBtn").prop("disabled", false);
+        $("#activitiesSelect").multipleSelect("enable");
+    }
+
+    if ($("#activitiesToggleBtn").hasClass("hideActivities")) {
+        $("#activitiesToggleBtn").removeClass("hideActivities").addClass("showActivities");
+        $("#activitiesToggleBtn").children("i").removeClass("fa-eye").addClass("fa-eye-slash");
+    }
+    
+    $("#mapOverlay").fadeOut();
+    map.spin(false);
+    $("#openSpaceDeselectBtn").prop("disabled", true);
+    $("#activitiesDeselectBtn").prop("disabled", true)
+});
 /*!
  *  |   Open Space Popup
  *  |   ================
  *  |   |   select
  *  |   |   ------
  */
-$("#map").on("click",".selectOpenSpaceLink",function(event){event.preventDefault();var nbhdSelectedValues=$("#Bos_nbhdSelect").multipleSelect("getSelects");var nbhdSelectedValuesObjLenght=Object.keys(nbhdSelectedValues).length;var openSpaceSelectedValues=$("#Bos_openSpaceSelect").multipleSelect("getSelects");var openSpaceSelectedValuesObjLenght=Object.keys(openSpaceSelectedValues).length;var openSpaceValue=$(".openSpacePopupTitle").text();myIndivOpenSpaceLayer.clearLayers();myActivitiesMarkerClusterGroup.clearLayers();$("#Bos_openSpaceSelect").multipleSelect("setSelects",[openSpaceValue]);$("#activitiesSelect").clearMenu();$("#openSpaceDeselectBtn").prop("disabled",false);$("#activitiesDeselectBtn").prop("disabled",true);$("#mapOverlay").show();map.spin(true);
-/*! an open space is being selected and no neighborhoods are selected */
-if(nbhdSelectedValuesObjLenght===0){alert("an open space is being selected and no neighborhoods are selected.");L.geoJson(Bos_openSpace,{filter:function(feature,layer){return(feature.properties.SITE_NAME===openSpaceValue)},onEachFeature:$indivOpenSpaceOnEachFeature,style:$indivOpenSpaceStyle}).addTo(myIndivOpenSpaceLayer);$("#activitiesSelect").multipleSelect("refresh");map.fitBounds(myIndivOpenSpaceLayer.getBounds());
-/*! an open space is being selected and one or more neighborhoods are selected */
-}else{alert("an open space is being selected and one or more neighborhoods are selected");myNbhdLayer.clearLayers();myOpenSpaceLayer.clearLayers();$.each(nbhdSelectedValues,function(i,value){L.geoJson(Bos_nbhd,{filter:function(feature,layer){return(feature.properties.Name===value)},onEachFeature:$nbhdSelectedOnEachFeature,style:$nbhdSelectedStyle2}).addTo(myNbhdLayer);L.geoJson(Bos_openSpace,{filter:function(feature,layer){if((feature.properties.SITE_NAME)&&(feature.properties.NBHD===value)){return true}else{return false}},onEachFeature:$openSpaceSelectedOnEachFeature,style:$openSpaceSelectedStyle2}).addTo(myOpenSpaceLayer)});L.geoJson(Bos_openSpace,{filter:function(feature,layer){return(feature.properties.SITE_NAME===openSpaceValue)},onEachFeature:$indivOpenSpaceOnEachFeature,style:$indivOpenSpaceStyle}).addTo(myIndivOpenSpaceLayer);$("#activitiesSelect").multipleSelect("refresh");map.fitBounds(myIndivOpenSpaceLayer.getBounds())}if(map.hasLayer(farmersMarkets)){farmersMarkets.addTo(myActivitiesMarkerClusterGroup)}if(map.hasLayer(publicArt)){publicArt.addTo(myActivitiesMarkerClusterGroup)}if(map.hasLayer(bikeTrails)){bikeTrails.bringToFront()}map.closePopup();$("#mapOverlay").fadeOut();map.spin(false)});
+$("#map").on("click", ".selectOpenSpaceLink", function(event) {
+    event.preventDefault();
+    var nbhdSelectedValues = $("#Bos_nbhdSelect").multipleSelect("getSelects");
+    var nbhdSelectedValuesObjLenght = Object.keys(nbhdSelectedValues).length;
+    var openSpaceSelectedValues = $("#Bos_openSpaceSelect").multipleSelect("getSelects");
+    var openSpaceSelectedValuesObjLenght = Object.keys(openSpaceSelectedValues).length;
+    var openSpaceValue = $(".openSpacePopupTitle").text();
+    myIndivOpenSpaceLayer.clearLayers();
+    myActivitiesMarkerClusterGroup.clearLayers();
+    $("#Bos_openSpaceSelect").multipleSelect("setSelects", [openSpaceValue]);
+    $("#activitiesSelect").clearMenu();
+    $("#openSpaceDeselectBtn").prop("disabled", false);
+    $("#activitiesDeselectBtn").prop("disabled", true);
+    $("#mapOverlay").show();
+    map.spin(true);
+    activitiesMarkersCounter = 0;
+    /*! an open space is being selected and no neighborhoods are selected */
+    if (nbhdSelectedValuesObjLenght === 0) {
+        alert("an open space is being selected and no neighborhoods are selected.");
+        L.geoJson(Bos_openSpace, {
+            filter: function(feature, layer) {
+                return (feature.properties.SITE_NAME === openSpaceValue)
+            },
+            onEachFeature: $indivOpenSpaceOnEachFeature,
+            style: $indivOpenSpaceStyle
+        }).addTo(myIndivOpenSpaceLayer);
+        $("#activitiesSelect").multipleSelect("refresh");
+        map.fitBounds(myIndivOpenSpaceLayer.getBounds());
+        /*! an open space is being selected and one or more neighborhoods are selected */
+    } else {
+        alert("an open space is being selected and one or more neighborhoods are selected");
+        myNbhdLayer.clearLayers();
+        myOpenSpaceLayer.clearLayers();
+        $.each(nbhdSelectedValues, function(i, value) {
+            L.geoJson(Bos_nbhd, {
+                filter: function(feature, layer) {
+                    return (feature.properties.Name === value)
+                },
+                onEachFeature: $nbhdSelectedOnEachFeature,
+                style: $nbhdSelectedStyle2
+            }).addTo(myNbhdLayer);
+            L.geoJson(Bos_openSpace, {
+                filter: function(feature, layer) {
+                    if ((feature.properties.SITE_NAME) && (feature.properties.NBHD === value)) {
+                        return true
+                    } else {
+                        return false
+                    }
+                },
+                onEachFeature: $openSpaceSelectedOnEachFeature,
+                style: $openSpaceSelectedStyle2
+            }).addTo(myOpenSpaceLayer)
+        });
+        L.geoJson(Bos_openSpace, {
+            filter: function(feature, layer) {
+                return (feature.properties.SITE_NAME === openSpaceValue)
+            },
+            onEachFeature: $indivOpenSpaceOnEachFeature,
+            style: $indivOpenSpaceStyle
+        }).addTo(myIndivOpenSpaceLayer);
+        $("#activitiesSelect").multipleSelect("refresh");
+        map.fitBounds(myIndivOpenSpaceLayer.getBounds())
+    }
+    if (map.hasLayer(farmersMarkets)) {
+        farmersMarkets.addTo(myActivitiesMarkerClusterGroup)
+    }
+    if (map.hasLayer(publicArt)) {
+        publicArt.addTo(myActivitiesMarkerClusterGroup)
+    }
+    if (map.hasLayer(bikeTrails)) {
+        bikeTrails.bringToFront()
+    }
+            
+    alert(activitiesMarkersCounter);
+    if (activitiesMarkersCounter === 0) {
+        $("#activitiesToggleBtn").prop("disabled", true);
+        $("#activitiesSelect").multipleSelect("disable");
+    }
+    else {
+        $("#activitiesToggleBtn").prop("disabled", false);
+        $("#activitiesSelect").multipleSelect("enable");
+    }
+    
+    if ($("#activitiesToggleBtn").hasClass("hideActivities")) {
+        $("#activitiesToggleBtn").removeClass("hideActivities").addClass("showActivities");
+        $("#activitiesToggleBtn").children("i").removeClass("fa-eye").addClass("fa-eye-slash");
+    }
+
+            
+    map.closePopup();
+    $("#mapOverlay").fadeOut();
+    map.spin(false)
+});
 /*!
  *  |   |   deselect
  *  |   |   --------
@@ -276,9 +955,17 @@ $("#map").on("click", ".deselectOpenSpaceLink", function(event) {
     $("#activitiesSelect").clearMenu();
     $("#mapOverlay").show();
     map.spin(true);
+    activitiesMarkersCounter = 0;
     /*! an open space is being deselected and no neighborhoods are selected. */
     if (nbhdSelectedValuesObjLenght === 0) {
         alert("an open space is being deselected and no neighborhoods are selected.");
+        var recreationalActivities = L.geoJson(Bos_recActivities, {
+            onEachFeature: $activitiesOnEachFeature ,
+            pointToLayer: $activitiesPointToLayer
+        });
+        myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+        map.addLayer(myActivitiesMarkerClusterGroup);
+        $("#activitiesSelect").multipleSelect("refresh");
         map.setView([42.31250108313083, -71.05701449023424], 11)
     }
     /*! an open space is being deselected and one or more neighborhoods are selected. */
@@ -331,6 +1018,17 @@ $("#map").on("click", ".deselectOpenSpaceLink", function(event) {
     if (map.hasLayer(bikeTrails)) {
         bikeTrails.bringToFront()
     }
+    
+    alert(activitiesMarkersCounter);
+    if (activitiesMarkersCounter === 0) {
+        $("#activitiesToggleBtn").prop("disabled", true);
+        $("#activitiesSelect").multipleSelect("disable");
+    }
+    else {
+        $("#activitiesToggleBtn").prop("disabled", false);
+        $("#activitiesSelect").multipleSelect("enable");
+    }
+    
     $("#mapOverlay").fadeOut();
     map.spin(false);
     $("#openSpaceDeselectBtn").prop('disabled', true);
@@ -466,7 +1164,14 @@ $("#activitiesDeselectBtn").click(function() {
     alert ("an activity is being deselected...");
     /*! ... and no neighborhoods are selected, and no open space is selected. */
     if ((nbhdSelectedValuesObjLenght === 0) && (openSpaceSelectedValuesObjLenght === 0)) {
+          activitiesMarkersCounter = 0;
           alert("... and no neighborhoods are selected, and no open space is selected.");
+          var recreationalActivities = L.geoJson(Bos_recActivities, {
+              onEachFeature: $activitiesOnEachFeature ,
+              pointToLayer: $activitiesPointToLayer
+          });
+          myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+          map.addLayer(myActivitiesMarkerClusterGroup);
           $("#activitiesSelect").clearMenu();
           $("#activitiesSelect").multipleSelect("refresh");
           map.setView([42.31250108313083, -71.05701449023424], 11);
@@ -510,6 +1215,17 @@ $("#activitiesDeselectBtn").click(function() {
     if (map.hasLayer(bikeTrails)) {
         bikeTrails.bringToFront()
     }
+    
+    alert(activitiesMarkersCounter);
+    if (activitiesMarkersCounter === 0) {
+        $("#activitiesToggleBtn").prop("disabled", true);
+        $("#activitiesSelect").multipleSelect("disable");
+    }
+    else {
+        $("#activitiesToggleBtn").prop("disabled", false);
+        $("#activitiesSelect").multipleSelect("enable");
+    }
+    
     $("#mapOverlay").fadeOut();
     map.spin(false);
     $(this).prop('disabled', true);
@@ -520,19 +1236,139 @@ $("#activitiesDeselectBtn").click(function() {
  *  |   ========================
  */
  
-/*$("#activitiesToggleBtn").click(function(event) {
+/*
+$("#activitiesToggleBtn").click(function(event) {
     event.preventDefault();
-    if(map.hasLayer(myActivitiesMarkerClusterGroup)) {
+    if(map.hasLayer(selectedActivityMarkers)) {
       $(this).removeClass('selected');
-      map.removeLayer(myActivitiesMarkerClusterGroup);
+      map.removeLayer(selectedActivityMarkers);
                 
     } else {
-        map.addLayer(myActivitiesMarkerClusterGroup);        
+        map.addLayer(selectedActivityMarkers);        
         $(this).addClass('selected');
    }
 });
 */
 
+$("#activitiesToggleBtn").click(function(event) {
+    var nbhdSelectedValues = $("#Bos_nbhdSelect").multipleSelect("getSelects");
+    var nbhdSelectedValuesObjLenght = Object.keys(nbhdSelectedValues).length;
+    var openSpaceSelectedValues = $("#Bos_openSpaceSelect").multipleSelect("getSelects");
+    var openSpaceSelectedValuesObjLenght = Object.keys(openSpaceSelectedValues).length;
+    event.preventDefault();
+    myActivitiesMarkerClusterGroup.clearLayers();
+    $("#activitiesSelect").clearMenu();
+    $("#activitiesDeselectBtn").prop("disabled", true);
+    $("#mapOverlay").show();
+    map.spin(true);
+    activitiesMarkersCounter = 0;
+    
+    if(map.hasLayer(myActivitiesMarkerClusterGroup) && ($(this).hasClass('showActivities'))) {
+      alert('hide activities');
+      
+      $("#activitiesSelect").multipleSelect("uncheckAll");
+      $("#activitiesSelect").multipleSelect("disable");
+      $(this).removeClass('showActivities').addClass('hideActivities');
+      $(this).children('i').removeClass('fa-eye-slash').addClass('fa-eye');
+                
+    } else if ($(this).hasClass('hideActivities')) {
+        alert('show activities');
+        
+        /*map.addLayer(myActivitiesMarkerClusterGroup);   */     
+        $(this).removeClass('hideActivities').addClass('showActivities');
+        $("#activitiesSelect").multipleSelect("enable");
+        $(this).children('i').removeClass('fa-eye').addClass('fa-eye-slash');
+        
+            /*! if no neighborhoods are selected... */
+            if (nbhdSelectedValuesObjLenght === 0) {
+                alert("no neighborhoods are selected...");
+                    
+                /*! ... and no open space is selected. */
+                if (openSpaceSelectedValuesObjLenght === 0) {
+                    alert("... and no open space is selected.");
+                    var recreationalActivities = L.geoJson(Bos_recActivities, {
+                        onEachFeature: $activitiesOnEachFeature ,
+                        pointToLayer: $activitiesPointToLayer
+                    });
+                    myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+                    map.addLayer(myActivitiesMarkerClusterGroup);
+                    $("#activitiesSelect").multipleSelect("refresh");
+                    map.setView([42.31250108313083, -71.05701449023424], 11);
+                /*! ... and an open space is selected. */
+                } else {
+                    alert("... and an open space is selected.");
+                    var selectedActivityMarkers = L.geoJson(Bos_openSpace, {
+                        filter: function(feature, layer) {
+                            return (feature.properties.SITE_NAME == openSpaceSelectedValues)
+                        },
+                        onEachFeature: $indivOpenSpaceOnEachFeature,
+                        style: $indivOpenSpaceStyle
+                    })
+                }
+                
+            }
+            /*! if one or more neighborhoods are selected... */
+            else {
+                alert("one or more neighborhoods are selected...");
+               /*! ... and no open space is selected. */ 
+                if (openSpaceSelectedValuesObjLenght === 0) {
+                    alert("... and no open space is selected.");
+                
+                    $.each(nbhdSelectedValues, function(i, value) {
+                      
+                        var recreationalActivities = L.geoJson(Bos_recActivities, {
+                            onEachFeature: $activitiesOnEachFeature,
+                            pointToLayer: $activitiesPointToLayer,
+                            filter: function(feature, layer) {
+                                if (feature.properties.NBHD === value) {
+                                    return true
+                                } else {
+                                    return false
+                                }
+                            }
+                        });
+                        myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);
+                        $("#activitiesSelect").multipleSelect("refresh");
+                        map.addLayer(myActivitiesMarkerClusterGroup)
+                      
+                    });
+                    
+                }
+               /*! ... and an open space is selected. */ 
+                else {
+                    alert("... and an open space is selected.");
+                    var selectedActivityMarkers = L.geoJson(Bos_openSpace, {
+                        filter: function(feature, layer) {
+                            return (feature.properties.SITE_NAME == openSpaceSelectedValues)
+                        },
+                        onEachFeature: $indivOpenSpaceOnEachFeature,
+                        style: $indivOpenSpaceStyle
+                    })
+
+                }
+                    
+                    
+            }
+        
+   }
+   
+    if (map.hasLayer(farmersMarkets)) {
+        farmersMarkets.addTo(myActivitiesMarkerClusterGroup)
+    }
+    if (map.hasLayer(publicArt)) {
+        publicArt.addTo(myActivitiesMarkerClusterGroup)
+    }
+    if (map.hasLayer(bikeTrails)) {
+        bikeTrails.bringToFront()
+    }
+    
+    alert(activitiesMarkersCounter);
+    
+    
+    $("#mapOverlay").fadeOut();
+    map.spin(false);
+    
+});
 
  
 
@@ -559,8 +1395,8 @@ $(function() {
     fullscreenchange();
 });		
 /*! disable alerts and console logs */
-window.alert=function(){};
-console.log=function(){};
+/*window.alert=function(){};
+console.log=function(){};*/
 
     })
 (jQuery);
