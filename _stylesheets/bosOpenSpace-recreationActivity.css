@@ -36,14 +36,17 @@ html,body,.gridContainer,.mapWrapper,#map{height:100%}
 .mapWrapper{display:block;float:left;clear:both;width:100%;margin:0;padding:0;position:relative}
 #map{clear:both;width:100%;z-index:9}
 .selectorsWrapper{display:block;width:100%;padding:0 10px 0 54px;margin:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute;top:10px;left:0}
-.selectorsContainer{display:block;float:left;clear:both;width:100%;margin:0;padding:4px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;border:2px solid rgba(0,0,0,0.2);background-clip:padding-box;border-radius:4px;background-color:#FFF;background-color:rgba(255,255,255,.5);position:relative;z-index:9999}
+.selectorsContainer{display:block;float:left;clear:both;width:100%;margin:0;padding:3px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;border:1px solid rgba(0,0,0,0.2);background-clip:padding-box;border-radius:4px;background-color:#FFF;background-color:rgba(255,255,255,.5);position:relative;z-index:9999}
 .nbhdFormWrapper,.openSpaceFormWrapper,.activitiesFormWrapper{display:block;clear:both;float:left;width:100%;margin:0;padding:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:relative}
 .nbhdFormWrapper{z-index:11}
 .openSpaceFormWrapper{z-index:10}
 .activitiesFormWrapper{z-index:9}
-.openSpace-fluidColumn{float:left;width:100%;margin-right:-44px}
-.openSpace-fluidColumnContent{margin-right:44px}
-.openSpace-fixedWidthColumn{float:left;width:44px}
+.nbhd-fluidColumn{float:left;width:100%;margin-right:-44px}
+.nbhd-fluidColumnContent{margin-right:44px}
+.nbhd-fixedWidthColumn{float:left;width:44px}
+.openSpace-fluidColumn{float:left;width:100%;margin-right:-88px}
+.openSpace-fluidColumnContent{margin-right:88px}
+.openSpace-fixedWidthColumn{float:left;width:88px}
 .activities-fluidColumn{float:left;width:100%;margin-right:-88px}
 .activities-fluidColumnContent{margin-right:88px}
 .activities-fixedWidthColumn{float:left;width:88px}
@@ -81,7 +84,7 @@ button{display:block;float:left;width:44px;height:26px;padding:0;overflow:hidden
 .leaflet-control-zoomhome a {line-height:30px}
 /*! multiple-select */
 .ms-drop ul > li label span{margin-left:.5em}
-.ms-drop ul > li{line-height:1.5}
+.ms-drop ul > li{line-height:24px}
 .ms-parent{font-size:75%}
 /*! Header */
 .mainHeaderWrapper{display:block;width:100%;height:2.875em;position:absolute;top:0;left:0;z-index:8;background-color:Honeydew}
