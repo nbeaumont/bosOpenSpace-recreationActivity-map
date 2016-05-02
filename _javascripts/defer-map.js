@@ -107,94 +107,10 @@ var bikeTrailsUrl="http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/bikeTrai
  *  |   =======================
  */
 /*! on each feature */
-function $activitiesOnEachFeature(feature, layer) {
-    if (feature.properties) {
-        var popupText = "";
-        if (feature.properties.Name) {
-            popupText += "<strong class='openSpacePopupTitle'>" + feature.properties.Name + "</strong><br>"
-        } else {}
-        if (feature.properties.Type) {
-            popupText += "<strong class='openSpacePopupSubTitle'>" + feature.properties.Type + "</strong><br>"
-        } else {}
-        if (feature.properties.Address) {
-            popupText += '<i class="fa fa-map-marker"></i> ' + feature.properties.Address + "<br>"
-        } else {}
-        if (feature.properties.Website) {
-            popupText += '<i class="fa fa-globe"></i> <a href=' + feature.properties.Website + " target='_blank'>Website</a><br>"
-        } else {}
-        if (feature.properties.Link1) {
-            popupText += '<i class="fa fa-wikipedia-w"></i> <a href=' + feature.properties.Link1 + " target='_blank'>View on Wikipedia</a><br>"
-        } else {}
-        if (feature.properties.Link3) {
-            popupText += '<i class="fa fa-google"></i> <a href=' + feature.properties.Link3 + " target='_blank'>View in Google Maps</a><br>"
-        } else {}
-        if (feature.properties.Descr) {
-            popupText += "<em>" + feature.properties.Descr + "</em><br>"
-        } else {}
-        if (feature.properties.Activity) {
-            popupText += "<strong>Activities:</strong> " + feature.properties.Activity + "<br>"
-        } else {}
-        layer.bindPopup(popupText)
-    } else {}
-    if (feature.properties && feature.properties.Category) {
-        $("#activitiesSelect").append($("<option>", {
-            value: feature.properties.Category,
-            text: feature.properties.Category
-        }));
-        $("#activitiesSelect option").removeDuplicate();
-        $("#activitiesSelect option").sortAlpha()
-    } else {}
-    if (feature.properties && feature.properties.Category_2) {
-        $("#activitiesSelect").append($("<option>", {
-            value: feature.properties.Category_2,
-            text: feature.properties.Category_2
-        }));
-        $("#activitiesSelect option").removeDuplicate();
-        $("#activitiesSelect option").sortAlpha()
-    } else {}
-    if (feature.properties && feature.properties.Category_3) {
-        $("#activitiesSelect").append($("<option>", {
-            value: feature.properties.Category_3,
-            text: feature.properties.Category_3
-        }));
-        $("#activitiesSelect option").removeDuplicate();
-        $("#activitiesSelect option").sortAlpha()
-    } else {}
-    if (feature.properties) {
-        activitiesMarkersCounter++
-    }
-}
+function $activitiesOnEachFeature(feature,layer){if(feature.properties){var popupText="";if(feature.properties.Name){popupText+="<strong class='openSpacePopupTitle'>"+feature.properties.Name+"</strong><br>"}else{}if(feature.properties.Type){popupText+="<strong class='openSpacePopupSubTitle'>"+feature.properties.Type+"</strong><br>"}else{}if(feature.properties.Address){popupText+='<i class="fa fa-map-marker"></i> '+feature.properties.Address+"<br>"}else{}if(feature.properties.Website){popupText+='<i class="fa fa-globe"></i> <a href='+feature.properties.Website+" target='_blank'>Website</a><br>"}else{}if(feature.properties.Link1){popupText+='<i class="fa fa-wikipedia-w"></i> <a href='+feature.properties.Link1+" target='_blank'>View on Wikipedia</a><br>"}else{}if(feature.properties.Link3){popupText+='<i class="fa fa-google"></i> <a href='+feature.properties.Link3+" target='_blank'>View in Google Street View</a><br>"}else{}if(feature.properties.Descr){popupText+="<em>"+feature.properties.Descr+"</em><br>"}else{}if(feature.properties.Activity){popupText+="<strong>Activities:</strong> "+feature.properties.Activity+"<br>"}else{}layer.bindPopup(popupText)}else{}if(feature.properties&&feature.properties.Category){$("#activitiesSelect").append($("<option>",{value:feature.properties.Category,text:feature.properties.Category}));$("#activitiesSelect option").removeDuplicate();$("#activitiesSelect option").sortAlpha()}else{}if(feature.properties&&feature.properties.Category_2){$("#activitiesSelect").append($("<option>",{value:feature.properties.Category_2,text:feature.properties.Category_2}));$("#activitiesSelect option").removeDuplicate();$("#activitiesSelect option").sortAlpha()}else{}if(feature.properties&&feature.properties.Category_3){$("#activitiesSelect").append($("<option>",{value:feature.properties.Category_3,text:feature.properties.Category_3}));$("#activitiesSelect option").removeDuplicate();$("#activitiesSelect option").sortAlpha()}else{}if(feature.properties){activitiesMarkersCounter++}}
 /*! on each feature popup only */
-function $activitiesOnEachFeaturePopup(feature, layer) {
-    if (feature.properties) {
-        var popupText = "";
-        if (feature.properties.Name) {
-            popupText += "<strong class='openSpacePopupTitle'>" + feature.properties.Name + "</strong><br>"
-        } else {}
-        if (feature.properties.Type) {
-            popupText += "<strong class='openSpacePopupSubTitle'>" + feature.properties.Type + "</strong><br>"
-        } else {}
-        if (feature.properties.Address) {
-            popupText += '<i class="fa fa-map-marker"></i> ' + feature.properties.Address + "<br>"
-        } else {}
-        if (feature.properties.Website) {
-            popupText += '<i class="fa fa-globe"></i> <a href=' + feature.properties.Website + " target='_blank'>Website</a><br>"
-        } else {}
-        if (feature.properties.Link1) {
-            popupText += '<i class="fa fa-wikipedia-w"></i> <a href=' + feature.properties.Link1 + " target='_blank'>View on Wikipedia</a><br>"
-        } else {}
-        if (feature.properties.Link3) {
-            popupText += '<i class="fa fa-google"></i> <a href=' + feature.properties.Link3 + " target='_blank'>View in Google Maps</a><br>"
-        } else {}
-        if (feature.properties.Descr) {
-            popupText += "<em>" + feature.properties.Descr + "</em><br>"
-        } else {}
-        if (feature.properties.Activity) {
-            popupText += "<strong>Activities:</strong> " + feature.properties.Activity + "<br>"
-        } else {}
-        layer.bindPopup(popupText)
-    } else {}
-}/*! point to layer */
+function $activitiesOnEachFeaturePopup(feature,layer){if(feature.properties){var popupText="";if(feature.properties.Name){popupText+="<strong class='openSpacePopupTitle'>"+feature.properties.Name+"</strong><br>"}else{}if(feature.properties.Type){popupText+="<strong class='openSpacePopupSubTitle'>"+feature.properties.Type+"</strong><br>"}else{}if(feature.properties.Address){popupText+='<i class="fa fa-map-marker"></i> '+feature.properties.Address+"<br>"}else{}if(feature.properties.Website){popupText+='<i class="fa fa-globe"></i> <a href='+feature.properties.Website+" target='_blank'>Website</a><br>"}else{}if(feature.properties.Link1){popupText+='<i class="fa fa-wikipedia-w"></i> <a href='+feature.properties.Link1+" target='_blank'>View on Wikipedia</a><br>"}else{}if(feature.properties.Link3){popupText+='<i class="fa fa-google"></i> <a href='+feature.properties.Link3+" target='_blank'>View in Google Street View</a><br>"}else{}if(feature.properties.Descr){popupText+="<em>"+feature.properties.Descr+"</em><br>"}else{}if(feature.properties.Activity){popupText+="<strong>Activities:</strong> "+feature.properties.Activity+"<br>"}else{}layer.bindPopup(popupText)}else{}}
+/*! point to layer */
 function $activitiesPointToLayer(feature,latlng){var marineIcon=L.ExtraMarkers.icon({icon:"flaticon-marine",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var parkIcon=L.ExtraMarkers.icon({icon:"flaticon-park13",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var cafeIcon=L.ExtraMarkers.icon({icon:"flaticon-hot-drink65",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var sailingIcon=L.ExtraMarkers.icon({icon:"flaticon-sailing-boat4",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var concertIcon=L.ExtraMarkers.icon({icon:"flaticon-musical200",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var playgroundIcon=L.ExtraMarkers.icon({icon:"flaticon-teeter",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var tourIcon=L.ExtraMarkers.icon({icon:"flaticon-touristic",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var baseballIcon=L.ExtraMarkers.icon({icon:"flaticon-baseball-ball",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var tennisIcon=L.ExtraMarkers.icon({icon:"flaticon-tennis2",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var pondIcon=L.ExtraMarkers.icon({icon:"flaticon-water110",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var govBuildingIcon=L.ExtraMarkers.icon({icon:"flaticon-government1",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var infoIcon=L.ExtraMarkers.icon({icon:"flaticon-help27",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var cemeteryIcon=L.ExtraMarkers.icon({icon:"flaticon-halloween286",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var parkDescriptionIcon=L.ExtraMarkers.icon({icon:"",markerColor:"green-light",iconColor:"white",shape:"star",prefix:""});var bicycleParkedIcon=L.ExtraMarkers.icon({icon:"flaticon-parking3",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var skatingIcon=L.ExtraMarkers.icon({icon:"flaticon-ice79",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var swimmingIcon=L.ExtraMarkers.icon({icon:"flaticon-silhouette66",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var athleticFieldIcon=L.ExtraMarkers.icon({icon:"flaticon-field1",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var bocceIcon=L.ExtraMarkers.icon({icon:"flaticon-pilates47",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var churchIcon=L.ExtraMarkers.icon({icon:"flaticon-christian52",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var museumIcon=L.ExtraMarkers.icon({icon:"flaticon-museum21",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var memorialIcon=L.ExtraMarkers.icon({icon:"flaticon-burning",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var carouselIcon=L.ExtraMarkers.icon({icon:"flaticon-horse1",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var benchIcon=L.ExtraMarkers.icon({icon:"flaticon-seat6",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var fountainIcon=L.ExtraMarkers.icon({icon:"flaticon-fountain3",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var historicalLandmarkIcon=L.ExtraMarkers.icon({icon:"flaticon-monument50",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var groupIcon=L.ExtraMarkers.icon({icon:"flaticon-group44",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var damIcon=L.ExtraMarkers.icon({icon:"flaticon-sea16",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var walkingIcon=L.ExtraMarkers.icon({icon:"flaticon-man-silhouette1",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var bridgeIcon=L.ExtraMarkers.icon({icon:"flaticon-bridge7",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var libraryIcon=L.ExtraMarkers.icon({icon:"flaticon-book313",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var canoeKayakIcon=L.ExtraMarkers.icon({icon:"flaticon-transport555",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var theaterIcon=L.ExtraMarkers.icon({icon:"flaticon-theater3",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var gardeningIcon=L.ExtraMarkers.icon({icon:"flaticon-gardening",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var basketballIcon=L.ExtraMarkers.icon({icon:"flaticon-basket32",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var rowingIcon=L.ExtraMarkers.icon({icon:"flaticon-oak",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var dogParkIcon=L.ExtraMarkers.icon({icon:"flaticon-walking12",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var golfIcon=L.ExtraMarkers.icon({icon:"flaticon-golf17",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var yachtIcon=L.ExtraMarkers.icon({icon:"flaticon-transport553",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var exercisingIcon=L.ExtraMarkers.icon({icon:"flaticon-exercise2",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var fishingIcon=L.ExtraMarkers.icon({icon:"flaticon-sport",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var beachIcon=L.ExtraMarkers.icon({icon:"flaticon-summer",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});var bikingIcon=L.ExtraMarkers.icon({icon:"flaticon-cycling4",markerColor:"green",iconColor:"white",shape:"square",prefix:"flaticon"});if(feature.properties.Icon==="Park"){return L.marker(latlng,{icon:parkIcon})}else{if(feature.properties.Icon==="Cafe"){return L.marker(latlng,{icon:cafeIcon})}else{if(feature.properties.Icon==="Fishing"){return L.marker(latlng,{icon:fishingIcon})}else{if(feature.properties.Icon==="Sailing"){return L.marker(latlng,{icon:sailingIcon})}else{if(feature.properties.Icon==="Concert"){return L.marker(latlng,{icon:concertIcon})}else{if(feature.properties.Icon==="Playground"){return L.marker(latlng,{icon:playgroundIcon})}else{if(feature.properties.Icon==="Tour"){return L.marker(latlng,{icon:tourIcon})}else{if(feature.properties.Icon==="Baseball"){return L.marker(latlng,{icon:baseballIcon})}else{if(feature.properties.Icon==="Tennis"){return L.marker(latlng,{icon:tennisIcon})}else{if(feature.properties.Icon==="Pond"){return L.marker(latlng,{icon:pondIcon})}else{if(feature.properties.Icon==="Gov Building"){return L.marker(latlng,{icon:govBuildingIcon})}else{if(feature.properties.Icon==="Info"){return L.marker(latlng,{icon:infoIcon})}else{if(feature.properties.Icon==="Cemetery"){return L.marker(latlng,{icon:cemeteryIcon})}else{if(feature.properties.Icon==="Park Description"){return L.marker(latlng,{icon:parkDescriptionIcon})}else{if(feature.properties.Icon==="Bicycle Parked"){return L.marker(latlng,{icon:bicycleParkedIcon})}else{if(feature.properties.Icon==="Skating"){return L.marker(latlng,{icon:skatingIcon})}else{if(feature.properties.Icon==="Swimming"){return L.marker(latlng,{icon:swimmingIcon})}else{if(feature.properties.Icon==="Athletic Field"){return L.marker(latlng,{icon:athleticFieldIcon})}else{if(feature.properties.Icon==="Bocce"){return L.marker(latlng,{icon:bocceIcon})}else{if(feature.properties.Icon==="Church"){return L.marker(latlng,{icon:churchIcon})}else{if(feature.properties.Icon==="Museum"){return L.marker(latlng,{icon:museumIcon})}else{if(feature.properties.Icon==="Memorial"){return L.marker(latlng,{icon:memorialIcon})}else{if(feature.properties.Icon==="Carousel"){return L.marker(latlng,{icon:carouselIcon})}else{if(feature.properties.Icon==="Bench"){return L.marker(latlng,{icon:benchIcon})}else{if(feature.properties.Icon==="Fountain"){return L.marker(latlng,{icon:fountainIcon})}else{if(feature.properties.Icon==="Historical Landmark"){return L.marker(latlng,{icon:historicalLandmarkIcon})}else{if(feature.properties.Icon==="Group"){return L.marker(latlng,{icon:groupIcon})}else{if(feature.properties.Icon==="Dam"){return L.marker(latlng,{icon:damIcon})}else{if(feature.properties.Icon==="Walking"){return L.marker(latlng,{icon:walkingIcon})}else{if(feature.properties.Icon==="Bridge"){return L.marker(latlng,{icon:bridgeIcon})}else{if(feature.properties.Icon==="Library"){return L.marker(latlng,{icon:libraryIcon})}else{if(feature.properties.Icon==="Canoe Kayak"){return L.marker(latlng,{icon:canoeKayakIcon})}else{if(feature.properties.Icon==="Theater"){return L.marker(latlng,{icon:theaterIcon})}else{if(feature.properties.Icon==="Gardening"){return L.marker(latlng,{icon:gardeningIcon})}else{if(feature.properties.Icon==="Basketball"){return L.marker(latlng,{icon:basketballIcon})}else{if(feature.properties.Icon==="Rowing"){return L.marker(latlng,{icon:rowingIcon})}else{if(feature.properties.Icon==="Dog Park"){return L.marker(latlng,{icon:dogParkIcon})}else{if(feature.properties.Icon==="Golf"){return L.marker(latlng,{icon:golfIcon})}else{if(feature.properties.Icon==="Yacht"){return L.marker(latlng,{icon:yachtIcon})}else{if(feature.properties.Icon==="Exercising"){return L.marker(latlng,{icon:exercisingIcon})}else{if(feature.properties.Icon==="Biking"){return L.marker(latlng,{icon:bikingIcon})}else{if(feature.properties.Icon==="Walking"){return L.marker(latlng,{icon:walkingIcon})}else{if(feature.properties.Icon==="Bridge"){return L.marker(latlng,{icon:bridgeIcon})}else{if(feature.properties.Icon==="Beach"){return L.marker(latlng,{icon:beachIcon})}else{if(feature.properties.Icon==="Marine"){return L.marker(latlng,{icon:marineIcon})}else{return L.marker(latlng)}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
 /*!
  *  |   Farmers Markets
@@ -211,7 +127,7 @@ var farmersMarketsUrl="http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/farm
  *  |   ===========
  */
 /*! on each feature */
-function $publicArtOnEachFeature(feature,layer){if(feature.properties){var popupText="";if(feature.properties.NAME){popupText+="<strong class='publicArtPopupTitle'>"+feature.properties.NAME+"</strong><br>"}else{}if(feature.properties.WEBSITE){popupText+='<i class="fa fa-globe"></i> <a href='+feature.properties.WEBSITE+" target='_blank'>Website</a><br>"}else{}if(feature.properties.LINK1){popupText+='<i class="fa fa-wikipedia-w"></i> <a href='+feature.properties.LINK1+" target='_blank'>View on Wikipedia</a><br>"}else{}if(feature.properties.LINK2){popupText+='<i class="fa fa-wikipedia-w"></i> <a href='+feature.properties.LINK2+" target='_blank'>Search Wikimedia Commons</a><br>"}else{}if(feature.properties.LINK3){popupText+='<i class="fa fa-google"></i> <a href='+feature.properties.LINK3+" target='_blank'>View in Google Maps</a><br>"}else{}if(feature.properties.LINK4){popupText+='<i class="fa fa-flickr"></i> <a href='+feature.properties.LINK4+" target='_blank'>Search Flickr</a><br>"}else{}if(feature.properties.ARTIST){popupText+="<strong>Artist:</strong> "+feature.properties.ARTIST+"<br>"}else{}if(feature.properties.LOCATION){popupText+="<strong>Location:</strong> "+feature.properties.LOCATION+"<br>"}else{}if(feature.properties.TYPE){popupText+="<strong>Type:</strong> "+feature.properties.TYPE+"<br>"}else{}if(feature.properties.YEAR){popupText+="<strong>Year:</strong> "+feature.properties.YEAR+"<br>"}else{}if(feature.properties.MEDIUM){popupText+="<strong>Medium:</strong> "+feature.properties.MEDIUM+"<br>"}else{}if(feature.properties.COLLECTION){popupText+="<strong>Collection:</strong> "+feature.properties.COLLECTION+"<br>"}else{}if(feature.properties.FUNDERS){popupText+="<strong>Funders:</strong> "+feature.properties.FUNDERS+"<br>"}else{}if(feature.properties.DESC){popupText+="<strong>Description:</strong> "+feature.properties.DESC+"<br>"}else{}if(feature.properties.AUDIO_DESC){popupText+='<i class="fa fa-file-audio-o"></i> <a href='+feature.properties.AUDIO_DESC+" target='_blank'>Audio Description</a><br>"}else{}layer.bindPopup(popupText)}else{}}
+function $publicArtOnEachFeature(feature,layer){if(feature.properties){var popupText="";if(feature.properties.NAME){popupText+="<strong class='publicArtPopupTitle'>"+feature.properties.NAME+"</strong><br>"}else{}if(feature.properties.WEBSITE){popupText+='<i class="fa fa-globe"></i> <a href='+feature.properties.WEBSITE+" target='_blank'>Website</a><br>"}else{}if(feature.properties.LINK1){popupText+='<i class="fa fa-wikipedia-w"></i> <a href='+feature.properties.LINK1+" target='_blank'>View on Wikipedia</a><br>"}else{}if(feature.properties.LINK2){popupText+='<i class="fa fa-wikipedia-w"></i> <a href='+feature.properties.LINK2+" target='_blank'>Search Wikimedia Commons</a><br>"}else{}if(feature.properties.LINK3){popupText+='<i class="fa fa-google"></i> <a href='+feature.properties.LINK3+" target='_blank'>View in Google Street View</a><br>"}else{}if(feature.properties.LINK4){popupText+='<i class="fa fa-flickr"></i> <a href='+feature.properties.LINK4+" target='_blank'>Search Flickr</a><br>"}else{}if(feature.properties.ARTIST){popupText+="<strong>Artist:</strong> "+feature.properties.ARTIST+"<br>"}else{}if(feature.properties.LOCATION){popupText+="<strong>Location:</strong> "+feature.properties.LOCATION+"<br>"}else{}if(feature.properties.TYPE){popupText+="<strong>Type:</strong> "+feature.properties.TYPE+"<br>"}else{}if(feature.properties.YEAR){popupText+="<strong>Year:</strong> "+feature.properties.YEAR+"<br>"}else{}if(feature.properties.MEDIUM){popupText+="<strong>Medium:</strong> "+feature.properties.MEDIUM+"<br>"}else{}if(feature.properties.COLLECTION){popupText+="<strong>Collection:</strong> "+feature.properties.COLLECTION+"<br>"}else{}if(feature.properties.FUNDERS){popupText+="<strong>Funders:</strong> "+feature.properties.FUNDERS+"<br>"}else{}if(feature.properties.DESC){popupText+="<strong>Description:</strong> "+feature.properties.DESC+"<br>"}else{}if(feature.properties.AUDIO_DESC){popupText+='<i class="fa fa-file-audio-o"></i> <a href='+feature.properties.AUDIO_DESC+" target='_blank'>Audio Description</a><br>"}else{}layer.bindPopup(popupText)}else{}}
 /*! point to layer */
 function $publicArtPointToLayer(feature,latlng){var publicArtIcon=L.ExtraMarkers.icon({icon:"fa-camera",markerColor:"orange",iconColor:"white",shape:"penta",prefix:"fa"});if(feature.properties){return L.marker(latlng,{icon:publicArtIcon})}}
 /*! add to map */
@@ -361,25 +277,6 @@ map.on("overlayadd",onOverlayAdd);
 /*! patch to enable scrolling the control layers base element on touch devices */
 var container=document.getElementsByClassName("leaflet-control-layers")[0];if(!L.Browser.touch){L.DomEvent.disableClickPropagation(container).disableScrollPropagation(container)}else{L.DomEvent.disableClickPropagation(container)}
 /*! screenfull */
-$(function() {
-    if (!screenfull.enabled) {
-				$("#fullscreenToggle").hide();
-			}
-    $("#fullscreenToggle").click(function() {
-        screenfull.toggle($("#mainContainer")[0])
-    });
-
-    function fullscreenchange() {
-        if (!screenfull.isFullscreen) {
-            $("#external-iframe").remove();
-            document.body.style.overflow = "auto";
-            $("#fullscreenToggle").children("i").addClass("fa-expand").removeClass("fa-compress")
-        } else {
-            $("#fullscreenToggle").children("i").addClass("fa-compress").removeClass("fa-expand")
-        }
-    }
-    document.addEventListener(screenfull.raw.fullscreenchange, fullscreenchange);
-    fullscreenchange()
-});
+$(function(){$("#fullscreenToggle").click(function(){screenfull.toggle($("#mainContainer")[0])});function fullscreenchange(){if(!screenfull.isFullscreen){$("#external-iframe").remove();document.body.style.overflow="auto";$("#fullscreenToggle").children("i").addClass("fa-expand").removeClass("fa-compress")}else{$("#fullscreenToggle").children("i").addClass("fa-compress").removeClass("fa-expand")}}document.addEventListener(screenfull.raw.fullscreenchange,fullscreenchange);fullscreenchange()});
 /*! disable alerts and console logs */
 window.alert=function(){};console.log=function(){}})(jQuery);
