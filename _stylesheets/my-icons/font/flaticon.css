@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 28/04/2016 20:09
+  	Creation date: 03/05/2016 03:04
   	*/
 
 @font-face {
@@ -55,20 +55,22 @@ margin-left: 20px;
 .flaticon-musical200:before { content: "\f117"; }
 .flaticon-oak:before { content: "\f118"; }
 .flaticon-park13:before { content: "\f119"; }
-.flaticon-pilates47:before { content: "\f11a"; }
-.flaticon-river6:before { content: "\f11b"; }
-.flaticon-sailing-boat4:before { content: "\f11c"; }
-.flaticon-sea16:before { content: "\f11d"; }
-.flaticon-seat6:before { content: "\f11e"; }
-.flaticon-silhouette66:before { content: "\f11f"; }
-.flaticon-sport:before { content: "\f120"; }
-.flaticon-sports:before { content: "\f121"; }
-.flaticon-summer:before { content: "\f122"; }
-.flaticon-swimming21:before { content: "\f123"; }
-.flaticon-teeter:before { content: "\f124"; }
-.flaticon-tennis2:before { content: "\f125"; }
-.flaticon-theater3:before { content: "\f126"; }
-.flaticon-touristic:before { content: "\f127"; }
-.flaticon-transport553:before { content: "\f128"; }
-.flaticon-transport555:before { content: "\f129"; }
-.flaticon-water110:before { content: "\f12a"; }
+.flaticon-people:before { content: "\f11a"; }
+.flaticon-pilates47:before { content: "\f11b"; }
+.flaticon-river6:before { content: "\f11c"; }
+.flaticon-sailing-boat4:before { content: "\f11d"; }
+.flaticon-sea16:before { content: "\f11e"; }
+.flaticon-seat6:before { content: "\f11f"; }
+.flaticon-silhouette66:before { content: "\f120"; }
+.flaticon-sport:before { content: "\f121"; }
+.flaticon-sports:before { content: "\f122"; }
+.flaticon-summer:before { content: "\f123"; }
+.flaticon-summer-1:before { content: "\f124"; }
+.flaticon-swimming21:before { content: "\f125"; }
+.flaticon-teeter:before { content: "\f126"; }
+.flaticon-tennis2:before { content: "\f127"; }
+.flaticon-theater3:before { content: "\f128"; }
+.flaticon-touristic:before { content: "\f129"; }
+.flaticon-transport553:before { content: "\f12a"; }
+.flaticon-transport555:before { content: "\f12b"; }
+.flaticon-water110:before { content: "\f12c"; }

@@ -86,6 +86,8 @@ button{display:block;float:left;width:44px;height:26px;padding:0;overflow:hidden
 .ms-drop ul > li label span{margin-left:.5em}
 .ms-drop ul > li{line-height:24px}
 .ms-parent{font-size:75%}
+#Bos_nbhdForm .ms-drop{width:-webkit-calc(100% + 44px);width:-moz-calc(100% + 44px);width:calc(100% + 44px)}
+#Bos_openSpaceForm .ms-drop,#activitiesForm .ms-drop{width:-webkit-calc(100% + 88px);width:-moz-calc(100% + 88px);width:calc(100% +88px)}
 /*! Header */
 .mainHeaderWrapper{display:block;width:100%;height:2.875em;position:absolute;top:0;left:0;z-index:8;background-color:Honeydew}
 .mainHeader{display:block;width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute;top:0;left:0;z-index:9;padding:.5em 1em}
