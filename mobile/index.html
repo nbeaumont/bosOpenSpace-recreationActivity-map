@@ -21,7 +21,7 @@
             <li><a href="#what">What</a></li>
             <li><a href="#where">Where</a></li>
             <li><a href="#when">When</a></li>
-            <li><a href="#bosOpenSpaceMap">Map</a></li>
+            <li><a href="#bosOpenSpaceMap" data-transition="slide">Map</a></li>
         </ul>
     </div>
     <div data-role="footer">
@@ -95,8 +95,7 @@
 <div data-role="page" id="bosOpenSpaceMap" class="subPage">
     <div data-role="header">
         <h1>Map</h1>
-        <a href="#" data-rel="back" class="ui-btn-left ui-btn ui-icon-back ui-btn-icon-notext ui-shadow ui-corner-all"  data-role="button" role="button">Back</a>
-    </div>
+        <a href="#" data-rel="back" class="ui-btn-left ui-btn ui-icon-back ui-btn-icon-notext ui-shadow ui-corner-all"  data-role="button" role="button">Back</a> </div>
     <div data-role="content">
         <div id="mainContainer" class="mainContainer">
             <div id="mapOverlay"></div>
@@ -160,9 +159,6 @@
             </div>
         </div>
     </div>
-    <div data-role="footer">
-        <h4>Nicolas Beaumont &copy; 2016</h4>
-    </div>
 </div>
 <script type="text/javascript">
 /*! // http://spin.js.org/#v2.3.2 */
@@ -170,30 +166,26 @@
 var target = document.getElementById('preloader')
 new Spinner().spin(target);
 </script> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> 
 <script>
-           $(document).bind('mobileinit',function(){
-                $.mobile.page.prototype.options.keepNative = "select,button,  input";
-            });
-    
-     
-       
-   $( window ).resize(function() {
-     var totalHeightValue = $("#bosOpenSpaceMap").height();
-     var nbhdMenuHeightValue = totalHeightValue - 130;
-     var openSpaceMenuHeightValue = totalHeightValue - 188;
-     var activitiesMenuHeightValue = totalHeightValue - 214;
-     
- $("#Bos_nbhdForm ul").css("max-height", nbhdMenuHeightValue + 'px');;
- $("#Bos_openSpaceForm ul").css("max-height", openSpaceMenuHeightValue + 'px');;
- $("#activitiesForm ul").css("max-height", activitiesMenuHeightValue + 'px');
- 
-}); 
-       </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
-<script type="text/javascript" src="../_javascripts/Bos_nbhd_openSpace.js"></script>
-<script type="text/javascript" src="../_javascripts/Bos_recActivities.js"></script>
-<script type="text/javascript" src="_js/bosOpenSpaceMap.min.js"></script>
+$(document).bind('mobileinit', function() {
+    $.mobile.page.prototype.options.keepNative = "select,button,  input";
+    $.mobile.loader.prototype.options.disabled = true;
+});
+$(window).resize(function() {
+    var totalHeightValue = $("#bosOpenSpaceMap").height();
+    var nbhdMenuHeightValue = totalHeightValue - 99;
+    var openSpaceMenuHeightValue = totalHeightValue - 157;
+    var activitiesMenuHeightValue = totalHeightValue - 183;
+    $("#Bos_nbhdForm ul").css("max-height", nbhdMenuHeightValue + 'px');;
+    $("#Bos_openSpaceForm ul").css("max-height", openSpaceMenuHeightValue + 'px');;
+    $("#activitiesForm ul").css("max-height", activitiesMenuHeightValue + 'px');
+});
+</script> 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script> 
+<script type="text/javascript" src="../_javascripts/Bos_nbhd_openSpace.js"></script> 
+<script type="text/javascript" src="../_javascripts/Bos_recActivities.js"></script> 
+<script type="text/javascript" src="_js/bosOpenSpaceMap.min.js"></script> 
 <script type="text/javascript">
 function downloadJSAtOnload(){var element=document.createElement("script");element.src="_js/defer-map.js";document.body.appendChild(element)}if(window.addEventListener){window.addEventListener("load",downloadJSAtOnload,false)}else{if(window.attachEvent){window.attachEvent("onload",downloadJSAtOnload)}else{window.onload=downloadJSAtOnload}};
 </script>
