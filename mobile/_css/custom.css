@@ -18,7 +18,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
 /*! Preloader */
 #preloader{position:fixed;top:0;left:0;right:0;bottom:0;background-color:#fff;z-index:99999}
 
-/*! Fonts */
+/*! Text */
 body,html,button,input,textarea,.leaflet-container{font-family:'Open Sans',Sans-Serif;font-style:normal;font-weight:400}
 b,strong{font-weight:600}
 h1,h2,h3,h4,.openSpacePopupTitle,.openSpacePopupSubTitle,.nbhdPopupTitle,.bikeTrailsPopupTitle,.farmersMarketsPopupTitle,.farmersMarketsPopupSubTitle,.publicArtPopupTitle{font-family:'Open Sans Condensed',Arial Narrow,Sans-Serif;font-weight:700}
@@ -26,6 +26,7 @@ h1{font-size:2em;margin-bottom:.656em}
 h2{font-size:1.5em;margin-bottom:.792em}
 h3{font-size:1.125em;margin-bottom:1em}
 h4{font-size:1em;margin-bottom:1.313em}
+.ui-link{text-decoration:none}
 /*! Layout */
 img,object,embed,video{max-width:100%}.ie6 img{width:100%}
 #mainContainer{display:block;width:100%;height:100%;float:left;clear:both;margin:0;padding:0}
@@ -95,6 +96,8 @@ button{display:block;float:left;width:44px;height:26px;padding:0;overflow:hidden
 .mainHeader{display:block;width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute;top:0;left:0;z-index:9;padding:.5em 1em}
 h1.mapTitle{font-size:1.5em;line-height:1.25;display:block;float:left;margin:0;padding:0}
 .mainContentWrapper{height:-webkit-calc(100% - 2.875em);height:-moz-calc(100% - 2.875em);height:calc(100% - 2.875em);margin-top:2.875em;position:relative;z-index:99}
+
+
 
 @media only screen and (min-width: 401px) {
 .ms-parent > button{font-size:87.5%}
@@ -393,21 +396,21 @@ body, input, select, textarea, button, .ui-btn {font-family:'Open Sans',Sans-Ser
 button[disabled]{opacity:1}
 
 html,body,#bosOpenSpaceMap {height: 100%;margin: 0;padding: 0;}
-#page{height:100%}
-#page .ui-content {min-height:-webkit-calc(100% - 171px);min-height:-moz-calc(100% - 171px);min-height:calc(100% - 171px)}
+#firstPage{height:100%}
+#firstPage .ui-content {min-height:-webkit-calc(100% - 171px);min-height:-moz-calc(100% - 171px);min-height:calc(100% - 171px)}
 #bosOpenSpaceMap .ui-content {padding: 0;height:-webkit-calc(100% - 42px);height:-moz-calc(100% - 42px);height:calc(100% - 42px)}
 .mainContentWrapper{height:100%;margin:0}
 
 .ui-page-theme-a a, html .ui-bar-a a, html .ui-body-a a, html body .ui-group-theme-a a {font-weight:400} 
 .ui-footer .ui-title {font-weight:400;font-size:13px}
 .ui-header.ui-bar-inherit,.ui-footer.ui-bar-inherit{ background-color:Honeydew;background-image: url(../images/bckgrndHeaderFooter.jpg);-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover; background-position:center }
-#page .ui-header h1.ui-title{font-size:2em;margin:0 auto}
+#firstPage .ui-header h1.ui-title{font-size:2em;margin:0 auto}
 .subPage .ui-header h1.ui-title{font-size:1.5em;margin:0 auto;padding:0 10px;line-height:40px}
-#page .ui-header.ui-bar-inherit{height:96px}
+#firstPage .ui-header.ui-bar-inherit{height:96px}
 .ui-header.ui-bar-inherit{height:40px}
-#page .ui-footer.ui-bar-inherit{height:auto}
+#firstPage .ui-footer.ui-bar-inherit{height:auto}
 .ui-footer.ui-bar-inherit{height:29px}
-#page .ui-footer.ui-bar-inherit h4.ui-title{margin:0;padding:10px;line-height:19px}
+#firstPage .ui-footer.ui-bar-inherit h4.ui-title{margin:0;padding:10px;line-height:19px}
 .subPage .ui-footer.ui-bar-inherit h4.ui-title{margin:0;padding:0 10px;line-height:29px}
 
 .leaflet-control-layers-expanded{overflow:auto}
@@ -423,3 +426,8 @@ html,body,#bosOpenSpaceMap {height: 100%;margin: 0;padding: 0;}
 .leaflet-control-layers.leaflet-control{margin-right:5px}
 .leaflet-bottom .leaflet-control{margin-bottom:5px}
 .leaflet-bottom .leaflet-control-attribution.leaflet-control{height:16px;overflow:auto;margin-bottom:0}
+
+/*! Contact Page */
+.fa-li{line-height:inherit}
+.fa-ul li {margin-top:.5em;margin-bottom:0}
+#contact h2{margin-top:0}

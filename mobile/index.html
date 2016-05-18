@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>jQuery Mobile Web App</title>
+<title>Boston Open Spaces Map</title>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700|Open+Sans+Condensed:700|Indie+Flower' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="_css/my-icons/font/flaticon.css">
 <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
@@ -11,37 +11,57 @@
 <link href="_css/custom.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div data-role="page" id="page">
+<!--this is the first page-->
+<div data-role="page" id="firstPage">
     <div data-role="header">
         <h1>Boston Open Spaces</h1>
     </div>
     <div data-role="content">
         <ul data-role="listview">
-            <li><a href="#who">Who</a></li>
             <li><a href="#what">What</a></li>
             <li><a href="#where">Where</a></li>
             <li><a href="#when">When</a></li>
             <li><a href="#bosOpenSpaceMap" data-transition="slide">Map</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </div>
     <div data-role="footer">
         <h4>Nicolas Beaumont &copy; 2016</h4>
     </div>
 </div>
-<div data-role="page" id="who">
+<!--this is the second page-->
+<div data-role="page" id="contact" class="subPage">
     <div data-role="header">
-        <h1>Who</h1>
+        <h1>Contact</h1>
+        <a href="#" data-rel="back" class="ui-btn-left ui-btn ui-icon-back ui-btn-icon-notext ui-shadow ui-corner-all"  data-role="button" role="button">Back</a>
     </div>
     <div data-role="content">
-        <p>... is behind this marvelous event you ask? And more importantly, who gets to go on the Hunt? All your questions are answered below!</p>
-        <h3>Treasure Hunters</h3>
-        <p>The	Leisure	Treasure Hunt is open to all&mdash;and that includes you! 
-            This annual event is truly one for the people and by the people. Designated treasures are nominated in by guests of the Landon Hotel throughout the summer with the Hunt scheduled for the fall. </p>
-        <h3>Sponsors</h3>
-        <p>The primary sponsor of the Leisure Treasure Hunt is, of course, the Landon Hotel itself. Other sponsors (and their prizes) will be announced in a few short weeks.</p>
+        <div class="section-follow">
+            <h3>Message</h3>
+            
+        </div>
+        <div class="section-contact">
+            <p><strong>Nicolas J-F Beaumont</strong></p>
+            <ul class="fa-ul contact">
+                <li><i class="fa-li fa fa-map-marker"></i>17 Greenwich St.<br>
+                    Frederick Douglass Square<br>
+                    Roxbury Crossing, MA 02120-2250</li>
+                <li><i class="fa-li fa fa-envelope"></i><a href="mailto:n.beaumont617@gmail.com">Email</a></li>
+                <li><i class="fa-li fa fa-globe"></i><a href="http://www.nicolasbeaumont.com/" target="_blank">Web</a></li>
+                <li><i class="fa-li fa fa-mobile"></i>617 642 3310</li>
+            </ul>
+        </div>
+        <div class="section-follow">
+            <h3>Follow</h3>
+            <ul class="fa-ul">
+                <li><i class="fa-li fa fa-github" aria-hidden="true"></i>GitHub</li>
+                <li><i class="fa-li fa fa-google-plus" aria-hidden="true"></i>Google+</li>
+                <li><i class="fa-li fa fa-linkedin" aria-hidden="true"></i>Linkedin</li>
+            </ul>
+        </div>
     </div>
     <div data-role="footer">
-        <h4>Page Footer</h4>
+        <h4>Nicolas Beaumont &copy; 2016</h4>
     </div>
 </div>
 <div data-role="page" id="what">
