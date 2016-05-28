@@ -1,6 +1,36 @@
-(function($){L.Icon.Default.imagePath="_stylesheets/images/";
+(function($){L.Icon.Default.imagePath="_css/images/";
+
+/*!
+ *  Mapzen Geocoder
+ */
+var myGeocoderOptions = {
+ /* position: 'bottomright'*/
+};
+var myGeocoder = L.control.geocoder('search-tJsX16D', myGeocoderOptions);
+myGeocoder.on('expand', function () {
+  if ($("#searchIcon").hasClass("fa-times")) {
+    $("#searchIcon").addClass("fa-bars").removeClass("fa-times")
+    $(".selectorsWrapper").hide();
+    
+  }
+});
 /*! function to toggle selectors visibility */
-$(document).ready(function(){var t=$(".selectorsWrapper");t.hide();$(".searchIconWrapper").click(function(e){$(".selectorsWrapper").slideToggle("400");e.preventDefault()});$("#searchIcon").addClass("fa-bars").removeClass("fa-times")});$(".searchIconWrapper").on("click",function(a){$("#searchIcon").toggleClass("fa-bars fa-times");a.preventDefault()});
+$(document).ready(function() {
+    var t = $(".selectorsWrapper");
+    t.hide();
+    $(".searchIconWrapper").click(function(e) {
+        t.slideToggle("400");
+        e.preventDefault()
+    });
+    $("#searchIcon").addClass("fa-bars").removeClass("fa-times")
+});
+$(".searchIconWrapper").on("click", function(a) {
+    $("#searchIcon").toggleClass("fa-bars fa-times");
+    a.preventDefault();
+    if ($(".leaflet-pelias-control").hasClass("leaflet-pelias-expanded")) {
+      myGeocoder.collapse();
+    }
+});
 /*! function to remove duplicate text string */
 $.fn.removeDuplicate=function(){var seen={};this.each(function(){var txt=$(this).text();if(seen[txt]){$(this).remove()}else{seen[txt]=true}})};
 /*! function to sort elements alphabetically */
@@ -14,7 +44,7 @@ function onOverlayAdd(e){if(map.hasLayer(myOpenSpaceLayer)){myOpenSpaceLayer.bri
 /*! hide page preloader */
 $("#preloader").delay(350).fadeOut("slow");$("body").delay(350).css({overflow:"visible"});
 /*! initialize the map */
-var map=L.map("map",{zoomControl:false}).setView([42.31250108313083,-71.05701449023424],11);
+var map=L.map("map",{zoomControl:false,attributionControl:false}).setView([42.31250108313083,-71.05701449023424],11);
 /*! close the layer control panel when clicking on map or when opening a popup */
 map.on("click",function(a){$(".leaflet-control-layers").removeClass("leaflet-control-layers-expanded")}).on("popupopen",function(a){$(".leaflet-control-layers").removeClass("leaflet-control-layers-expanded")});
 /*! disable deselect and zoom buttons by default */
@@ -250,11 +280,15 @@ var publicArtUrl="http://www.nicolasbeaumont.com/bosOpenSpace/_geoJson/publicArt
  */
 var myNbhdLayer=L.geoJson().addTo(map);var myOpenSpaceLayer=L.geoJson().addTo(map);var myIndivOpenSpaceLayer=L.geoJson().addTo(map);var myOverlayLayersGroup=L.layerGroup([myBos_nbhd,myBos_openSpace,myNbhdLayer,myOpenSpaceLayer,myIndivOpenSpaceLayer]).addTo(map);var myActivitiesMarkerClusterGroup=L.markerClusterGroup.layerSupport();myActivitiesMarkerClusterGroup.checkIn(farmersMarkets);myActivitiesMarkerClusterGroup.checkIn(publicArt);myActivitiesMarkerClusterGroup.addTo(map);var recreationalActivities=L.geoJson(Bos_recActivities,{onEachFeature:$activitiesOnEachFeature,pointToLayer:$activitiesPointToLayer});myActivitiesMarkerClusterGroup.addLayer(recreationalActivities);map.addLayer(myActivitiesMarkerClusterGroup);var baseMaps={"Mass GIS":mapc,"Open Street Map":OpenStreetMap_Mapnik,"Open Street Map (Black and White)":OpenStreetMap_BlackAndWhite,"ESRI Street":Esri_WorldStreetMap,"ESRI Topography":Esri_WorldTopoMap,"ESRI National Geographic":Esri_NatGeoWorldMap,"Bing Road":bingLayerRoad,"Bing Aerial":bingLayerAerial,"Bing Aerial with Labels":bingLayerAerialWithLabels};var overlays={"Neighborhoods and Open Spaces":myOverlayLayersGroup,"Bike Trails":bikeTrails,"Farmers Markets":farmersMarkets,"Public Art":publicArt};ctrl=L.control.layers(baseMaps,overlays,{position:"bottomright"}).addTo(map);
 /*!
- * zoom home
+ * add Mapzen geocoder
+ */
+myGeocoder.addTo(map);
+/*!
+ * add zoom home
  */
 var zoomHome=L.Control.zoomHome({homeCoordinates:[42.31250108313083,-71.05701449023424],homeZoom:11});zoomHome.addTo(map);
 /*!
- * locate
+ * add locate
  */
 var lc = L.control.locate({
     follow: false,
