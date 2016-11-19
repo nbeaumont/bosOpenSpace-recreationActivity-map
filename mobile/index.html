@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Boston Open Spaces Map</title>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700|Open+Sans+Condensed:700|Indie+Flower' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700|Open+Sans+Condensed:700|Indie+Flower' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="_css/my-icons/font/flaticon.css">
 <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
@@ -22,8 +22,8 @@
             <li><a href="#where">Where</a></li>
             <li><a href="#when">When</a></li>
             <li><a href="#bosOpenSpaceMap" data-transition="slide">Map</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#credits">Credits</a></li>
+            <li><a href="#contact" data-transition="slide">Contact</a></li>
+            <li><a href="#credits" data-transition="slide">Credits</a></li>
         </ul>
     </div>
     <div data-role="footer">
@@ -68,17 +68,12 @@
     <div data-role="header">
         <h1>Credits</h1>
         <a href="#" data-rel="back" class="ui-btn-left ui-btn ui-icon-back ui-btn-icon-notext ui-shadow ui-corner-all"  data-role="button" role="button">Back</a> </div>
-    <div data-role="content">
+    <div data-role="content" class="textSize">
         <h2>Attributions</h2>
-        <ul>
-            <li data-role="list-divider" data-inset="true">
-                <p>Map Powered by <a href="http://leafletjs.com/" title="Leaflet" target="_blank">Leaflet</a></p>
-            </li>
-            <li>
-                <p>Geocoding by <a href="https://mapzen.com/projects/search/" title="Mapzen" target="_blank">Mapzen</a></p>
-            </li>
-        </ul>
-        <h3>Map Providers</h3>
+        <p>Map Powered by <a href="http://leafletjs.com/" title="Leaflet" target="_blank">Leaflet</a></p>
+        <p>Geocoding by <a href="https://mapzen.com/projects/search/" title="Mapzen" target="_blank">Mapzen</a></p>
+        <br>
+        <h3>Map Providers:</h3>
         <ul>
             <li>
                 <p><strong class="condensed">Mass GIS</strong></p>
@@ -87,40 +82,43 @@
                 <p><strong class="condensed">Open Street Map</strong></p>
                 <p>&copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a></p>
             </li>
-            <li><p><strong class="condensed">ESRI</strong></p>
-            <ul>
-            
             <li>
-                <p><strong class="condensed">Street</strong></p>
-                <p>Tiles © Esri — Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012</p>
-            </li>
-            <li>
-                <p><strong class="condensed">Topography</strong></p>
-                <p>Tiles © Esri — Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community</p>
-            </li>
-            <li>
-                <p><strong class="condensed">National Geographic</strong></p>
-                <p>Tiles © Esri — National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC</p>
-            </li>
-            
-            </ul></li>
-            <li><p><strong class="condensed">Bing</strong></p>
-            <ul>
-<li>
-                <p><strong class="condensed">Road</strong></p>
-                <p>Bing, © 2010 NAVTEQ, © AND, © 2016 Microsoft Corporation</p>
+                <p><strong class="condensed">ESRI:</strong></p>
+                <ul>
+                    <li>
+                        <p><strong class="condensed">Street</strong></p>
+                        <p>Tiles © Esri — Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012</p>
+                    </li>
+                    <li>
+                        <p><strong class="condensed">Topography</strong></p>
+                        <p>Tiles © Esri — Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community</p>
+                    </li>
+                    <li>
+                        <p><strong class="condensed">National Geographic</strong></p>
+                        <p>Tiles © Esri — National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC</p>
+                    </li>
+                </ul>
             </li>
             <li>
-                <p><strong class="condensed">Aerial</strong></p>
-                <p>Bing, © 2016 Microsoft Corporation, © Harris Corp, Earthstar Geographics LLC, Earthstar Geographics SIO</p>
+                <p><strong class="condensed">Bing:</strong></p>
+                <ul>
+                    <li>
+                        <p><strong class="condensed">Road</strong></p>
+                        <p>Bing, © 2010 NAVTEQ, © AND, © 2016 Microsoft Corporation</p>
+                    </li>
+                    <li>
+                        <p><strong class="condensed">Aerial</strong></p>
+                        <p>Bing, © 2016 Microsoft Corporation, © Harris Corp, Earthstar Geographics LLC, Earthstar Geographics SIO</p>
+                    </li>
+                    <li>
+                        <p><strong class="condensed">Aerial with Labels</strong></p>
+                        <p>Bing, © 2010 NAVTEQ, © AND, © 2016 Microsoft Corporation, © Harris Corp, Earthstar Geographics LLC, Earthstar Geographics SIO</p>
+                    </li>
+                </ul>
             </li>
-            <li>
-                <p><strong class="condensed">Aerial with Labels</strong></p>
-                <p>Bing, © 2010 NAVTEQ, © AND, © 2016 Microsoft Corporation, © Harris Corp, Earthstar Geographics LLC, Earthstar Geographics SIO</p>
-            </li>
-</ul></li>
             </li>
         </ul>
+        <br>
         <h3>Map Icons</h3>
         <p>Font generated by <a href="http://www.flaticon.com" target="_blank">flaticon.com</a>.<br>
             Under <a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC</a>: <a data-file="concert1" href="http://www.flaticon.com/authors/daniel-bruce" target="_blank">Daniel Bruce</a>, <a data-file="mountain" href="http://www.flaticon.com/authors/scott-de-jonge" target="_blank">Scott de Jonge</a>, <a data-file="group44" href="http://www.flaticon.com/authors/ocha" target="_blank">OCHA</a>, <a data-file="summer-1" href="http://www.freepik.com"  target="_blank">Freepik</a></p>
